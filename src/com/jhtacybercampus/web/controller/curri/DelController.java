@@ -18,7 +18,7 @@ public class DelController extends HttpServlet{
 		
 		CurriDao curriDao = new OracleCurriDao();
 		
-		Integer id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		try {
 			curriDao.delete(id);

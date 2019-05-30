@@ -25,7 +25,7 @@ public class OracleCurriDao implements CurriDao {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, userId, pwd);
 		
-		String sql = "select * from curri";
+		String sql = "select * from curri order by reg_date desc";
 		Statement st = con.createStatement();
 		ResultSet rs =st.executeQuery(sql);
 		
