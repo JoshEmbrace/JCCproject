@@ -44,9 +44,6 @@
                			<tr>
                				<th>hit</th>
                				<td>${notice.hit}</td>
-               				<!-- edited-time은 어떻게 구현해야할지 모르겠어 -->
-               				<th>edited-time</th>
-               				<td>${notice.regDate}</td>
                			</tr>
                			<tr>
                				<th>title</th>

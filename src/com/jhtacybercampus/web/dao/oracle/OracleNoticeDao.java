@@ -242,6 +242,8 @@ public class OracleNoticeDao implements NoticeDao{
 		st.setString(1, notice.getTitle());
 		st.setString(2, notice.getContent());
 		
+		result = st.executeUpdate();
+		
 		st.close();
 		con.close();
 		return result;
