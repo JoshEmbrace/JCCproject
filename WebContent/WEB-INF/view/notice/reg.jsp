@@ -10,7 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-  <!--   <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
 </head>
 
 
@@ -32,11 +31,54 @@
             </aside>
             <main>
                <section>
-               	<form>
-               		<h1>공지사항 내용</h1>
-               		<table>
-               			
-               		</table>
+               <form method="post" action="reg" enctype="multipart/form-data">
+               	<h1>공지사항 내용</h1>
+               	<table>
+               		<tbody>
+               			<tr>
+               				<th>writer</th>
+               				<td>${notice.writerId}</td>
+               				<th>posted-time</th>
+               				<td>${notice.regDate}</td>
+               			</tr>
+               			<tr>
+               				<th>hit</th>
+               				<td>${notice.hit}</td>
+               			</tr>
+               			<tr>
+               				<th>title</th>
+               				<td><input name="title"></td>
+               			</tr>
+               			<tr>
+               				<th>content</th>
+               				<td><textarea name="content"></textarea></td>
+               			</tr>
+               			<tr>
+               				<th>file</th>
+               				<td><input type="file" name="file"></td>
+               			</tr>
+               			<tr>
+               				<th>fix-top</th>
+               				<td>
+               					<input type="radio" name="fixtop">fix
+               					<input type="radio" name="fixtop">non-fix
+               				</td>
+               			</tr>
+               			<tr>
+               				<th>hide</th>
+               				<td>
+               					<input type="radio">hide
+               					<input type="radio">show 
+               				</td>
+               			</tr>
+               		</tbody>
+               	</table>
+        
+               	<div>
+               		<input type="hidden" name="id">
+               		<input type="submit" value="post">
+               		<a href="list">cancel</a>
+               	</div>
                	</form>
                </section>
             </main>

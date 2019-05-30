@@ -40,7 +40,7 @@ public class EditController extends HttpServlet {
 //		notice.setContent(content);
 //	
 		req.getRequestDispatcher("/WEB-INF/view/notice/detail.jsp").forward(req, resp);
-		//resp.sendRedirect("detail?id=" + id);
+//		resp.sendRedirect("detail?id=" + id);
 	}
 
 	@Override
