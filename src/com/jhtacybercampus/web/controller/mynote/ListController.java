@@ -21,20 +21,16 @@ public class ListController extends HttpServlet{
    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
       MynoteDao mynoteDao  = new OracleMynoteDao();
-      Mynote mynote = new Mynote();
+
        try {
-    	   request.setAttribute("list",  mynoteDao.getList());
-    	   request.setAttribute("id", mynote.getId());
-    	   
+    	   request.setAttribute("list", mynoteDao.getList()); 
+    	   System.out.println(mynoteDao.getList().get(1).getContent());
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-       
-       request.getRequestDispatcher("../WEB-INF/view/mynote/list.jsp").forward(request, response);
+       request.getRequestDispatcher("/WEB-INF/view/mynote/list.jsp").forward(request, response);
 
    }
    
