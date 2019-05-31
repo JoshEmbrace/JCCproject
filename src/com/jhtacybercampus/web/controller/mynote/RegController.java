@@ -21,6 +21,7 @@ public class RegController extends HttpServlet {
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
 	   //내용,파일,아이디
+	  
       String file_name = request.getParameter("file_name");
       String file_path = request.getParameter("file_path");
      
@@ -50,13 +51,14 @@ public class RegController extends HttpServlet {
 //      if(result != 1)
 //         response.sendRedirect("../mynote/error");
 //      else
+      	
          response.sendRedirect("list");
        
       
    }
    @Override
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      request.getRequestDispatcher("/WEB-INF/view/mynote/list.jsp").forward(request, response);
+      request.getRequestDispatcher("/WEB-INF/view/mynote/reg.jsp").forward(request, response);
    }
    
 }

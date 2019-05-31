@@ -21,7 +21,7 @@ public class OracleMynoteDao implements MynoteDao {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		
-		String sql ="SELECT CONTENT, FILE_NAME, FILE_PATH, REG_DATE FROM MYNOTE";
+		String sql ="SELECT * FROM MYNOTE";
 		PreparedStatement st = con.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		
@@ -54,8 +54,8 @@ public class OracleMynoteDao implements MynoteDao {
 		
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		
-		String sql = "INSERT INTO MYNOTE(ID,CONTENT, FILE_NAME, FILE_PATH)"
-				+"VALUES(,?,?,?)";
+		String sql = "INSERT INTO MYNOTE(ID, CONTENT, FILE_NAME, FILE_PATH, WRITER_ID)"
+				+"VALUES(MYNOTE_SEQ.nextval,?,?,?,\'작성자 : 해당계정\')";
 		
 //쿼리를 미리 짜놓고 값들을 나중에 넣어줘
 //다른거는 쿼리를 만들 때 값을 넣으면서 만드는 것
@@ -71,7 +71,7 @@ public class OracleMynoteDao implements MynoteDao {
 		st.close();
 		con.close();
 
-		return 0;
+		return result;
 	}
 	
 
