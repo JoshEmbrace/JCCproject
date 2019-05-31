@@ -31,6 +31,10 @@ public class RegController extends HttpServlet {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 
+<<<<<<< HEAD
+=======
+		
+>>>>>>> refs/remotes/origin/master
 		Part filePart = req.getPart("file");
 		InputStream fis = filePart.getInputStream();
 		OutputStream fos = new FileOutputStream("C:\\jjh\\name.txt");
@@ -46,7 +50,11 @@ public class RegController extends HttpServlet {
 	
 			
 				try {
+<<<<<<< HEAD
 					nd.insert(new Notice(1, title, content, "", "", "", 0, "ÀåÇý¸®"));
+=======
+					nd.insert(new Notice(0, title, content, "", "", "", 0, "ÀåÇý¸®"));
+>>>>>>> refs/remotes/origin/master
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -63,7 +71,10 @@ public class RegController extends HttpServlet {
 //		notice.setContent(content);
 //	
 //		req.getRequestDispatcher("/WEB-INF/view/notice/detail.jsp").forward(req, resp);
+<<<<<<< HEAD
 //				resp.sendRedirect("detail?id=" + id);
+=======
+>>>>>>> refs/remotes/origin/master
 				resp.sendRedirect("list");
 	}
 
