@@ -75,7 +75,6 @@
                	</table>
         
                	<div>
-               		<input type="hidden" name="id">
                		<input type="submit" value="post">
                		<a href="list">cancel</a>
                	</div>

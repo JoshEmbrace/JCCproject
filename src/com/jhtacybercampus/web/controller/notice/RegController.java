@@ -30,8 +30,7 @@ public class RegController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		Integer id = Integer.parseInt(req.getParameter("id"));
-		
+
 		Part filePart = req.getPart("file");
 		InputStream fis = filePart.getInputStream();
 		OutputStream fos = new FileOutputStream("C:\\jjh\\name.txt");
@@ -47,7 +46,7 @@ public class RegController extends HttpServlet {
 	
 			
 				try {
-					nd.insert(new Notice(id, title, content, "", "", "", 0, "ÀåÇý¸®"));
+					nd.insert(new Notice(1, title, content, "", "", "", 0, "ÀåÇý¸®"));
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -64,7 +63,8 @@ public class RegController extends HttpServlet {
 //		notice.setContent(content);
 //	
 //		req.getRequestDispatcher("/WEB-INF/view/notice/detail.jsp").forward(req, resp);
-				resp.sendRedirect("detail?id=" + id);
+//				resp.sendRedirect("detail?id=" + id);
+				resp.sendRedirect("list");
 	}
 
 	@Override
