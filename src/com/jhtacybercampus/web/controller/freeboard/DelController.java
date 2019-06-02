@@ -14,14 +14,14 @@ import com.jhtacybercampus.web.dao.oracle.OracleFreeBoardDao;
 
 @WebServlet("/freeboard/del")
 public class DelController extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
 		FreeBoardDao fbDao  = new OracleFreeBoardDao();
-		
+
 		Integer id = Integer.parseInt(request.getParameter("id"));
-		
+
 		try {
 			fbDao.delete(id);
 		} catch (ClassNotFoundException e1) {
@@ -31,10 +31,10 @@ public class DelController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		
-		request.getRequestDispatcher("/WEB-INF/view/freeboard/list.jsp").forward(request, response);
-		
-		
+
+
+		response.sendRedirect("list");
+
+
 	}
 }

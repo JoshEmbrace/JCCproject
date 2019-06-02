@@ -18,44 +18,43 @@
 		<main>
 		<section>
 			<h3>공지사항 내용</h3>
-			<table>
-				<thead>
-					<tr>
-						<td>no.</td>
-						<td>title</td>
-						<td>content</td>
-						<td>reg date</td>
-						<td>hit</td>
-					</tr>
-				</thead>
-				<tbody>
+				<table>
+					<thead>
+						<tr>
+							<td>no.</td>
+							<td>title</td>
+							<td>content</td>
+							<td>reg date</td>
+							<td>hit</td>
+						</tr>
+					</thead>
+					<tbody>
 
-					<tr>
-						<th>제목</th>
-						<td>${notice.title}
-						</td>
-					</tr>
+						<tr>
+							<th>제목</th>
+							<td>${notice.title}</td>
+						</tr>
 
-					<tr>
-						<th>내용</th>
-						<td>${notice.content}</td>
-					</tr>
+						<tr>
+							<th>내용</th>
+							<td>${notice.content}</td>
+						</tr>
 
-					<tr>
-						<th>작성일</th>
-						<td>${notice.reg_date}</td>
-					</tr>
-					
-					<tr>
-						<th>조회수</th>
-						<td>${notice.hit}</td>
-					</tr>
+						<tr>
+							<th>작성일</th>
+							<td>${notice.reg_date}</td>
+						</tr>
 
-				</tbody>
-			</table>
-			<div>
-				<a href="edit?id=${notice.id}">수정</a> <a href="del?id=${notice.id}">삭제</a>
-			</div>
+						<tr>
+							<th>조회수</th>
+							<td>${notice.hit}</td>
+						</tr>
+
+					</tbody>
+				</table>
+				<div>
+					<a href="edit?id=${notice.id}">수정</a> <a href="del?id=${notice.id}">삭제</a>
+				</div>
 		</section>
 
 		<section>

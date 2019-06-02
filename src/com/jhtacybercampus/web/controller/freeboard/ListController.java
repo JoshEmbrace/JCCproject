@@ -15,22 +15,22 @@ import com.jhtacybercampus.web.dao.oracle.OracleFreeBoardDao;
 
 @WebServlet("/freeboard/list")
 public class ListController extends HttpServlet{
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FreeBoardDao fbDao  = new OracleFreeBoardDao();
-	
+
 		try {
 			request.setAttribute("list", fbDao.getList());
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
+
 		request.getRequestDispatcher("/WEB-INF/view/freeboard/list.jsp").forward(request, response);
 	}
-	
-	
+
+
 
 }
