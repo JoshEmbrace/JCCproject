@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en" style="font-size: 10px">
 
@@ -37,9 +38,13 @@
                		<tbody>
                			<tr>
                				<th>writer</th>
-               				<td>${notice.writerId}</td>
-               				<th>posted-time</th>
-               				<td>${notice.regDate}</td>
+               				<td>장혜리</td>
+<%--                				<th>posted-time</th>
+               				<td>
+               					<c:set var="now" value="<%=new java.util.Date()%>" />
+								<c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" /></c:set>
+               					<c:out value="${sysYear}" />
+               				</td> --%>
                			</tr>
                			<tr>
                				<th>hit</th>
@@ -75,7 +80,6 @@
                	</table>
         
                	<div>
-               		<input type="hidden" name="id">
                		<input type="submit" value="post">
                		<a href="list">cancel</a>
                	</div>
