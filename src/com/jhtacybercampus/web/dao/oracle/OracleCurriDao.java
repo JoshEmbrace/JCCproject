@@ -113,11 +113,9 @@ public class OracleCurriDao implements CurriDao {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, userId, pwd);
 		
-		String sql = "delete from notice where id=?";
-		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, id);
-		
-		result = st.executeUpdate();
+		String sql = "DELETE FROM CURRI WHERE ID="+id;
+		Statement st = con.createStatement();
+		result = st.executeUpdate(sql);
 		
 		st.close();
 		con.close();
