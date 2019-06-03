@@ -215,7 +215,7 @@
 							</tr>
 						</table>
 						<div class="aaa">
-							<a href="edit?id=${curri.id}"><div class="bbb">수정</div></a>
+							<a href="edit"><div class="bbb">수정</div></a>
 							<a href="del?id=${curri.id}"><div class="bbb">삭제</div></a>
 						</div>
 					</div>
