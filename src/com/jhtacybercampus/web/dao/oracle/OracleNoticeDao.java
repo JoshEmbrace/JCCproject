@@ -33,7 +33,7 @@ public class OracleNoticeDao implements NoticeDao{
 		int end = page*15;
 		
 		String sql = "SELECT * FROM NOTICE_VIEW"+" WHERE "+field+" LIKE ? AND NUM BETWEEN ? AND ?";
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		PreparedStatement st = con.prepareStatement(sql);
@@ -70,7 +70,7 @@ public class OracleNoticeDao implements NoticeDao{
 		
 		String sql = "select * from notice where id="+id;
 		
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -111,7 +111,7 @@ public class OracleNoticeDao implements NoticeDao{
 		
 		String sql = "select * from notice_view where regdate<(select regdate from notice where id="+id+") and rownum=1";
 		
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
@@ -150,7 +150,7 @@ public class OracleNoticeDao implements NoticeDao{
 		
 		String sql = "select * from(select * from notice_view order by regdate) where regdate > (select regdate from notice where id="+id+") and rownum =1";
 		
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -190,7 +190,7 @@ public class OracleNoticeDao implements NoticeDao{
 		
 		String sql = "insert into notice(id,title,content,writer_id)"+"values(notice_seq.nextval,?,?,'ÀåÇý¸®')";
 		
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
@@ -213,7 +213,7 @@ public class OracleNoticeDao implements NoticeDao{
 		
 		String sql = "delete notice where id=?";
 		
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		
@@ -234,7 +234,7 @@ public class OracleNoticeDao implements NoticeDao{
 		int id = notice.getId();
 		String sql = "update notice set title=?, content=? where id="+id;
 		
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		

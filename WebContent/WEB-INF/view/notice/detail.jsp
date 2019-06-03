@@ -72,7 +72,7 @@
                		<form>
                			<button><a href="list">list</a></button>
                			<button><a href="edit?id=${notice.id}">edit</a></button>
-               			<button><a href="">delete</a></button>
+               			<button><a href="del?id=${notice.id}">delete</a></button>
                		</form>
                	</div>
                </section>

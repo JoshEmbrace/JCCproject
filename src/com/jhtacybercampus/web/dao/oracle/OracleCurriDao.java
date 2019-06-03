@@ -21,7 +21,7 @@ public class OracleCurriDao implements CurriDao {
 		String userId = "\"JCC\"";
 		String pwd = "1234";
 		List<Curri> curri = new ArrayList<>();
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, userId, pwd);
 		
@@ -58,7 +58,7 @@ public class OracleCurriDao implements CurriDao {
 		String userId = "\"JCC\"";
 		String pwd = "1234";
 		
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, userId, pwd);
 		
@@ -84,7 +84,7 @@ public class OracleCurriDao implements CurriDao {
 		String userId = "\"JCC\"";
 		String pwd = "1234";
 		
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, userId, pwd);
 
@@ -109,15 +109,13 @@ public class OracleCurriDao implements CurriDao {
 		String userId = "\"JCC\"";
 		String pwd = "1234";
 		
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, userId, pwd);
 		
-		String sql = "delete from notice where id=?";
-		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, id);
-		
-		result = st.executeUpdate();
+		String sql = "DELETE FROM CURRI WHERE ID="+id;
+		Statement st = con.createStatement();
+		result = st.executeUpdate(sql);
 		
 		st.close();
 		con.close();
@@ -132,7 +130,7 @@ public class OracleCurriDao implements CurriDao {
 		String userId = "\"JCC\"";
 		String pwd = "1234";
 		
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, userId, pwd);
 		

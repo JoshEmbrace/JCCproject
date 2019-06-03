@@ -14,21 +14,9 @@ public class FreeBoard {
 	private String writer_id;
 	
 	
-	public FreeBoard() {
-		
-		
-	}
-	
-	public FreeBoard(int id, String title, String writer_id) {
-
-		this.id = id;
-		this.title = title;
-		this.writer_id = writer_id;
-	}
-	
-	
-	public FreeBoard(int id, String title, String content, Date reg_date, String file_path, String file_name, int hit, String writer_id) {
-		//super();
+	public FreeBoard(int id, String title, String content, Date reg_date, String file_path, String file_name, int hit,
+			String writer_id) {
+		super();
 		this.id = id;
 		this.title = title;
 		this.content = content;
@@ -38,6 +26,14 @@ public class FreeBoard {
 		this.hit = hit;
 		this.writer_id = writer_id;
 	}
+
+	
+	public FreeBoard() {
+		
+		
+	}
+	
+
 	
 	
 	public FreeBoard(String[] args) {
@@ -49,6 +45,12 @@ public class FreeBoard {
 		this.file_name = args[4];
 		this.hit = Integer.parseInt(args[5]);
 		this.writer_id =args[6];
+	}
+
+	public FreeBoard(int id, String title, String content) {
+		this.id = id;
+		this.title = title;
+		this.content = content;
 	}
 
 
