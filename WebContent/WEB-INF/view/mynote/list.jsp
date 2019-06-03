@@ -42,6 +42,7 @@
 				//첨부파일
 				//filename filepath 
 				
+				
 				<input type="submit" value="등록">
 			</form>
 		</section>
@@ -49,9 +50,22 @@
 		<c:forEach var="n"  items="${list}">
 			<section>
 				<div>${n.reg_date}</div>
-				//수정,삭제버튼 넣고
-				<button><a href="/mynote/edit?id=${n.id}">수정</a></button>
-				<button><a href="/mynote/del?id=${n.id}">삭제</a></button>
+				
+				<%-- <a href="/mynote/edit?id=${n.id}" data-role="button">수정</a> --%>
+				
+				<form action ="edit" method="post">
+				<input type="hidden" name="id" value="${n.id}">
+				<input type="submit" value="수정">
+				</form>
+				
+				<form action ="del" method="post">
+				<input type="hidden" name="id" value="${n.id}">
+				<input type="submit" value="삭제">
+				</form>
+				
+				
+				<%-- <button float="right"><a href="/mynote/edit?id=${n.id}">수정</a></button> --%>
+				<%-- <button float="right"><a href="/mynote/del?id=${n.id}">삭제</a></button> --%>
 				<textarea name="content" cols="40">
 				${n.content}
 				</textarea>

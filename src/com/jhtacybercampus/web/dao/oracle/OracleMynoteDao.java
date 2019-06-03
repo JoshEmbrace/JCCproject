@@ -17,7 +17,7 @@ public class OracleMynoteDao implements MynoteDao {
 	public List<Mynote> getList() throws ClassNotFoundException, SQLException {
 		List<Mynote> mynote = new ArrayList<Mynote>();
 		
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		
@@ -49,7 +49,7 @@ public class OracleMynoteDao implements MynoteDao {
 	public int insert(Mynote mynote) throws ClassNotFoundException, SQLException {
 		int result = 0;
 		
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
@@ -81,7 +81,7 @@ public class OracleMynoteDao implements MynoteDao {
 		
 		String sql = "UPDATE MYNOTE SET CONTENT=?, FILE_NAME=?,"
 				+ "FILE_PATH=? WHRER ID=?";
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		
@@ -107,7 +107,7 @@ public class OracleMynoteDao implements MynoteDao {
 		
 		String sql = "DELETE MYNOTE WHERE ID=?";
 				
-		String url = "jdbc:oracle:thin:@192.168.0.4:1521/xepdb1";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		
