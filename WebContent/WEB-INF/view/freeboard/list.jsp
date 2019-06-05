@@ -10,8 +10,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>list jsp here</title>
-
+<title>자유게시판</title>
+<link rel="stylesheet" type="text/css" href="../css/freeboard_list.css">
 </head>
 
 
@@ -24,50 +24,59 @@
 	<!-- --body block------------------------------------------------------------------ -->
 
 
+	<aside></aside>
 	<div id="body">
 
-		<aside></aside>
+
 		<main>
-		<section>
-			<h3>공지사항 목록</h3>
+		<section class="list">
+			<h3>자유게시판</h3>
 			<table>
+				<colgroup>
+					<col width="10%" />
+					<col width="40%" />
+					<col width="20%" />
+					<col width="20%" />
+					<col width="10%" />
+				</colgroup>
 				<thead>
 					<tr>
-						<td>no.</td>
-						<td>title</td>
-						<td>writer</td>
-						<td>date</td>
-						<td>hit</td>
+						<td scope="col">번호</td>
+						<td scope="col">제목</td>
+						<td scope="col">작성자</td>
+						<td scope="col">등록날짜</td>
+						<td scope="col">조회수</td>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="n" items="${list}">
 						<tr>
 
-							<td>${n.id}</td>
+							<td class="center">${n.id}</td>
 							<td><a href="detail?id=${n.id}">${n.title}</td>
-							<td>${n.writer_id}</td>
-							<td>${n.reg_date}</td>
-							<td>${n.hit}</td>
+							<td class="center">${n.writer_id}</td>
+							<td class="center">${n.reg_date}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</section>
 
-		<div>
-			<a href="reg">글쓰기</a>
+		<div class="reg">
+			<button class="reg_button">
+				<a href="reg">글쓰기</a>
+			</button>
 		</div>
 
 
 		<section>
-			<h3>공지사항 검색</h3>
+			<h3>검색</h3>
 			<form>
 				<select>
 					<option>title</option>
 					<option>content</option>
 					<option>writer</option>
-				</select> <input type="text"> <input type="submit" value="search">
+				</select> <input type="text" placeholder="Search..."> <input class="reg_input" type="submit" value="search">
 			</form>
 		</section>
 		</main>

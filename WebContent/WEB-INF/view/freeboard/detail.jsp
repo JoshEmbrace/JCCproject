@@ -6,8 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>detail jsp here</title>
+<title>자유게시판</title>
 <link rel="shortcut icon" href="img/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../css/freeboard_detail.css">
 </head>
 
 
@@ -17,7 +18,7 @@
 		<aside></aside>
 		<main>
 		<section>
-			<h3>공지사항 내용</h3>
+			<h3>자유게시판 내용</h3>
 				<table>
 					<thead>
 						<tr>

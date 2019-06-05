@@ -15,7 +15,7 @@
 <meta charset="UTF-8">
 <title>Document</title>
 <link rel="shortcut icon" href="img/favicon.ico">
-
+<link rel="stylesheet" type="text/css" href="/css/freeboard.css">
 </head>
 
 <body>
@@ -42,46 +42,25 @@
 
 				<section>
 					<form action="reg" method="post">
-						<h1>공지사항 내용</h1>
+						<h1>내용</h1>
 						<table>
 							<tbody>
-
+<!-- 
 								<tr>
 									<th>아이디</th>
 									<td><input name="id"></td>
 								</tr>
 
-
+ -->
 								<tr>
 									<th>제목</th>
 									<td><input name="title"></td>
 								</tr>
 
-
-
 								<tr>
 									<th>내용</th>
 									<td><textarea name="content"></textarea></td>
 								</tr>
-
-
-								<tr>
-									<th>파일 경로</th>
-									<td><input name="file_path"></input></td>
-								</tr>
-
-
-								<tr>
-									<th>파일 이름</th>
-									<td><input name="file_name"></input></td>
-								</tr>
-
-
-								<tr>
-									<th>조회수</th>
-									<td><input name="hit"></input></td>
-								</tr>
-
 
 								<tr>
 									<th>작성자 아이디</th>

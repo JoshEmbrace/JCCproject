@@ -41,14 +41,6 @@
 			<section>
 				<h1>공지사항</h1>
 
-				<section id="breadcrumb">
-					<h1 class="d-none">경로</h1>
-					<ol>
-						<li>home</li>
-						<li>고객센터</li>
-						<li>공지사항</li>
-					</ol>
-				</section>
 
 				<section>
 					<form action="edit" method="post">

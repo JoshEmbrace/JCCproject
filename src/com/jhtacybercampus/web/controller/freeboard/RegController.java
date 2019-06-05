@@ -17,29 +17,21 @@ import com.jhtacybercampus.web.entity.FreeBoard;
 @WebServlet("/freeboard/reg")
 public class RegController extends HttpServlet{
 
-
-	//fbDao.insert(new FreeBoard(1, "title", "content",null, "", "",3, "first writer"));
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FreeBoardDao fbDao = new OracleFreeBoardDao();
 		FreeBoard fb = new FreeBoard();
 
-		//int id = Integer.parseInt(request.getParameter("id"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		String file_path = request.getParameter("file_path");
-		String file_name = request.getParameter("file_name");
-		int hit = Integer.parseInt(request.getParameter("hit"));
-		//String writer_id = request.getParameter("writer_id");
+//		String file_path = request.getParameter("file_path");
+//		String file_name = request.getParameter("file_name");
+		String writer_id = request.getParameter("writer_id");
 
 
-		//fb.setId(id);
 		fb.setTitle(title);
 		fb.setContent(content);
-		fb.setFile_path(file_path);
-		fb.setFile_name(file_name);
-		fb.setHit(hit);
-		//fb.setWriter_id(writer_id);
+		fb.setWriter_id(writer_id);
 
 		int result=0;
 
@@ -53,11 +45,12 @@ public class RegController extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(title);
 
 		if(result !=1)
 			response.sendRedirect("error");
 		else
-			response.sendRedirect("list");
+			response.sendRedirect("/freeboard/list");
 
 	}
 

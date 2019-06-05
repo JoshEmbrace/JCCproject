@@ -49,10 +49,16 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 
 		String sql = "SELECT * FROM FREEBOARD_VIEW WHERE " + field+ " LIKE ? AND NUM BETWEEN ? AND ?";
 
-		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
-
+		
+		 String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
+		 Class.forName("oracle.jdbc.driver.OracleDriver"); Connection con =
+		 DriverManager.getConnection(url, "\"JCC\"", "1234");
+		
+		
+//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+//		Connection con = DriverManager.getConnection(url, "system", "1234");
+//		
 		PreparedStatement st = con.prepareStatement(sql);
 
 		st.setString(1, "%" + query + "%");                       
@@ -75,7 +81,6 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 
 			list.add(fb);
 			/* rs.getString("content"), 컨텐트가 없어서 가져오는 작업을 하면 오류가 난다 */
-			System.out.println("여기가 rs" + rs.getInt("id"));
 		}
 
 		return list;
@@ -89,6 +94,10 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
+		
+//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, id);
@@ -124,6 +133,10 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
+		
+//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		Statement st = con.createStatement();
 		ResultSet rs  =st.executeQuery(sql);
@@ -158,6 +171,10 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
+		
+//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		Statement st = con.createStatement();
 		ResultSet rs  =st.executeQuery(sql);
@@ -189,21 +206,25 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 
 		int result = 0;
 
-		String sql ="insert into freeboard(id, title, content, writer_id) " + "values(FREEBOARD_SEQ.NEXTVAL, ? ,?,'mello')";
+		String sql ="insert into freeboard(id, title, content, writer_id) " + "values(FREEBOARD_SEQ.NEXTVAL,?,?,?)";
 
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
+		
+//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, freeB.getTitle());
 		st.setString(2, freeB.getContent());
+		st.setString(3, freeB.getWriter_id());
 		result = st.executeUpdate(); // 몇개를 옫었는지 정수값을 반환 ex)insert한 레코드 
 
 
 		st.close();
 		con.close();
-		System.out.println("인서트 완료");
 
 		return result;
 	}
@@ -216,24 +237,26 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		//String sql = "update notice set title='" + notice.getTitle() + "' where id = " + notice.getId(); 
 		int id = freeB.getId();
 
-		String sql = "update freeboard set title = ?, content = ? where id=?" ;			
+		String sql = "update freeboard set title = ?, content = ? where id=?" ;		
+		
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
+//				
+//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+//		Connection con = DriverManager.getConnection(url, "system", "1234");
+		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, freeB.getTitle());
 		st.setString(2, freeB.getContent());
 		st.setInt(3, freeB.getId());
 
-		//ResultSet rs  =st.executeQuery();
 
 		result = st.executeUpdate(); // 몇개를 옫었는지 정수값을 반환 ex)insert한 레코드 
 
 		st.close();
 		con.close();
-		System.out.println("업데이트 완료");
-
 		return result ;
 	}
 
@@ -242,10 +265,15 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		int result = 0;
 
 		String sql = "delete freeboard where id =?";
+		
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
+//		
+//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+//		Connection con = DriverManager.getConnection(url, "system", "1234");
+		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, id);
 
@@ -255,8 +283,6 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 
 		st.close();
 		con.close();
-		System.out.println("삭제 완료");
-
 		return result;
 	}
 

@@ -24,8 +24,6 @@ public class DetailController extends HttpServlet{
 		Integer id = Integer.parseInt(request.getParameter("id"));
 
 		try {
-			System.out.println(fbDao.get(id).getTitle());
-
 			request.setAttribute("notice", fbDao.get(id));
 			request.setAttribute("prev", fbDao.getPrev(id));
 			request.setAttribute("next", fbDao.getNext(id));
