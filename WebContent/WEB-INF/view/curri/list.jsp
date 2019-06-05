@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en" style="font-size: 10px">
 
@@ -88,6 +88,7 @@
 	height: indent;
 	border: 1px solid #ddd;
 }
+
 .planbook-form dl.planbook-write dd textarea {
 	width: 100%;
 	margin-bottom: 10px;
@@ -115,7 +116,6 @@
 	color: #fff;
 	text-align: center;
 }
-
 
 .planbook-form .bbb {
 	display: inline-block;
@@ -170,58 +170,80 @@
 			<h1 id="planbookBody" class="planbook-title">planbook</h1>
 			<div class="planbook-wrap">
 				<form method="post" action="reg">
-				<div class="planbook-form">
-					<fieldset>
-						<legend class="sr-only">계획쓰기란</legend>
-						<dl class="planbook-t">
-							<dt>
-								<label for="input_title">제목</label>
-							</dt>
-							<dd>
-								<input type="text" name="title" placeholder="제목"
-									title="제목 입력">
-							</dd>
-						</dl>
-						<dl class="planbook-write">
-							<dt>
-								<label>내용</label>
-							</dt>
-							<dd>
-								<textarea name="content"
-									placeholder="단위 기간당 강의하실 계획을 입력해주세요(하루, 한주 혹은 그 이상의 기간)"
-									title="내용 이력"></textarea>
-							</dd>
-						</dl>
-						<%-- <div><input type="hidden" value="${list[0].id}" name="id"></div> --%>
-						<button type="submit" class="reply-btn">
-							<i class="fa fa-send"></i>내용 저장
-						</button>
-					</fieldset>
-				</div>
+					<div class="planbook-form">
+						<fieldset>
+							<legend class="sr-only">계획쓰기란</legend>
+							<dl class="planbook-t">
+								<dt>
+									<label for="input_title">제목</label>
+								</dt>
+								<dd>
+									<input type="text" name="title" placeholder="제목" title="제목 입력">
+								</dd>
+							</dl>
+							<dl class="planbook-write">
+								<dt>
+									<label>내용</label>
+								</dt>
+								<dd>
+									<textarea name="content"
+										placeholder="단위 기간당 강의하실 계획을 입력해주세요(하루, 한주 혹은 그 이상의 기간)"
+										title="내용 이력"></textarea>
+								</dd>
+							</dl>
+							<%-- <div><input type="hidden" value="${list[0].id}" name="id"></div> --%>
+							<button type="submit" class="reply-btn">
+								<i class="fa fa-send"></i>내용 저장
+							</button>
+						</fieldset>
+					</div>
 				</form>
 			</div>
-
-			<c:forEach var="curri" items="${list}">
-				<div class="planbook-wrap">
-
-					<div class="planbook-form">
-						<table class="planbook-write">
-							<tr>
-								<td>${curri.title}</td>
-								<td>${curri.reg_date}</td>
-							</tr>
-							<tr>
-								<td colspan="2">${curri.content}</td>
-							</tr>
-						</table>
-						<div class="aaa">
-							<a href="edit?id=${curri.id}"><div class="bbb">수정</div></a>
-							<a href="del?id=${curri.id}"><div class="bbb">삭제</div></a>
+			<form method="post">
+				<c:forEach var="curri" items="${list}">
+					<c:if test="${param.eid == curri.id }">
+						<div class="planbook-wrap">
+							<div class="planbook-form">
+								<table class="planbook-write">
+									<tr>
+										<td><input type="text" name="title"
+											value="${curri.title}"></td>
+										<td>${curri.reg_date}</td>
+									</tr>
+									<tr>
+										<td colspan="2"><input type="text" name="content"
+											value="${curri.content}"></td>
+									</tr>
+								</table>
+								<div class="aaa">
+									<input type="hidden" name="id" value="${curri.id }"> 
+									<span><input type="submit" value="저장"></span>
+									<a href="del?id=${curri.id}"><div class="bbb">삭제</div></a>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-			</c:forEach>
-
+					</c:if>
+					<c:if test="${param.eid != curri.id }">
+						<div class="planbook-wrap">
+							<div class="planbook-form">
+								<table class="planbook-write">
+									<tr>
+										<td>${curri.title}</td>
+										<td>${curri.reg_date}</td>
+									</tr>
+									<tr>
+										<td colspan="2">${curri.content}</td>
+									</tr>
+								</table>
+								<div class="aaa">
+									<a href="list?eid=${curri.id}"><div class="bbb">수정</div></a> <a
+										href="del?id=${curri.id}"><div class="bbb">삭제</div></a>
+								</div>
+							</div>
+						</div>
+					</c:if>
+				</c:forEach>
+			</form>
 		</section>
 
 		</main>

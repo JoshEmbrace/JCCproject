@@ -18,9 +18,9 @@ import com.jhtacybercampus.web.entity.Curri;
 public class ListController extends HttpServlet {
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		OracleCurriDao curriDao = new OracleCurriDao();
+		CurriDao curriDao = new OracleCurriDao();
 		
 		try {
 			request.setAttribute("list", curriDao.getList());
@@ -33,6 +33,36 @@ public class ListController extends HttpServlet {
 		}
 		
 		request.getRequestDispatcher("/WEB-INF/view/curri/list.jsp").forward(request, response);
+		
+	}
+	
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		
+		CurriDao curriDao = new OracleCurriDao();
+		
+		Curri curri;
+		
+		try {
+			curri = curriDao.get(id);
+			
+			curri.setTitle(title);
+			curri.setContent(content);
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect("list");
 		
 	}
 	

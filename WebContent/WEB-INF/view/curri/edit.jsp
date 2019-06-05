@@ -200,28 +200,31 @@
 				</div>
 				</form>
 			</div>
-
+			
+			<form action="edit" method="post">
 			<c:forEach var="curri" items="${list}">
 				<div class="planbook-wrap">
 
 					<div class="planbook-form">
 						<table class="planbook-write">
 							<tr>
-								<td>${curri.title}</td>
-								<td>${curri.reg_date}</td>
+								<td><input value="${curri.title}" name="title"></td>
+								<td><input value="${curri.reg_date}" name="reg_date"></td>
 							</tr>
 							<tr>
-								<td colspan="2">${curri.content}</td>
+								<td colspan="2"><input value="${curri.content}" name="content"></td>
 							</tr>
 						</table>
 						<div class="aaa">
-							<a href="edit?id=${curri.id}"><div class="bbb">수정</div></a>
-							<a href="del?id=${curri.id}"><div class="bbb">삭제</div></a>
+							<input type="hidden" name="id" value="${curri.id}">
+							<input type="submit" value="저장">
+							<a href="list"><div class="bbb">취소</div></a>
 						</div>
 					</div>
 				</div>
 			</c:forEach>
-
+		</form>
+		
 		</section>
 
 		</main>

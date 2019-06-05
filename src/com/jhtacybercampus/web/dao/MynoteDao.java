@@ -12,4 +12,5 @@ public interface MynoteDao {
 	int insert(Mynote mynote) throws ClassNotFoundException, SQLException;
 	int update(Mynote mynote) throws ClassNotFoundException, SQLException;
 	int delete(int id) throws SQLException, ClassNotFoundException;
+	
 }
