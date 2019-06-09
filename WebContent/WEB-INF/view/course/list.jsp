@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="en" style="font-size: 10px">
+<html lang="en" style="font-size: 20px">
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/course.css">
 </head>
 
 
@@ -33,7 +33,7 @@
                 
             </aside>
             <main>
-              	<table border=1px>
+              	<table>
               		<tr>
               			<th>no.</th>
               			<th>course</th>
@@ -44,9 +44,14 @@
               			<th>total</th>
               			<th>writer</th>
               		</tr>
-	             	 <c:forEach var="n"  items="${list}">
+	             	 <c:forEach var="n"  items="${list}" varStatus="vs">
+	             	 	<c:if test="${vs.count%2==0}">
+	              		<tr class="even">
+	              		</c:if>
+	              		<c:if test="${vs.count%2!=0}">
 	              		<tr>
-	              			<td>${n.id}</td>
+	              		</c:if>
+	              			<td>${vs.count}</td>
 	              			<td><a href="detail?id=${n.id}">${n.name}</a></td>
 	              			<td>${n.teacher}</td>
 	              			<td>${n.manager}</td>

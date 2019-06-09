@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jhtacybercampus.web.dao.oracle.OracleCourseDao;
 import com.jhtacybercampus.web.dao.oracle.OracleMemberDao;
 import com.jhtacybercampus.web.entity.Course;
+import com.jhtacybercampus.web.entity.CourseView;
 
 @WebServlet("/course/reg")
 public class RegController extends HttpServlet{
@@ -25,8 +26,8 @@ public class RegController extends HttpServlet{
 		OracleMemberDao memberDao = new OracleMemberDao();
 		
 		try {
-			req.setAttribute("teacher",memberDao.getTeacher());
-			req.setAttribute("manager",memberDao.getManager());
+			req.setAttribute("teachers",memberDao.getTeacher());
+			req.setAttribute("managers",memberDao.getManager());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,27 +44,22 @@ public class RegController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		OracleCourseDao courseDao = new OracleCourseDao();
 
-		SimpleDateFormat date = new SimpleDateFormat("yy-mm-dd");
 		String name = req.getParameter("name");
 		int total = Integer.parseInt(req.getParameter("total"));
-		String teacher = req.getParameter("teacher");
-		String manager = req.getParameter("manager");
+		int teacher_id = Integer.parseInt(req.getParameter("teacher"));
+		int manager_id = Integer.parseInt(req.getParameter("manager"));
 		
-		String openDate=req.getParameter("openDate");
-		String endDate=req.getParameter("endDate");
-//		try {
-//			openDate = ((java.sql.Date)date.parse(req.getParameter("openDate")));
-//			endDate = ((java.sql.Date)date.parse(req.getParameter("endDate")));
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		Course course = new Course(
-					0,name,teacher,manager,
-					openDate,endDate,"a",total
-				);
-		
+		String open_date=req.getParameter("openDate");
+		String end_date=req.getParameter("endDate");
+
+		Course course = new Course();
+		course.setName(name);
+		course.setTeacher_id(teacher_id);
+		course.setManager_id(manager_id);
+		course.setTotal(total);
+		course.setOpen_date(open_date);
+		course.setEnd_date(end_date);
+			
 		
 		try {
 			courseDao.insert(course);

@@ -4,7 +4,7 @@
    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="en" style="font-size: 10px">
+<html lang="en" style="font-size: 20px">
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/course.css">
 </head>
 
 
@@ -53,9 +53,8 @@
 		              			<th>Teacher</th>
 		              			<td>
 		              				<select name="teacher">
-		              					<option selected>미정
-		              				<c:forEach var="name" items="${teacher}">
-		              					<option>${name}
+		              				<c:forEach var="teacher" items="${teachers}">
+		              					<option value="${teacher.id}">${teacher.name}
 		              				</c:forEach>
 		              				</select>
 		              			</td>
@@ -63,9 +62,8 @@
 		              			<th>Manager</th>
 		              			<td>
 		              				<select name="manager">
-		              					<option selected>미정
-		              				<c:forEach var="name" items="${manager}">
-		              					<option>${name}
+		              				<c:forEach var="manager" items="${managers}">
+		              					<option value="${manager.id}">${manager.name}
 		              				</c:forEach>
 		              				</select>
 		              			</td>

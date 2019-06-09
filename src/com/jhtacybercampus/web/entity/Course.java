@@ -1,120 +1,98 @@
 package com.jhtacybercampus.web.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Course {
 	private int id;
 	private String name;
-	private String teacher;
-	private String manager;
-	private String openDate;
-	private String endDate;
-	private String writerId;
+	private int teacher_id;
+	private int manager_id;
+	private String open_date;
+	private String end_date;
+	private int writer_id;
 	private int total;
 	
 	public Course() {
-		// TODO Auto-generated constructor stub
-	}
-	public Course(int id,String name, String teacher, String manager,
-			String openDate,String endDate,String writerId,int total) {
-		this.id = id;
-		this.name = name;
-		this.teacher = teacher;
-		this.manager = manager;
-		this.openDate = openDate;
-		this.endDate = endDate;
-		this.writerId = writerId;
-		this.total = total;
+		
 	}
 	
-	public String getEndDate() {
-		return endDate;
+	public Course(int id, String name, int teacher_id, int manager_id, String open_date, String end_date, int writer_id,
+			int total) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.teacher_id = teacher_id;
+		this.manager_id = manager_id;
+		this.open_date = open_date;
+		this.end_date = end_date;
+		this.writer_id = writer_id;
+		this.total = total;
 	}
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	}
-	/**
-	 * @return the id
-	 */
+
 	public int getId() {
 		return id;
 	}
-	/**
-	 * @param id the id to set
-	 */
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	/**
-	 * @return the name
-	 */
+
 	public String getName() {
 		return name;
 	}
-	/**
-	 * @param name the name to set
-	 */
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	/**
-	 * @return the teacher
-	 */
-	public String getTeacher() {
-		return teacher;
+
+	public int getTeacher_id() {
+		return teacher_id;
 	}
-	/**
-	 * @param teacher the teacher to set
-	 */
-	public void setTeacher(String teacher) {
-		this.teacher = teacher;
+
+	public void setTeacher_id(int teacher_id) {
+		this.teacher_id = teacher_id;
 	}
-	/**
-	 * @return the manager
-	 */
-	public String getManager() {
-		return manager;
+
+	public int getManager_id() {
+		return manager_id;
 	}
-	/**
-	 * @param manager the manager to set
-	 */
-	public void setManager(String manager) {
-		this.manager = manager;
+
+	public void setManager_id(int manager_id) {
+		this.manager_id = manager_id;
 	}
-	/**
-	 * @return the openDate
-	 */
-	public String getOpenDate() {
-		return openDate;
+
+
+	public String getOpen_date() {
+		return open_date;
 	}
-	/**
-	 * @param openDate the openDate to set
-	 */
-	public void setOpenDate(String openDate) {
-		this.openDate = openDate;
+
+	public void setOpen_date(String open_date) {
+		this.open_date = open_date;
 	}
-	/**
-	 * @return the writerId
-	 */
-	public String getWriterId() {
-		return writerId;
+
+	public String getEnd_date() {
+		return end_date;
 	}
-	/**
-	 * @param writerId the writerId to set
-	 */
-	public void setWriterId(String writerId) {
-		this.writerId = writerId;
+
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
 	}
-	/**
-	 * @return the total
-	 */
+
+	public int getWriter_id() {
+		return writer_id;
+	}
+
+	public void setWriter_id(int writer_id) {
+		this.writer_id = writer_id;
+	}
+
 	public int getTotal() {
 		return total;
 	}
-	/**
-	 * @param total the total to set
-	 */
+
 	public void setTotal(int total) {
 		this.total = total;
 	}
+	
+	
 }
