@@ -18,7 +18,6 @@ public class Member {
 	
 	public Member(int id, String name, int grade, String email, String hp, String account, int gender, Date birthday,
 			String profile_img, String user_id) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.grade = grade;
