@@ -16,6 +16,8 @@ public class ListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		OracleCourseDao courseDao = new OracleCourseDao();
+		
+		
 		try {
 			req.setAttribute("list",courseDao.getList());
 			//req.setAttribute("test", "test");
