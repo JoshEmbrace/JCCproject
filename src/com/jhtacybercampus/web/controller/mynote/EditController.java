@@ -16,14 +16,15 @@ import com.jhtacybercampus.web.entity.Mynote;
 
 @WebServlet("/mynote/edit")
 public class EditController extends HttpServlet{
-	
+
+	//수정 후 수정된 내용 저장하기
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		Integer id = Integer.parseInt(request.getParameter("id"));
 		String content = request.getParameter("content");
 	
-
+System.out.println("id:"+id+",content:"+content);
 //선생님 풀이
 MynoteDao mynoteDao  = new OracleMynoteDao();
 		
@@ -42,15 +43,19 @@ try {
 	e.printStackTrace();
 }
 System.out.println("자"+result);
+
+
+//request.getRequestDispatcher("../WEB-INF/view/mynote/list.jsp").forward(request, response);
+
 if(result !=1)
 	response.sendRedirect("error");
 else
-	response.sendRedirect("edit?id="+id);
+	response.sendRedirect("list");
 		
 	}		
-		
-		
 	
+		
+	//수정 페이지로 넘어갈 때 기존에 작성됐던 글 가져오기
     @Override
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     //hello?cnt3 ->3?

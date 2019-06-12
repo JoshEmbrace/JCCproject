@@ -10,34 +10,28 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/mynote_list.css">
 </head>
 
 
 <body>
 	<!-- --header block------------------------------------------------------------------ -->
-	<header id="header"> </header>
-
+	<header id="header"> 
+		<h1>mynote</h1>
+		<section>
+			<form action="edit" method="post" enctype="multipart/form-data">
+				<%-- <div><%= todaydate %></div> --%>
+			
+				<input type="hidden" name="id" value="${mynote.id}">
+				<textarea name="content" cols="40">${mynote.content}</textarea>
+				<input type="file" name="file">
+				<input class = "com_button" type="submit" value="수정">
+				</form>
+		</section>
+		</header>
 	<!-- --body block------------------------------------------------------------------ -->
 
 
-	<div id="body">
-		<aside></aside>
-
-		<main>
-		<h1>mynote</h1>
-		<section>
-			<form action="/mynote/list" method="post">
-				<%-- <div><%= todaydate %></div> --%>
-				//수정,삭제버튼 넣고
-				//클릭했을때 컨트롤러랑 연결
-				<button><a href="/mynote/edit?id="${n.id}">수정</a></button>
-				<textarea name="content" cols="40">
-				${n.content}
-				</textarea>
-		</section>
-		</main>
-	</div>
 
 	<!-- --footer block------------------------------------------------------------------ -->
 
