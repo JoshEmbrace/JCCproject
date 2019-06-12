@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jhtacybercampus.web.dao.oracle.OracleCourseDao;
+import com.jhtacybercampus.web.dao.oracle.OracleGrantCourseDao;
 
 @WebServlet("/course/detail")
 public class DetailController extends HttpServlet{
@@ -17,8 +18,12 @@ public class DetailController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int id = Integer.parseInt(req.getParameter("id"));
 		OracleCourseDao courseDao = new OracleCourseDao();
+		OracleGrantCourseDao grantCourseDao = new OracleGrantCourseDao();
+		
 		try {
 			req.setAttribute("course",courseDao.get(id));
+			req.setAttribute("students", grantCourseDao.getList(id));
+			req.setAttribute("count", grantCourseDao.getCount(id));
 			//req.setAttribute("test", "test");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

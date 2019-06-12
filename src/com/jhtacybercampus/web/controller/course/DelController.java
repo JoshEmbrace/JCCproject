@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jhtacybercampus.web.dao.oracle.OracleCourseDao;
-import com.jhtacybercampus.web.entity.Course;
+import com.jhtacybercampus.web.entity.CourseView;
 
 @WebServlet("/course/del")
 public class DelController extends HttpServlet{

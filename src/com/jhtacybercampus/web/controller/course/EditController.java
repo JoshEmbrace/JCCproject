@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jhtacybercampus.web.dao.oracle.OracleCourseDao;
 import com.jhtacybercampus.web.dao.oracle.OracleMemberDao;
 import com.jhtacybercampus.web.entity.Course;
+import com.jhtacybercampus.web.entity.CourseView;
 
 @WebServlet("/course/edit")
 public class EditController extends HttpServlet{
@@ -24,8 +25,8 @@ public class EditController extends HttpServlet{
 		
 		try {
 			req.setAttribute("course",courseDao.get(id));
-			req.setAttribute("teacher", memberDao.getTeacher());
-			req.setAttribute("manager", memberDao.getManager());
+			req.setAttribute("teachers", memberDao.getTeacher());
+			req.setAttribute("managers", memberDao.getManager());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,18 +42,18 @@ public class EditController extends HttpServlet{
 		OracleCourseDao courseDao = new OracleCourseDao();
 		int id = Integer.parseInt(req.getParameter("id"));
 		String name = req.getParameter("name");
-		String teacher = req.getParameter("teacher");
-		String manager = req.getParameter("manager");
+		int teacher_id = Integer.parseInt(req.getParameter("teacher"));
+		int manager_id = Integer.parseInt(req.getParameter("manager"));
 		String openDate = req.getParameter("openDate");
 		String endDate = req.getParameter("endDate");
 		
 		Course course = new Course();
 		course.setId(id);
 		course.setName(name);
-		course.setTeacher(teacher);
-		course.setManager(manager);
-		course.setOpenDate(openDate);
-		course.setEndDate(endDate);
+		course.setTeacher_id(teacher_id);
+		course.setManager_id(manager_id);
+		course.setOpen_date(openDate);
+		course.setEnd_date(endDate);
 		
 		try {
 			courseDao.update(course);

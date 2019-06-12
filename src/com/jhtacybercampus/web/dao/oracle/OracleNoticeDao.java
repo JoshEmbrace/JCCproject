@@ -48,7 +48,7 @@ public class OracleNoticeDao implements NoticeDao{
 						rs.getInt("id"),
 						rs.getString("title"),
 						rs.getString("content"),
-						rs.getString("regdate"),
+						rs.getString("reg_date"),
 						rs.getString("file_name"),
 						rs.getString("file_path"),
 						rs.getInt("hit"),
@@ -83,7 +83,7 @@ public class OracleNoticeDao implements NoticeDao{
 						rs.getInt("id"),
 						rs.getString("title"),
 						rs.getString("content"),
-						rs.getString("regdate"),
+						rs.getString("reg_date"),
 						rs.getString("file_name"),
 						rs.getString("file_path"),
 						rs.getInt("hit"),
@@ -109,7 +109,7 @@ public class OracleNoticeDao implements NoticeDao{
 	public Notice getPrev(int id) {
 		Notice notice = null;
 		
-		String sql = "select * from notice_view where regdate<(select regdate from notice where id="+id+") and rownum=1";
+		String sql = "select * from notice_view where reg_date<(select regdate from notice where id="+id+") and rownum=1";
 		
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		try {
@@ -123,7 +123,7 @@ public class OracleNoticeDao implements NoticeDao{
 						rs.getInt("id"),
 						rs.getString("title"),
 						rs.getString("content"),
-						rs.getString("regdate"),
+						rs.getString("reg_date"),
 						rs.getString("file_name"),
 						rs.getString("file_path"),
 						rs.getInt("hit"),
@@ -148,7 +148,7 @@ public class OracleNoticeDao implements NoticeDao{
 	public Notice getNext(int id) {
 		Notice notice = null;
 		
-		String sql = "select * from(select * from notice_view order by regdate) where regdate > (select regdate from notice where id="+id+") and rownum =1";
+		String sql = "select * from(select * from notice_view order by reg_date) where regdate > (select regdate from notice where id="+id+") and rownum =1";
 		
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		
@@ -163,7 +163,7 @@ public class OracleNoticeDao implements NoticeDao{
 						rs.getInt("id"),
 						rs.getString("title"),
 						rs.getString("content"),
-						rs.getString("regdate"),
+						rs.getString("reg_date"),
 						rs.getString("file_name"),
 						rs.getString("file_path"),
 						rs.getInt("hit"),
