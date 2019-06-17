@@ -30,8 +30,6 @@ public class OracleMynoteDao implements MynoteDao {
 			Mynote note = new Mynote(
 					rs.getInt("ID"),
 					rs.getString("content"),
-					rs.getString("FILE_NAME"),
-					rs.getString("FILE_PATH"),
 					rs.getTimestamp("REG_DATE"),
 					rs.getString("WRITER_ID")
 					);
@@ -56,8 +54,8 @@ public class OracleMynoteDao implements MynoteDao {
 		
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		
-		String sql = "INSERT INTO MYNOTE(ID, CONTENT, REG_DATE, FILE_NAME, FILE_PATH, WRITER_ID)"
-				+"VALUES(MYNOTE_SEQ.nextval,?,SYSDATE,?,?,\'작성자 : 해당계정\')";
+		String sql = "INSERT INTO MYNOTE(ID, CONTENT, REG_DATE, WRITER_ID)"
+				+"VALUES(MYNOTE_SEQ.nextval,?,SYSDATE,\'작성자 : 해당계정\')";
 		
 //쿼리를 미리 짜놓고 값들을 나중에 넣어줘
 //다른거는 쿼리를 만들 때 값을 넣으면서 만드는 것
@@ -65,8 +63,6 @@ public class OracleMynoteDao implements MynoteDao {
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, mynote.getContent());
-		st.setString(2, mynote.getFile_name());
-		st.setString(3, mynote.getFile_path());
 
 		result = st.executeUpdate(); //삽입,삭제
 		
@@ -81,17 +77,15 @@ public class OracleMynoteDao implements MynoteDao {
 	public int update(Mynote mynote) throws ClassNotFoundException, SQLException {
 		int result = 0;
 		
-		String sql = "UPDATE MYNOTE SET CONTENT=?, FILE_NAME=?,"
-				+ "FILE_PATH=? WHERE ID=?";
+		String sql = "UPDATE MYNOTE SET CONTENT=?, "
+				+ "WHERE ID=?";
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		
 		  PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, mynote.getContent());
-			st.setString(2, mynote.getFile_name());
-			st.setString(3, mynote.getFile_path());
-			st.setInt(4, mynote.getId());
+			st.setInt(2, mynote.getId());
 
 			result = st.executeUpdate(); //삽입,삭제
 	      
@@ -141,8 +135,6 @@ public class OracleMynoteDao implements MynoteDao {
 			mynote = new Mynote(
 					rs.getInt("ID"),
 					rs.getString("content"),
-					rs.getString("FILE_NAME"),
-					rs.getString("FILE_PATH"),
 					rs.getTimestamp("REG_DATE"),
 					rs.getString("WRITER_ID")
 					);
@@ -154,5 +146,30 @@ public class OracleMynoteDao implements MynoteDao {
 		con.close();
 		
 		return mynote;
+	}
+
+
+	@Override
+	public int getLastId() throws ClassNotFoundException, SQLException {
+	int id = -1;
+		
+		String sql = "SELECT ID FROM (SELECT * FROM MYNOTE ORDER BY REG_DATE DESC) WHERE ROWNUM = 1";
+		
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
+		
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery(sql); //삽입,삭제
+	    
+		 if (rs.next()) {
+	         id=rs.getInt("id");
+	      }
+		
+		rs.close();
+	    st.close();
+	    con.close();
+
+	    return id;
 	}
 }	

@@ -35,6 +35,7 @@
 				 
 		<!--첨부파일 filename filepath  -->		
 				<input type="file" name="file">
+				<input type="hidden" name="id" value="241">
 				<input class="com_button reg_button" type="submit" value="등록">
 			</form>
 		</section>
@@ -54,9 +55,12 @@
 				<%-- <a href="/mynote/edit?id=${n.id}" data-role="button">수정</a> --%>
 				<textarea name="content" cols="40">${n.content}</textarea>
 				
+				
+				
 				<form action ="edit" method="get">
 				<input type="hidden" name="id" value="${n.id}">
 				<input class="com_button ed_button" type="submit" value="수정">
+				<!-- <input type="file" name="file"> -->
 				</form>
 				
 				<form action ="del" method="post">
