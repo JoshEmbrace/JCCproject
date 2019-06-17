@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>글자 편집기</title>
+<link rel="stylesheet" href="Editor.css">
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../Editor.js"></script>
+</head>
+
+<body>
+  <div id="select-button">
+    
+    <!--fontName: 선택 영역이나 입력 위치의 서체 이름을 변경합니다  -->
+   <select id="fontName">
+       <option value="맑은 고딕">맑은 고딕</option>
+       <option value="돋움">돋움</option>
+       <option value="굴림">굴림</option>
+       <option value="궁서">궁서</option>
+       <option value="바탕">바탕</option>
+        <option value="휴먼엽서체">휴먼엽서체</option>
+       <option value="Arial">Arial</option>
+       <option value="Comic Sans MS">Comic Sans MS</option>
+       <option value="Georgia">Georgia</option>
+       <option value="Times New Roman">Times New Roman</option>
+   </select>
+   
+   <!-- fontSize: 선택 영역이나 입력 위치의 서체 크기를 변경합니다. 변수 값으로 HTML 서체 크기(1-7)을 넘겨야 합니다.-->
+   <select id="fontSize">
+       <option value="1">4px</option>
+       <option value="2">8px</option>
+       <option value="3">10px</option>
+       <option value="4">12px</option>
+       <option value="5">16px</option>
+       <option value="6">20px</option>
+       <option value="7">30px</option>
+   </select>
+  
+  <button class="BOLD"  onclick="document.execCommand('bold')" ><img src="https://cdn4.iconfinder.com/data/icons/proglyphs-editor/512/Bold-512.png"></button>
+   <button class="ITALIC" value="Italic" onclick="document.execCommand('Italic')" ><img src="https://cdn4.iconfinder.com/data/icons/proglyphs-editor/512/Italic-512.png"></button>
+   <button class="UNDERBAR" value="밑줄" onclick="document.execCommand('Underline')" ><img src="https://img.icons8.com/metro/420/underline.png"></button>
+   <button class="select-all" value="전체선택" onclick="document.execCommand('selectAll')"><img src="https://static.thenounproject.com/png/773581-200.png"></button>
+   
+   
+   <!--foreColor: 선택 영역이나 입력 위치의 서체 색상을 변경합니다. 변수 값으로 색상 값 문자열을 넘겨야 합니다.  -->
+ <!--   <select id="foreColor">
+       <option value="#000">검정</option>
+       <option value="#f00">빨강</option>
+       <option value="#00f">파랑</option>
+       <option value="#0f0">초록</option>
+       <option value="#ffff00">노랑</option>
+   </select>
+    -->
+   <input id="foreColor" type="color" value="#ff0000"/></input>
+
+
+   
+   
+   <!-- hiliteColor: 선택 영역이나 입력 위치의 배경 색상을 변경합니다. 변수 값으로 생상 값 문자열을 넘겨야 합니다.  -->
+   <select id="hiliteColor">
+       <option value="글자배경색">글자배경색</option>
+       <option value="#f00">빨강</option>
+       <option value="#00f">파랑</option>
+       <option value="#0f0">초록</option>
+       <option value="#ffff00">노랑</option>
+       <option value="#000">검정</option>
+   </select>
+
+   <button class="aignLeft" value="왼쪽 정렬" onclick="document.execCommand('justifyleft')"><img src="https://cdn1.iconfinder.com/data/icons/document-edit-line/64/Document-file-paragraph-text-align-justify-left_1-512.png"></button>
+   <button class="aignCenter" value="가운데 정렬" onclick="document.execCommand('justifycenter')"><img src="https://cdn1.iconfinder.com/data/icons/document-edit-line/64/Document-file-paragraph-text-align-justify-left_1-512.png"></button>
+   <button class="aignRight" value="오른쪽 정렬" onclick="document.execCommand('justifyright')"><img src="http://simpleicon.com/wp-content/uploads/align-right.png"></button>
+  
+  <br/>
+ </div>
+ 
+ <!--contenteditable-"true" :  표준 HTML5 요소들이 편집 가능한 상태-->
+  <div id="text" contenteditable="true"></div>
+   <form  method="post" action="reg" enctype="multipart/form-data">
+      <input type="file" name="file">
+   </form>
+ 
+</body>
+</html>
