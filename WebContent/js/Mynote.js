@@ -1,10 +1,10 @@
 
 window.addEventListener("load", function(){
-    var notice = document.querySelector("#notice");
+    var mynote = document.querySelector("#mynote");
     var textPager = document.querySelector("#text-pager");
-    var txt1 = textPager.querySelector("input[type=text]");
+    var txt1 = textPager.querySelector("input[type=textarea]");
     var btn1 = textPager.querySelector("input[type=button]");
-    var tbody = notice.querySelector("tbody");
+    var body = mynote.querySelector("body");
     
     btn1.onclick = function(){
         var page = 1;
@@ -12,7 +12,7 @@ window.addEventListener("load", function(){
             page = txt1.value; //사용자가 입력안했을 때 기본값
         //데이터 요청하기
          var request = new XMLHttpRequest();
-         request.open("GET","/notice/list-ajax?p="+page,false);
+         request.open("GET","/mynote/list-ajax?p="+page,false);
          request.send();
          var json = JSON.parse(request.responseText);
         
@@ -22,7 +22,7 @@ window.addEventListener("load", function(){
         //tbody.children()[0]
         //tbody.firstElementChild
         //tbody.querySelector("tr : first-child")
-        var tr = tbody.firstElementChild; 
+        var tr = body.firstElementChild; 
 
         tbody.innerHTML = ""; //다 지우기
 
@@ -30,17 +30,13 @@ window.addEventListener("load", function(){
         var cloneTr = tr.cloneNode(true);  //cloneNode 복제
 
         var idE1 = cloneTr.querySelector(".num");
-        var titleE1 = cloneTr.querySelector(".title a");
-        var writerE1 = cloneTr.querySelector(".writer");
-        var dateE1 = cloneTr.querySelector(".date");
-        var hitE1 = cloneTr.querySelector(".hit");
+        var contentE1 = cloneTr.querySelector(".content");
+        var fileE1 = cloneTr.querySelector(".file");
 
         idE1.innerText = json[i].id;
-        titleE1.innerText = json[i].title;
-        writerE1.innerText = json[i].writer;
-        dateE1.innerText = json[i].date;
-        hitE1.innerText = json[i].hit;
-
+        contentE1.innerText = json[i].content;
+        fileE1.innerText = json[i].file;
+    
         tbody.appendChild(cloneTr);
         }
 

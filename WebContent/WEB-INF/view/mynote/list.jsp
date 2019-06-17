@@ -9,7 +9,7 @@
 %>
 <!DOCTYPE html>
 <html lang="en" style="font-size: 10px">
-
+<script src="../js/Mynote.js"></script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,10 +47,8 @@
 		<aside></aside>
 
 		<main>
-
-			
 		<c:forEach var="n"  items="${list}">
-			<section class="list_section">
+			<section class="list_section" id="mynote">
 				<div>${n.reg_date}</div>
 				<%-- <a href="/mynote/edit?id=${n.id}" data-role="button">수정</a> --%>
 				<textarea name="content" cols="40">${n.content}</textarea>
@@ -72,7 +70,42 @@
 				<%-- <button float="right"><a href="/mynote/del?id=${n.id}">삭제</a></button> --%>
 			</section>
 		</c:forEach>
-		<
+			<section id="page-index">
+					<h1 class="d-none">페이지정보</h1>
+					<div>
+						<span class="color-highlight font-bold">1</span> / 1 pages
+					</div>
+				</section>
+				
+				
+				<div id="text-pager">
+					<input type="text">
+					<input type="button" value="요청">
+				</div>
+				<!-- (진리값 혹은 진리값오게하는계산식) ? 참일경우 : 거짓일경우 -->
+				<c:set var="page" value="${ (empty param.p) ? 1 : param.p}"/>
+				<c:set var="start" value="${page-(page-1)%5}"/>
+				<c:set var="end" value=""/>
+				
+				<section id="pager">
+					<h1 class="d-none">페이지</h1>
+					<div>
+						<div>이전</div>
+
+						<ul>
+							<c:forEach var="n" begin="${start}" end="${start+4}" varStatus="s">
+							<%-- items="${list}" 
+							<li class="current"><a href="list?p=${s.count}">${s.count}</a></li> --%>
+							<li class="current"><a href="list?p=${n}">${n}</a></li>
+							</c:forEach>
+						</ul>
+						
+						<div>다음</div>
+					</div>
+		
+		
+		
+		
 		</main>
 	</div>
 	
