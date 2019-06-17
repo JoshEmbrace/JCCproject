@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>자유게시판</title>
+<script src="../js2/freeboard/list.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/freeboard_list.css">
 </head>
 
@@ -29,7 +30,7 @@
 
 
 		<main>
-		<section class="list">
+		<section class="list" id="freeboard">
 			<h3>자유게시판</h3>
 			<table>
 				<colgroup>
@@ -49,13 +50,19 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="n" items="${list}">
-						<tr>
+					<c:forEach var="n" varStatus="status" items="${list}">
+						<c:if test="${status.count%2 ==0}">
+							<tr class="even">
+						</c:if>
+						<c:if test="${status.count%2 !=0}">
+							<tr>
+						</c:if>
 
-							<td class="center">${n.id}</td>
-							<td><a href="detail?id=${n.id}">${n.title}</td>
-							<td class="center">${n.writer_id}</td>
-							<td class="center">${n.reg_date}</td>
+						<td class="num">${n.id}</td>
+						<td class="title"><a href="detail?id=${n.id}">
+								${n.title}</td>
+						<td class="writer">${n.writer_id}</td>
+						<td class="date">${n.reg_date}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -68,6 +75,50 @@
 			</button>
 		</div>
 
+		<!--  페이지 --------------------------------------------------->
+		<section id="page-index">
+			<h1 style="font-size: 2rem" class="d-none">페이지 정보</h1>
+			<div>
+				<span class="color-highlight font-bold">1</span> / 1 pages
+			</div>
+		</section>
+
+		<div id="test-pager">
+			<input type="text"> <input type="button" value="요청">
+		</div>
+
+		<section id="pager">
+			<h1 class="d-none">페이지</h1>
+			<div>
+				<c:set var="page" value="${empty param.p? 1:param.p}" />
+				<div>
+					<a href="list1?p=${(page<6)?page:page-5}">이전</a>
+				</div>
+				<ul>
+					<c:set var="start" value="${page-(page-1)%5}" />
+					<c:set var="last" value="" />
+
+
+
+					<c:forEach begin="${start}" end="${start+4}" var="x">
+						<c:if test="${empty param.p and x==1}">
+							<li class="current">
+						</c:if>
+						<c:if test="${param.p == x}">
+							<li class="current">
+						</c:if>
+						<a href="list1?p=${x}">${x}</a>
+						</li>
+					</c:forEach>
+
+
+				</ul>
+				<div>
+					<a href="list1?p=${page+5}">다음</a>
+				</div>
+			</div>
+		</section>
+
 
 		<section>
 			<h3>검색</h3>
@@ -76,7 +127,8 @@
 					<option>title</option>
 					<option>content</option>
 					<option>writer</option>
-				</select> <input type="text" placeholder="Search..."> <input class="reg_input" type="submit" value="search">
+				</select> <input type="text" placeholder="Search..."> <input
+					class="reg_input" type="submit" value="search">
 			</form>
 		</section>
 		</main>

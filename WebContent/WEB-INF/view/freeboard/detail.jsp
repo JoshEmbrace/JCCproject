@@ -8,7 +8,8 @@
 <meta charset="UTF-8">
 <title>자유게시판</title>
 <link rel="shortcut icon" href="img/favicon.ico">
-<link rel="stylesheet" type="text/css" href="../css/freeboard_detail.css">
+<link rel="stylesheet" type="text/css"
+	href="../css/freeboard_detail.css">
 </head>
 
 
@@ -19,43 +20,51 @@
 		<main>
 		<section>
 			<h3>자유게시판 내용</h3>
-				<table>
-					<thead>
-						<tr>
-							<td>no.</td>
-							<td>title</td>
-							<td>content</td>
-							<td>reg date</td>
-							<td>hit</td>
-						</tr>
-					</thead>
-					<tbody>
+			<table>
+				<thead>
+					<tr>
+						<td>no.</td>
+						<td>title</td>
+						<td>content</td>
+						<td>reg date</td>
+						<td>hit</td>
+						<td>file</td>
+					</tr>
+				</thead>
+				<tbody>
 
-						<tr>
-							<th>제목</th>
-							<td>${notice.title}</td>
-						</tr>
+					<tr>
+						<th>제목</th>
+						<td>${notice.title}</td>
+					</tr>
 
-						<tr>
-							<th>내용</th>
-							<td>${notice.content}</td>
-						</tr>
+					<tr>
+						<th>내용</th>
+						<td>${notice.content}</td>
+					</tr>
 
-						<tr>
-							<th>작성일</th>
-							<td>${notice.reg_date}</td>
-						</tr>
+					<tr>
+						<th>작성일</th>
+						<td>${notice.reg_date}</td>
+					</tr>
 
-						<tr>
-							<th>조회수</th>
-							<td>${notice.hit}</td>
-						</tr>
+					<tr>
+						<th>조회수</th>
+						<td>${notice.hit}</td>
+					</tr>
+					<tr>
+						<th>첨부파일</th>
+						<td><c:forEach var="file" items="${FreeboardFile}">
+								<a href="/upload/${file.name}" download>${file.name}</a>
+								<br>
+							</c:forEach></td>
+					</tr>
 
-					</tbody>
-				</table>
-				<div>
-					<a href="edit?id=${notice.id}">수정</a> <a href="del?id=${notice.id}">삭제</a>
-				</div>
+				</tbody>
+			</table>
+			<div>
+				<a href="edit?id=${notice.id}">수정</a> <a href="del?id=${notice.id}">삭제</a>
+			</div>
 		</section>
 
 		<section>

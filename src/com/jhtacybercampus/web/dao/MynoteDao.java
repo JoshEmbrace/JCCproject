@@ -18,7 +18,8 @@ public interface MynoteDao {
 	Mynote get(int id) throws ClassNotFoundException, SQLException;
 
 
-	//int getLastId();
+	int getLastId() throws ClassNotFoundException, SQLException;
+
 
 
 
