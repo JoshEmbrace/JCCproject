@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jhtacybercampus.web.dao.oracle.OracleCourseDao;
+import com.jhtacybercampus.web.dao.oracle.OracleGrantCourseDao;
 import com.jhtacybercampus.web.dao.oracle.OracleMemberDao;
 import com.jhtacybercampus.web.entity.Course;
 import com.jhtacybercampus.web.entity.CourseView;
@@ -22,11 +23,13 @@ public class EditController extends HttpServlet{
 		int id = Integer.parseInt(req.getParameter("id"));
 		OracleCourseDao courseDao = new OracleCourseDao();
 		OracleMemberDao memberDao = new OracleMemberDao();
+		OracleGrantCourseDao grantCourseDao = new OracleGrantCourseDao();
 		
 		try {
 			req.setAttribute("course",courseDao.get(id));
 			req.setAttribute("teachers", memberDao.getTeacher());
 			req.setAttribute("managers", memberDao.getManager());
+			req.setAttribute("students", grantCourseDao.getList(id));
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
