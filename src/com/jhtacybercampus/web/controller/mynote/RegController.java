@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -23,20 +24,21 @@ import com.jhtacybercampus.web.entity.MynoteFile;
 
 
 @WebServlet("/mynote/reg")
-@MultipartConfig(location = "C:\\temp", fileSizeThreshold = 1024 * 1024, 
-maxFileSize = 1024 * 1024 * 5, 
-maxRequestSize = 1024 * 1024 * 5 * 5 
-)
+@MultipartConfig(
+	location = "C:\\temp", 
+	fileSizeThreshold = 1024 * 1024, 
+	maxFileSize = 1024 * 1024 * 5, 
+	maxRequestSize = 1024 * 1024 * 5 * 5 
+	)
 public class RegController extends HttpServlet {
    @Override
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
 	   //내용,파일,아이디
-	  
-      String file_name = request.getParameter("file_name");
-      String file_path = request.getParameter("file_path");
+	  Integer id = Integer.parseInt(request.getParameter("id"));
       String content = request.getParameter("content");
       Part filePart = request.getPart("file");
+      System.out.println(filePart);
       
       String urlPath = "/upload";
 	  String path = request.getServletContext().getRealPath(urlPath);
@@ -52,7 +54,8 @@ public class RegController extends HttpServlet {
 			pathFile.mkdirs();
 		
 		InputStream fis = filePart.getInputStream();
-		FileOutputStream fos = new FileOutputStream("C:\\temp\\"+fileName);
+		OutputStream fos = new FileOutputStream("C:\\temp\\"+fileName);
+		
 		byte[] buf = new byte[1024];
 		int size=0;
 		while((size=fis.read(buf))!=-1) {
@@ -62,31 +65,26 @@ public class RegController extends HttpServlet {
 		fis.close();
 		fos.close();
 		
-	  
-  
-    
-    
-      
+
     		MynoteDao mynoteDao = new OracleMynoteDao();
-    		Mynote mynote = new Mynote();
     		MynoteFileDao mynoteFileDao = new OracleMynoteFileDao();
-    	
-    		  mynote.setContent(content);
-    	      mynote.setFile_name(file_name);
-    	      mynote.setFile_path(file_path);
+    		
+    		Mynote mynote = new Mynote();
+    		mynote.setContent(content);
+    	    mynote.setId(id);
+     
     	      
-    	      
-    		int result=0;
+    	int result=0;
     		
     	try {
     			// Enterprise Java Bean EJB
-    	      result= mynoteDao.insert(mynote);
-    	     // int mynoteId = mynoteDao.getLastId();
+    	     result = mynoteDao.insert(mynote);
+    	     //int mynoteId = mynoteDao.getLastId();
     	      
     	      MynoteFile mynoteFile = new MynoteFile();
     	      mynoteFile.setName(fileName);
-    	      mynoteFile.setMynoteId(mynoteId);
-    	      
+    	      mynoteFile.setMynoteId(mynote.getId());
+    	
     	      mynoteFileDao.insert(mynoteFile);
     	      
     	      
@@ -98,7 +96,8 @@ public class RegController extends HttpServlet {
     	if(result !=1)
     	   response.sendRedirect("error");
     	else
-    	   response.sendRedirect("list1");
+    	  //response.sendRedirect("list?id="+id);
+    		response.sendRedirect("list");
     	}
 
     	

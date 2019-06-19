@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +24,9 @@ public List<MynoteFile> getListByMynoteId(int mynoteId) throws ClassNotFoundExce
 	
 	String sql ="SELECT * FROM MYNOTE_FILE WHERE MYNOTE_ID=?";
 	
-	String url = "jdbc:oracle:thin:@192.168.0.15:1521/xepdb1";
+	String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 	Class.forName("oracle.jdbc.driver.OracleDriver");
-	Connection con = DriverManager.getConnection(url, "\"newlec\"", "l4class");
+	Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 	PreparedStatement st = con.prepareStatement(sql);
 	
 	
@@ -38,7 +39,7 @@ public List<MynoteFile> getListByMynoteId(int mynoteId) throws ClassNotFoundExce
 		MynoteFile mynoteFile = new MynoteFile(
 			rs.getInt("id"),
 			rs.getString("name"),
-			rs.getInt("notice_id")
+			rs.getInt("mynote_id")
 			);
 		list.add(mynoteFile);
 	}
@@ -58,9 +59,9 @@ public int insert(MynoteFile mynoteFile) throws ClassNotFoundException, SQLExcep
      
      String sql = "INSERT INTO MYNOTE_FILE(ID, NAME, MYNOTE_ID) " 
       + "VALUES (MYNOTE_FILE_SEQ.NEXTVAL, ? ,?)";
-     String url = "jdbc:oracle:thin:@192.168.0.15:1521/xepdb1";
+     String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
      Class.forName("oracle.jdbc.driver.OracleDriver");
-     Connection con = DriverManager.getConnection(url, "\"newlec\"", "l4class");
+     Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
     
      PreparedStatement st = con.prepareStatement(sql);
      st.setString(1, mynoteFile.getName());
@@ -84,9 +85,9 @@ public int update(MynoteFile mynoteFile) throws ClassNotFoundException, SQLExcep
 
      String sql = "UPDATE MYNOTE_FILE SET NAME=?, MYNOTE_ID=? WHERE ID=?";
 
-     String url = "jdbc:oracle:thin:@192.168.0.15:1521/xepdb1";
+     String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
      Class.forName("oracle.jdbc.driver.OracleDriver");
-     Connection con = DriverManager.getConnection(url, "\"newlec\"", "l4class");
+     Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 
      PreparedStatement st = con.prepareStatement(sql);
      st.setString(1, mynoteFile.getName());
@@ -107,9 +108,9 @@ public int delete(int id) throws ClassNotFoundException, SQLException {
 
     String sql = "DELETE MYNOTE_FILE WHERE ID=?";
 
-    String url = "jdbc:oracle:thin:@192.168.0.15:1521/xepdb1";
+    String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
     Class.forName("oracle.jdbc.driver.OracleDriver");
-    Connection con = DriverManager.getConnection(url, "\"newlec\"", "l4class");
+    Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 
     PreparedStatement st = con.prepareStatement(sql);
     st.setInt(1, id);
@@ -120,6 +121,30 @@ public int delete(int id) throws ClassNotFoundException, SQLException {
     con.close();
 
     return result;
+}
+
+@Override
+public int getLastId() throws ClassNotFoundException, SQLException {
+	int id = -1;
+	
+	String sql = "SELECT ID FROM (SELECT * FROM MYNOTE ORDER BY REGDATE DESC) WHERE ROWNUM = 1";
+	
+	String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
+	
+	Statement st = con.createStatement();
+	ResultSet rs = st.executeQuery(sql); //ª¿‘,ªË¡¶
+    
+	 if (rs.next()) {
+         id=rs.getInt("id");
+      }
+	
+	rs.close();
+    st.close();
+    con.close();
+
+    return id;
 }
 
 }

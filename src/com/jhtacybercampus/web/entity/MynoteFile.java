@@ -38,7 +38,7 @@ public class MynoteFile {
 	public int getMynoteId() {
 		return mynoteId;
 	}
-	public void setMynoteId(int MynoteId) {
+	public void setMynoteId(int mynoteId) {
 		this.mynoteId = mynoteId;
 	}
 }

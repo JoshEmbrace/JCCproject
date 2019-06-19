@@ -35,7 +35,7 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 	@Override
 	public List<FreeBoard> getList(int page) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		return getList(1, "title", "");
+		return getList(page, "title", "");
 	}
 
 
@@ -49,16 +49,16 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 
 		String sql = "SELECT * FROM FREEBOARD_VIEW WHERE " + field+ " LIKE ? AND NUM BETWEEN ? AND ?";
 
-		
-		 String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
-		 Class.forName("oracle.jdbc.driver.OracleDriver"); Connection con =
-		 DriverManager.getConnection(url, "\"JCC\"", "1234");
-		
-		
-//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-//		Class.forName("oracle.jdbc.driver.OracleDriver");
-//		Connection con = DriverManager.getConnection(url, "system", "1234");
-//		
+
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
+		Class.forName("oracle.jdbc.driver.OracleDriver"); 
+		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
+
+
+		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+		//		Class.forName("oracle.jdbc.driver.OracleDriver");
+		//		Connection con = DriverManager.getConnection(url, "system", "1234");
+		//		
 		PreparedStatement st = con.prepareStatement(sql);
 
 		st.setString(1, "%" + query + "%");                       
@@ -76,7 +76,7 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 					" ",   //rs.getString("file_name"),
 					" ",    // //rs.getString("file_path"),
 					rs.getInt("hit"), 
-					rs.getString("writer_id")
+					rs.getInt("writer_id")
 					);
 
 			list.add(fb);
@@ -94,10 +94,10 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
-		
-//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-//		Class.forName("oracle.jdbc.driver.OracleDriver");
-//		Connection con = DriverManager.getConnection(url, "system", "1234");
+
+		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+		//		Class.forName("oracle.jdbc.driver.OracleDriver");
+		//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, id);
@@ -113,7 +113,7 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 					rs.getString("file_path"),
 					rs.getString("file_name"),
 					rs.getInt("hit"), 
-					rs.getString("writer_id")
+					rs.getInt("writer_id")
 					);
 		}
 
@@ -133,10 +133,10 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
-		
-//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-//		Class.forName("oracle.jdbc.driver.OracleDriver");
-//		Connection con = DriverManager.getConnection(url, "system", "1234");
+
+		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+		//		Class.forName("oracle.jdbc.driver.OracleDriver");
+		//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		Statement st = con.createStatement();
 		ResultSet rs  =st.executeQuery(sql);
@@ -150,7 +150,7 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 					rs.getString("file_path"),
 					rs.getString("file_name"),
 					rs.getInt("hit"), 
-					rs.getString("writer_id")
+					rs.getInt("writer_id")
 					);
 		}
 
@@ -171,10 +171,10 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
-		
-//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-//		Class.forName("oracle.jdbc.driver.OracleDriver");
-//		Connection con = DriverManager.getConnection(url, "system", "1234");
+
+		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+		//		Class.forName("oracle.jdbc.driver.OracleDriver");
+		//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		Statement st = con.createStatement();
 		ResultSet rs  =st.executeQuery(sql);
@@ -188,7 +188,7 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 					rs.getString("file_path"),
 					rs.getString("file_name"),
 					rs.getInt("hit"), 
-					rs.getString("writer_id")
+					rs.getInt("writer_id")
 					);
 		}
 
@@ -211,15 +211,15 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
-		
-//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-//		Class.forName("oracle.jdbc.driver.OracleDriver");
-//		Connection con = DriverManager.getConnection(url, "system", "1234");
+
+		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+		//		Class.forName("oracle.jdbc.driver.OracleDriver");
+		//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, freeB.getTitle());
 		st.setString(2, freeB.getContent());
-		st.setString(3, freeB.getWriter_id());
+		st.setInt(3, freeB.getWriter_id());
 		result = st.executeUpdate(); // 몇개를 옫었는지 정수값을 반환 ex)insert한 레코드 
 
 
@@ -238,15 +238,15 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		int id = freeB.getId();
 
 		String sql = "update freeboard set title = ?, content = ? where id=?" ;		
-		
+
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
-//				
-//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-//		Class.forName("oracle.jdbc.driver.OracleDriver");
-//		Connection con = DriverManager.getConnection(url, "system", "1234");
-		
+		//				
+		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+		//		Class.forName("oracle.jdbc.driver.OracleDriver");
+		//		Connection con = DriverManager.getConnection(url, "system", "1234");
+
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, freeB.getTitle());
 		st.setString(2, freeB.getContent());
@@ -265,15 +265,15 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		int result = 0;
 
 		String sql = "delete freeboard where id =?";
-		
+
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
-//		
-//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-//		Class.forName("oracle.jdbc.driver.OracleDriver");
-//		Connection con = DriverManager.getConnection(url, "system", "1234");
-		
+		//		
+		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
+		//		Class.forName("oracle.jdbc.driver.OracleDriver");
+		//		Connection con = DriverManager.getConnection(url, "system", "1234");
+
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, id);
 
@@ -284,6 +284,25 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		st.close();
 		con.close();
 		return result;
+	}
+
+	@Override
+	public int getLastId() throws ClassNotFoundException, SQLException {
+		int id = -1;
+		String sql ="select * from (select * from freeboard order by reg_date desc) where rownum = 1";
+		String url = "jdbc:oracle:thin:@192.168.0.15:1521/xepdb1";
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con = DriverManager.getConnection(url, "\"newlec\"", "l4class");// Connection
+		Statement st = con.createStatement();// Statement
+		ResultSet rs = st.executeQuery(sql);// ResultSet
+		if(rs.next())
+			id = rs.getInt("id");
+
+		rs.close();
+		st.close();
+		con.close();
+
+		return id;
 	}
 
 

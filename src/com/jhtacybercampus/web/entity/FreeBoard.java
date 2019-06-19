@@ -11,11 +11,17 @@ public class FreeBoard {
 	private String file_path;
 	private String file_name;
 	private int hit;
-	private String writer_id;
+	private int writer_id;
+	
+	
+	public FreeBoard() {
+		
+		
+	}
 	
 	
 	public FreeBoard(int id, String title, String content, Date reg_date, String file_path, String file_name, int hit,
-			String writer_id) {
+			int writer_id) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -27,15 +33,7 @@ public class FreeBoard {
 		this.writer_id = writer_id;
 	}
 
-	
-	public FreeBoard() {
-		
-		
-	}
-	
 
-	
-	
 	public FreeBoard(String[] args) {
 		this.id = Integer.parseInt(args[0]);
 		this.title = args[1];
@@ -44,7 +42,7 @@ public class FreeBoard {
 		this.file_path =args[3];
 		this.file_name = args[4];
 		this.hit = Integer.parseInt(args[5]);
-		this.writer_id =args[6];
+		this.writer_id = Integer.parseInt(args[6]);
 	}
 
 	public FreeBoard(int id, String title, String content) {
@@ -96,18 +94,11 @@ public class FreeBoard {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	public String getWriter_id() {
+	public int getWriter_id() {
 		return writer_id;
 	}
-	public void setWriter_id(String writer_id) {
+	public void setWriter_id(int writer_id) {
 		this.writer_id = writer_id;
-	}
-	
-	@Override
-	public String toString() {
-		return "freeboard [id=" + id + ", title=" + title + ", content=" + content + ", reg_date=" + reg_date
-				+ ", file_path=" + file_path + ", file_name=" + file_name + ", hit=" + hit + ", writer_id=" + writer_id
-				+ "]";
 	}
 
 

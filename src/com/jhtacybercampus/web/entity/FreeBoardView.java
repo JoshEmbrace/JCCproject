@@ -22,7 +22,7 @@ public class FreeBoardView extends FreeBoard{
 	
 
 	public FreeBoardView(int id, String title, String content, Date reg_date, String file_path, String file_name,
-			int hit, String writer_id, int commentCount) {
+			int hit, int writer_id, int commentCount) {
 		super(id, title, content, reg_date, file_path, file_name, hit, writer_id);
 		this.commentCount = commentCount;
 	
