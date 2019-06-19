@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.jhtacybercampus.web.dao.MynoteDao;
 import com.jhtacybercampus.web.entity.Mynote;
+import com.jhtacybercampus.web.entity.Notice;
 
 public class OracleMynoteDao implements MynoteDao {
 	@Override
@@ -113,7 +114,7 @@ public class OracleMynoteDao implements MynoteDao {
 	public int update(Mynote mynote) throws ClassNotFoundException, SQLException {
 		int result = 0;
 		
-		String sql = "UPDATE MYNOTE SET CONTENT=?, "
+		String sql = "UPDATE MYNOTE SET CONTENT=? "
 				+ "WHERE ID=?";
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -154,6 +155,8 @@ public class OracleMynoteDao implements MynoteDao {
 	}
 
 
+
+	
 	@Override
 	public Mynote get(int id) throws ClassNotFoundException, SQLException {
 		

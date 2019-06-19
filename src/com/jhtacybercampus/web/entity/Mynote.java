@@ -62,8 +62,8 @@ public class Mynote {
 	public void setWriter_id(String writer_id) {
 		this.writer_id = writer_id;
 	}
-	
-	
+
+
 }
 
 
