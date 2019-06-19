@@ -22,6 +22,15 @@ public class Mynote {
 		this.writer_id = writer_id;
 	}
 
+
+
+	public Mynote(int id, String content, Date reg_date) {
+		super();
+		this.id = id;
+		this.content = content;
+		this.reg_date = reg_date;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -53,8 +62,8 @@ public class Mynote {
 	public void setWriter_id(String writer_id) {
 		this.writer_id = writer_id;
 	}
-	
-	
+
+
 }
 
 
