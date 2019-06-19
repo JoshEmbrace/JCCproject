@@ -1,13 +1,5 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.util.*, java.text.*" %>
-<%
-	Date date = new Date();
-	SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy.MM.dd");
-	String todaydate = simpleDate.format(date);
-%>
+
 <html lang="en" style="font-size: 10px">
 
 <head>
@@ -50,7 +42,7 @@
 
 			
 		<c:forEach var="n"  items="${list}">
-			<section class="list_section">
+			<section class="list_section" id="mynote">
 				<div>${n.reg_date}</div>
 				<%-- <a href="/mynote/edit?id=${n.id}" data-role="button">수정</a> --%>
 				<textarea name="content" cols="40">${n.content}</textarea>

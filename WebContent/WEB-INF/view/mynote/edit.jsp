@@ -25,9 +25,13 @@
 				<input type="hidden" name="id" value="${mynote.id}">
 				<textarea name="content" cols="40">${mynote.content}</textarea>
 				<input type="file" name="file">
-				<input class = "com_button" type="submit" value="수정">
+				<input class = "com_button" type="submit" value="저장">
 				</form>
+		<c:forEach var="file" items="${files}">
+			${file.name}<br>
+		</c:forEach>
 		</section>
+		
 		</header>
 	<!-- --body block------------------------------------------------------------------ -->
 

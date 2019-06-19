@@ -3,11 +3,12 @@ package com.jhtacybercampus.web.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.jhtacybercampus.web.dao.oracle.MynoteView;
 import com.jhtacybercampus.web.entity.Mynote;
 
 
 public interface MynoteDao {
-	List<Mynote> getList() throws ClassNotFoundException, SQLException;	
+	List<MynoteView> getList() throws ClassNotFoundException, SQLException;	
 	
 	
 	int insert(Mynote mynote) throws ClassNotFoundException, SQLException;
@@ -19,6 +20,12 @@ public interface MynoteDao {
 
 
 	int getLastId() throws ClassNotFoundException, SQLException;
+
+
+	List<MynoteView> getList(int page) throws ClassNotFoundException, SQLException;
+
+
+	List<MynoteView> getList(int page, String field, String query) throws  ClassNotFoundException, SQLException;
 
 
 
