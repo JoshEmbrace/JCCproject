@@ -7,10 +7,12 @@ import com.jhtacybercampus.web.entity.FreeBoard;
 import com.jhtacybercampus.web.entity.FreeboardFile;
 
 public interface FreeboardFileDao {
-	List<FreeboardFile> getListByNoticeId(int freeboardId) throws ClassNotFoundException, SQLException, SQLException;
+	List<FreeboardFile> getListByFreeboardId(int freeboardId) throws ClassNotFoundException, SQLException, SQLException;
     
     int insert(FreeboardFile freeboardFile) throws ClassNotFoundException, SQLException;
     int update(FreeboardFile freeboardFile) throws ClassNotFoundException, SQLException;
     int delete(int id) throws ClassNotFoundException, SQLException;
+	int getLastId() throws ClassNotFoundException, SQLException;
+
 
 }

@@ -20,10 +20,11 @@ public class FreeBoardView extends FreeBoard{
 		// TODO Auto-generated constructor stub
 	}
 	
-
-	public FreeBoardView(int id, String title, String content, Date reg_date, String file_path, String file_name,
-			int hit, String writer_id, int commentCount) {
-		super(id, title, content, reg_date, file_path, file_name, hit, writer_id);
+//String file_path, String file_name,
+	public FreeBoardView(int id, String title, String content, Date reg_date, 
+			int hit, int writer_id, int commentCount) {
+		super(id, title, content, reg_date,  hit, writer_id);
+//		file_path, file_name,
 		this.commentCount = commentCount;
 	
 	}

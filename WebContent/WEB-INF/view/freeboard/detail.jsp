@@ -10,6 +10,7 @@
 <link rel="shortcut icon" href="img/favicon.ico">
 <link rel="stylesheet" type="text/css"
 	href="../css/freeboard_detail.css">
+<script src="../js/list.js?ver=1"></script>
 </head>
 
 
@@ -20,6 +21,21 @@
 		<main>
 		<section>
 			<h3>자유게시판 내용</h3>
+
+
+			<!--  0618 템플릿 적용-->
+			<template class="freeboard-template">
+			<tr>
+				<td class="num"></td>
+				<td class="title"><a href="detail?id="></a></td>
+				<td class="writer"></td>
+				<td class="date"></td>
+				<td class="hit"></td>
+				<td class="file"></td>
+			</tr>
+			</template>
+			<!--  0618 템플릿 적용-->
+
 			<table>
 				<thead>
 					<tr>
@@ -32,7 +48,7 @@
 					</tr>
 				</thead>
 				<tbody>
-
+				
 					<tr>
 						<th>제목</th>
 						<td>${notice.title}</td>

@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>자유게시판</title>
-<script src="../js2/freeboard/list.js"></script>
+<script src="../js/list.js?ver=1"></script>
 <link rel="stylesheet" type="text/css" href="../css/freeboard_list.css">
 </head>
 
@@ -32,6 +32,25 @@
 		<main>
 		<section class="list" id="freeboard">
 			<h3>자유게시판</h3>
+
+
+			<!--  0618 템플릿 적용-->
+			<template class="freeboard-template">
+			<tr>
+				<td class="num"></td>
+				<td class="title"><a href=""></a></td>
+				<td class="writer"></td>
+				<td class="date"></td>
+				<td class="hit"></td>
+			</tr>
+			</template>
+			<!--  0618 템플릿 적용-->
+
+			<div id="test-pager" style="float:right;">
+				<input type="text"> <input type="button" value="요청">
+			</div>
+
+
 			<table>
 				<colgroup>
 					<col width="10%" />
@@ -59,8 +78,7 @@
 						</c:if>
 
 						<td class="num">${n.id}</td>
-						<td class="title"><a href="detail?id=${n.id}">
-								${n.title}</td>
+						<td class="title"><a id="abc" href="detail?id=${n.id}">${n.title}</a></td>
 						<td class="writer">${n.writer_id}</td>
 						<td class="date">${n.reg_date}</td>
 						</tr>
@@ -75,50 +93,26 @@
 			</button>
 		</div>
 
-		<!--  페이지 --------------------------------------------------->
-		<section id="page-index">
-			<h1 style="font-size: 2rem" class="d-none">페이지 정보</h1>
-			<div>
-				<span class="color-highlight font-bold">1</span> / 1 pages
-			</div>
-		</section>
-
-		<div id="test-pager">
-			<input type="text"> <input type="button" value="요청">
-		</div>
+		<!--  (진리값 혹은 진리값오게하는계산식) ? 참일경우 : 거짓일경우 --> <c:set var="page"
+			value="${ (empty param.p) ? 1 : param.p}" /> <c:set var="start"
+			value="${page-(page-1)%5}" /> <c:set var="end" value="" />
 
 		<section id="pager">
 			<h1 class="d-none">페이지</h1>
 			<div>
-				<c:set var="page" value="${empty param.p? 1:param.p}" />
-				<div>
-					<a href="list1?p=${(page<6)?page:page-5}">이전</a>
-				</div>
+				<div>이전</div>
+
 				<ul>
-					<c:set var="start" value="${page-(page-1)%5}" />
-					<c:set var="last" value="" />
-
-
-
-					<c:forEach begin="${start}" end="${start+4}" var="x">
-						<c:if test="${empty param.p and x==1}">
-							<li class="current">
-						</c:if>
-						<c:if test="${param.p == x}">
-							<li class="current">
-						</c:if>
-						<a href="list1?p=${x}">${x}</a>
-						</li>
+					<c:forEach var="n" begin="${start}" end="${start+4}" varStatus="s">
+						<%-- items="${list}" 
+							<li class="current"><a href="list?p=${s.count}">${s.count}</a></li> --%>
+						<li class="current"><a href="list?p=${n}">${n}</a></li>
 					</c:forEach>
-
-
 				</ul>
-				<div>
-					<a href="list1?p=${page+5}">다음</a>
-				</div>
+
+				<div>다음</div>
 			</div>
 		</section>
-
 
 		<section>
 			<h3>검색</h3>

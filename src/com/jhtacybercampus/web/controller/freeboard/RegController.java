@@ -26,7 +26,7 @@ import com.jhtacybercampus.web.entity.FreeboardFile;
 
 @MultipartConfig(location = "D:\\temp", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, // 5메가
 maxRequestSize = 1024 * 1024 * 5 * 5 // 5메가 5개까지
-)
+		)
 
 public class RegController extends HttpServlet{
 
@@ -36,10 +36,10 @@ public class RegController extends HttpServlet{
 		FreeBoard fb = new FreeBoard();
 		FreeboardFileDao freeboardFileDao = new OracleFreeboardFileDao();
 
+		//Integer id = Integer.parseInt(request.getParameter("id"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		String writer_id = request.getParameter("writer_id");
-
+		Integer writer_id = Integer.parseInt(request.getParameter("writer_id"));
 
 		fb.setTitle(title);
 		fb.setContent(content);
@@ -47,10 +47,11 @@ public class RegController extends HttpServlet{
 
 		//D:\html5-1902
 		Part filePart = request.getPart("file");
+		System.out.println("이것은 filepart" + filePart);
+
 		//1.업로드 경로를 얻기
 		String urlPath = "/upload";
 		String path = request.getServletContext().getRealPath(urlPath);
-
 		System.out.println("이것은 path" + path);
 
 		//2. 업로드된 파일명 얻기s
@@ -74,6 +75,7 @@ public class RegController extends HttpServlet{
 
 		InputStream fis = filePart.getInputStream();
 		FileOutputStream fos = new FileOutputStream("D:\\temp\\"+fileName);
+
 		byte[] buf = new byte[1024];
 		int size=0;
 		while((size=fis.read(buf))!=-1) {
@@ -101,11 +103,7 @@ public class RegController extends HttpServlet{
 			System.out.println("이건 freeboardFile1" + freeboardFile);
 			System.out.println("이건 fileName2" + fileName);
 			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 		System.out.println(title);
