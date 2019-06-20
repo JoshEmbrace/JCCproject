@@ -11,39 +11,76 @@ import java.util.List;
 
 import com.jhtacybercampus.web.dao.MynoteDao;
 import com.jhtacybercampus.web.entity.Mynote;
+import com.jhtacybercampus.web.entity.Notice;
 
 public class OracleMynoteDao implements MynoteDao {
+	@Override
+	public List<MynoteView> getList() throws ClassNotFoundException, SQLException{
+		// TODO Auto-generated method stub
+		return getList(1);
+	}
 
 	@Override
-	public List<Mynote> getList() throws ClassNotFoundException, SQLException {
-		List<Mynote> mynote = new ArrayList<Mynote>();
-		OracleMynoteFileDao mynoteFileDao = new OracleMynoteFileDao();
+	public List<MynoteView> getList(int page) throws ClassNotFoundException, SQLException{
+		// TODO Auto-generated method stub
+		return getList(page,"content","");
+	}
+
+	@Override
+	public List<MynoteView> getList(int page, String field, String query) throws  ClassNotFoundException, SQLException{
+		List<MynoteView> list = new ArrayList<>();
+		
+		int pageSize = 10;
+		int start = 1+(page-1)*pageSize;  //1,11,21,31,41...1+(page-1)*10
+		int end = page * pageSize; 			//10,20,30.40,50
+		
+		String sql ="SELECT * FROM MYNOTE_VIEW" + 
+				" WHERE "+field+" LIKE ? AND NUM BETWEEN ? and ?";
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		
-		String sql ="SELECT * FROM MYNOTE ORDER BY REG_DATE DESC";
 		PreparedStatement st = con.prepareStatement(sql);
-		ResultSet rs = st.executeQuery();
+		st.setString(1,"%"+query+"%");
+		st.setInt(2,start);
+		st.setInt(3,end);
 		
-		while(rs.next()) {
-			Mynote note = new Mynote(
-					rs.getInt("ID"),
-					rs.getString("content"),
-					rs.getTimestamp("REG_DATE"),
-					rs.getString("WRITER_ID")
-					);
-			mynoteFileDao.getListByMynoteId(rs.getInt("ID"));
-			mynote.add(note);
+		//Standard JDK 
+		
+		//트렌젝션 처리 위해--> EJB 사용 -->SE 까지 쓰다가 스프링으로 넘어감 
+		//EJB서버에 내가만든DAO 적재하고..과거에사용했던복잡어려운방법  -->스프링라이브러리사용
+		
+		
+		
+		con.setAutoCommit(false);
+		
+		ResultSet rs = st.executeQuery(); //꺼내오기
+		
+		con.commit();
+		
+		
+		while (rs.next()) {
+			MynoteView notice = new MynoteView(
+				rs.getInt("id"),
+				rs.getString("content"),
+				rs.getDate("reg_date"),
+				rs.getString("filename"),
+				rs.getInt("fileid")
+				);
+			list.add(notice);
 		}
 	
 		rs.close();
 		st.close();
 		con.close();
 		
-		return mynote;
+		return list;
+		
 	}
 	
+	
+	
+
 	
 	@Override
 	public int insert(Mynote mynote) throws ClassNotFoundException, SQLException {
@@ -77,7 +114,7 @@ public class OracleMynoteDao implements MynoteDao {
 	public int update(Mynote mynote) throws ClassNotFoundException, SQLException {
 		int result = 0;
 		
-		String sql = "UPDATE MYNOTE SET CONTENT=?, "
+		String sql = "UPDATE MYNOTE SET CONTENT=? "
 				+ "WHERE ID=?";
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -118,6 +155,8 @@ public class OracleMynoteDao implements MynoteDao {
 	}
 
 
+
+	
 	@Override
 	public Mynote get(int id) throws ClassNotFoundException, SQLException {
 		
@@ -172,4 +211,6 @@ public class OracleMynoteDao implements MynoteDao {
 
 	    return id;
 	}
+
+
 }	

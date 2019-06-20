@@ -20,6 +20,8 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
+		
 		CurriDao curriDao = new OracleCurriDao();
 		
 		try {
@@ -49,10 +51,11 @@ public class ListController extends HttpServlet {
 		Curri curri;
 		
 		try {
-			curri = curriDao.get(id);
 			
+			curri = curriDao.get(id);
 			curri.setTitle(title);
 			curri.setContent(content);
+			curriDao.update(curri);
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

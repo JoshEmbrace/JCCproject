@@ -14,9 +14,17 @@ import com.jhtacybercampus.web.dao.CurriDao;
 import com.jhtacybercampus.web.entity.Curri;
 
 public class OracleCurriDao implements CurriDao {
-
-	@Override
+	
 	public List<Curri> getList() throws ClassNotFoundException, SQLException {
+		return getList(1);
+	}
+	@Override
+	public List<Curri> getList(int page) throws ClassNotFoundException, SQLException {
+	
+		int start = 1 + (page - 1) * 10; // 1, 11, 21, 31, 41...
+		int end = page * 10; // 10, 20, 30, 40, ...
+
+		String sql = "SELECT * FROM curri_view WHERE NUM BETWEEN ? AND ?";
 		
 		String userId = "\"JCC\"";
 		String pwd = "1234";
@@ -24,10 +32,11 @@ public class OracleCurriDao implements CurriDao {
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, userId, pwd);
-		
-		String sql = "select * from curri order by reg_date desc";
-		Statement st = con.createStatement();
-		ResultSet rs =st.executeQuery(sql);
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, start);
+		st.setInt(2, end);
+
+		ResultSet rs =st.executeQuery();
 		
 		while(rs.next()) {
 			Curri cur = new Curri(
@@ -156,5 +165,6 @@ public class OracleCurriDao implements CurriDao {
 
 		return curri;
 	}
+
 
 }

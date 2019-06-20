@@ -38,7 +38,8 @@ public class RegController extends HttpServlet{
 
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		String writer_id = request.getParameter("writer_id");
+		int writer_id = Integer.parseInt(request.getParameter("writer_id"));
+		System.out.println(writer_id);
 
 
 		fb.setTitle(title);

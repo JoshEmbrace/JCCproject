@@ -10,7 +10,8 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+<script src="../js/curri/list.js"></script>
 <style>
 .planbook-title {
 	padding: 10px 20px;
@@ -199,8 +200,28 @@
 					</div>
 				</form>
 			</div>
-			<form method="post">
+			<template id="planbook-template">
+				<div class="planbook-wrap">
+					<div class="planbook-form">
+						<table class="planbook-write">
+							<tr>
+								<td class="title"></td>
+								<td class="reg_date"></td>
+							</tr>
+							<tr>
+								<td colspan="2" class="content"></td>
+							</tr>
+						</table>
+						<div class="aaa">
+							<a href="list?eid=${curri.id}"><div class="bbb">수정</div></a> <a
+								href="del?id=${curri.id}"><div class="bbb">삭제</div></a>
+						</div>
+					</div>
+				</div>
+			</template>
+			<section id="planbook">
 				<c:forEach var="curri" items="${list}">
+				<form method="post">
 					<c:if test="${param.eid == curri.id }">
 						<div class="planbook-wrap">
 							<div class="planbook-form">
@@ -223,6 +244,8 @@
 							</div>
 						</div>
 					</c:if>
+					</form>
+					<form method="post">
 					<c:if test="${param.eid != curri.id }">
 						<div class="planbook-wrap">
 							<div class="planbook-form">
@@ -242,8 +265,13 @@
 							</div>
 						</div>
 					</c:if>
+				</form>
 				</c:forEach>
-			</form>
+			</section>
+			<div id="history">
+				<input type="hidden" value="2">
+				<input type="button" value="더보기">
+			</div>	
 		</section>
 
 		</main>

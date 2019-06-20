@@ -17,15 +17,15 @@ public class ListController extends HttpServlet{
 	
 	
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FreeBoardDao fbDao  = new OracleFreeBoardDao();
-		int page = 1;
+		int page = 1;                                                                     
 		if (request.getParameter("p") != null && !request.getParameter("p").equals(""))
 			page = Integer.parseInt(request.getParameter("p"));
 		
 		
 		try {
-			request.setAttribute("list", fbDao.getList());
+			request.setAttribute("list", fbDao.getList(page));
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
