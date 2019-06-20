@@ -20,7 +20,7 @@ import com.jhtacybercampus.web.entity.Notice;
 
 @WebServlet("/notice/reg")
 @MultipartConfig(
-		location="C:\\myclass",
+		location="C:\\myprjfile",
 	    fileSizeThreshold = 1024*1024,
 	    maxFileSize = 1024*1024*5, //5메가
 	    maxRequestSize = 1024*1024*5*5 // 5메가 5개까지

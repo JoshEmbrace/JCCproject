@@ -33,7 +33,16 @@
             </aside>
             <main>
                <section id="notice">
-               	<h3>공지사항 목록</h3>
+				   <h3>공지사항 목록</h3>
+				   <template class="notice-template">
+					<tr>
+						<td class="num"></td>
+						<td class="title"><a href="detail?id=${n.id}"></a></td>
+						<td class="writer"></td>
+						<td class="date"></td>
+						<td class="hit"></td>
+					</tr>
+				   </template>
                	<table>
                		<thead>
                			<tr>
