@@ -1,31 +1,64 @@
 @import url(course_reset.css);
 
+
+
+
+/*---------------------------------------------*/
+#pager{
+	justify-content: center;
+	text-align: center;
+}
+#pager .box{
+	display:flex;
+}
+#pager ul{
+	display:flex;
+}
+#pager li{
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+}
+#pager li.current{
+    font-weight: bold;
+    color: #ff6a00;
+}
+
+
+.right{
+	display:inline-block;
+	text-align: right;
+}
+
+
+
+
+
 .d-none {
 	display: none;
 }
 
+
 main {
 	font-size: 13px;
 	line-height: 1.5;
-	font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '¸¼Àº °íµñ', dotum,
-		'µ¸¿ò', sans-serif;
+	font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', dotum,
+		'ï¿½ï¿½ï¿½ï¿½', sans-serif;
 	color: black;
 	background-color: #ffe6f2;
 	vertical-align: middle;
 	text-align: center;
+	padding : 0px 100px;
 }
 
 table {
-	width: 800px; margin-left : auto;
+	width: 800px;
+	margin-left : auto;
 	margin-right: auto;
 	text-align: center;
 	line-height: 1.5;
 	background-color: white;
-	margin-left: auto;
-}
-
-table>td::first-child {
-	
 }
 
 table>thead {

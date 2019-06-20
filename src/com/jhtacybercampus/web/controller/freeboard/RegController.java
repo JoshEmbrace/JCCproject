@@ -39,7 +39,11 @@ public class RegController extends HttpServlet{
 		//Integer id = Integer.parseInt(request.getParameter("id"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+
 		Integer writer_id = Integer.parseInt(request.getParameter("writer_id"));
+
+		//int writer_id = Integer.parseInt(request.getParameter("writer_id"));
+		System.out.println(writer_id);
 
 		fb.setTitle(title);
 		fb.setContent(content);

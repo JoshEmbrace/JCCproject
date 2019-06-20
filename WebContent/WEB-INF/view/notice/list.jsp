@@ -11,6 +11,7 @@
     <title>Document</title>
 
    <!--  <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+   <script src="../js/notice/list.js"></script>
 </head>
 
 
@@ -31,26 +32,35 @@
                 
             </aside>
             <main>
-               <section>
-               	<h3>공지사항 목록</h3>
+               <section id="notice">
+				   <h3>공지사항 목록</h3>
+				   <template class="notice-template">
+					<tr>
+						<td class="num"></td>
+						<td class="title"><a href="detail?id=${n.id}"></a></td>
+						<td class="writer"></td>
+						<td class="date"></td>
+						<td class="hit"></td>
+					</tr>
+				   </template>
                	<table>
                		<thead>
                			<tr>
-               				<td>no.</td>
-               				<td>title</td>
-               				<td>writer</td>
-               				<td>date</td>
-               				<td>hit</td>
+               				<td class="num">no.</td>
+               				<td class="title">title</td>
+               				<td class="writer">writer</td>
+               				<td class="date">date</td>
+               				<td class="hit">hit</td>
                			</tr>
                		</thead>
                		<tbody>
                		<c:forEach var="n" items="${list}">
                			<tr>
-               				<td>${n.id}</td>
-               				<td><a href="detail?id=${n.id}">${n.title}</a></td>
-               				<td>${n.writerId}</td>
-               				<td>${n.regDate}</td>
-               				<td>${n.hit}</td>
+               				<td class="num">${n.id}</td>
+               				<td class="title"><a href="detail?id=${n.id}">${n.title}</a></td>
+               				<td class="writer">${n.writerId}</td>
+               				<td class="date">${n.regDate}</td>
+               				<td class="hit">${n.hit}</td>
                			</tr>
                		</c:forEach>
                		</tbody>
@@ -60,9 +70,29 @@
                <div>
                	<form>
                		<button><a href="reg">new</a></button>
-               	</form>
-               </div>
-               
+				   </form>
+			   </div>
+			   
+			   <div id="test-paper">
+					<input type="text">
+					<input type="button" value="요청">
+				</div>
+			<c:set var="page" value="${(empty param.p)? 1:param.p}"/>
+			
+			<c:set var="start" value="${page-((page-1)%5)}"/>
+			<c:set var="last" value=""/>
+			
+			 <section id="pager">
+				<h1 class="d-none">페이지</h1>
+				<div>
+					<div><a href="list?p=${(page<6)?1:(start-1)}">이전</a></div>
+					<ul>
+						<c:forEach begin="${ start}" end="${ start+4}" varStatus="s" var="n">
+							<li><a href="list?p=${n}">${n}</a></li>
+						</c:forEach>
+					</ul>
+					<div><a href="list?p=${start+5}">다음</a></div>
+				</div> 
                <section>
                	<h3>공지사항 검색</h3>
                	<form>

@@ -164,10 +164,7 @@ public class OracleCourseDao {
 		st.setInt(3,course.getManager_id());
 		st.setString(4, course.getOpen_date());
 		st.setString(5, course.getEnd_date());
-		
-		
-		//st.setDate(4, course.getOpenDate());
-		//st.setDate(5, course.getEndDate());
+
 		result = st.executeUpdate();
 		
 		st.close();

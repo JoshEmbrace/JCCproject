@@ -74,12 +74,12 @@ public class RegController extends HttpServlet {
     	    mynote.setId(id);
      
     	      
-    		int result=0;
+    	int result=0;
     		
     	try {
     			// Enterprise Java Bean EJB
-    	     result= mynoteDao.insert(mynote);
-    	     int mynoteId = mynoteDao.getLastId();
+    	     result = mynoteDao.insert(mynote);
+    	     //int mynoteId = mynoteDao.getLastId();
     	      
     	      MynoteFile mynoteFile = new MynoteFile();
     	      mynoteFile.setName(fileName);
@@ -96,7 +96,8 @@ public class RegController extends HttpServlet {
     	if(result !=1)
     	   response.sendRedirect("error");
     	else
-    	   response.sendRedirect("list?id="+id);
+    	  //response.sendRedirect("list?id="+id);
+    		response.sendRedirect("list");
     	}
 
     	

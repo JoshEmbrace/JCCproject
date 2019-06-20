@@ -270,7 +270,9 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		int id = -1;
 		String sql ="select * from (select * from freeboard order by reg_date desc) where rownum = 1";
 
+
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
+
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		Statement st = con.createStatement();// Statement

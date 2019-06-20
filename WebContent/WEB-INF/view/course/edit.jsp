@@ -66,7 +66,11 @@
 
 				<tr>
 					<th>Student</th>
-					<td colspan="3"></td>
+					<td colspan="3">
+						<c:forEach var="student" items="${students}">
+							${student.member_name} <a href="edit?"></a><br>
+						</c:forEach>
+					</td>
 				</tr>
 			</table>
 			<div>
