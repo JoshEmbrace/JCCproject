@@ -17,10 +17,10 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
 		OracleFreeBoardDao oo = new OracleFreeBoardDao();
-		FreeBoard notice = new FreeBoard();
-		notice.setContent("content");
-		notice.setTitle("title");
-		oo.insert(notice);
+		FreeBoard freeboard = new FreeBoard();
+		freeboard.setContent("content");
+		freeboard.setTitle("title");
+		oo.insert(freeboard);
 		System.out.println(oo.getList());
 
 	}
@@ -44,8 +44,8 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		List<FreeBoard> list = new ArrayList<>();
 		FreeBoard fb = null;
 
-		int start = 1+(page-1)*15; //페이지 수 1, 11, 21, 31, 41....
-		int end = page * 15;  //10, 20 , 30, 40 , ...																											
+		int start = 1+(page-1)*5; //페이지 수 1, 11, 21, 31, 41....
+		int end = page * 5;  //10, 20 , 30, 40 , ...																											
 
 		String sql = "SELECT * FROM FREEBOARD_VIEW WHERE " + field+ " LIKE ? AND NUM BETWEEN ? AND ?";
 
@@ -54,11 +54,6 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		Class.forName("oracle.jdbc.driver.OracleDriver"); 
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 
-
-		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-		//		Class.forName("oracle.jdbc.driver.OracleDriver");
-		//		Connection con = DriverManager.getConnection(url, "system", "1234");
-		//		
 		PreparedStatement st = con.prepareStatement(sql);
 
 		st.setString(1, "%" + query + "%");                       
@@ -73,8 +68,8 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 					rs.getString("title"),
 					rs.getString("content"),
 					rs.getDate("reg_date"),
-					" ",   //rs.getString("file_name"),
-					" ",    // //rs.getString("file_path"),
+//					rs.getString("file_name"),
+//					rs.getString("file_path"),
 					rs.getInt("hit"), 
 					rs.getInt("writer_id")
 					);
@@ -95,9 +90,6 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 
-		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-		//		Class.forName("oracle.jdbc.driver.OracleDriver");
-		//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, id);
@@ -110,8 +102,8 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 					rs.getString("title"),
 					rs.getString("content"),
 					rs.getDate("reg_date"),
-					rs.getString("file_path"),
-					rs.getString("file_name"),
+//					rs.getString("file_path"),
+//					rs.getString("file_name"),
 					rs.getInt("hit"), 
 					rs.getInt("writer_id")
 					);
@@ -134,9 +126,6 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 
-		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-		//		Class.forName("oracle.jdbc.driver.OracleDriver");
-		//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		Statement st = con.createStatement();
 		ResultSet rs  =st.executeQuery(sql);
@@ -147,8 +136,8 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 					rs.getString("title"),
 					rs.getString("content"),
 					rs.getDate("reg_date"),
-					rs.getString("file_path"),
-					rs.getString("file_name"),
+//					rs.getString("file_path"),
+//					rs.getString("file_name"),
 					rs.getInt("hit"), 
 					rs.getInt("writer_id")
 					);
@@ -172,9 +161,6 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 
-		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-		//		Class.forName("oracle.jdbc.driver.OracleDriver");
-		//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		Statement st = con.createStatement();
 		ResultSet rs  =st.executeQuery(sql);
@@ -185,8 +171,8 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 					rs.getString("title"),
 					rs.getString("content"),
 					rs.getDate("reg_date"),
-					rs.getString("file_path"),
-					rs.getString("file_name"),
+//					rs.getString("file_path"),
+//					rs.getString("file_name"),
 					rs.getInt("hit"), 
 					rs.getInt("writer_id")
 					);
@@ -212,9 +198,6 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 
-		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-		//		Class.forName("oracle.jdbc.driver.OracleDriver");
-		//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, freeB.getTitle());
@@ -269,11 +252,7 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
-		//		
-		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-		//		Class.forName("oracle.jdbc.driver.OracleDriver");
-		//		Connection con = DriverManager.getConnection(url, "system", "1234");
-
+		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, id);
 
@@ -290,9 +269,12 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 	public int getLastId() throws ClassNotFoundException, SQLException {
 		int id = -1;
 		String sql ="select * from (select * from freeboard order by reg_date desc) where rownum = 1";
-		String url = "jdbc:oracle:thin:@192.168.0.15:1521/xepdb1";
+
+
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
+
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection(url, "\"newlec\"", "l4class");// Connection
+		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		Statement st = con.createStatement();// Statement
 		ResultSet rs = st.executeQuery(sql);// ResultSet
 		if(rs.next())

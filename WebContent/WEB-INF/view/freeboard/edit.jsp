@@ -20,14 +20,12 @@
 
 <body>
 	<!-- --- header block----------------------------------------------------------------------------------->
-	
+
 
 
 
 	<!-- --- visual block----------------------------------------------------------------------------------->
-	<div id="visual">
-	
-	</div>
+	<div id="visual"></div>
 	<!-- --- body block----------------------------------------------------------------------------------->
 	<div id="body">
 		<div class="content-box">
@@ -57,15 +55,23 @@
 									<th>내용</th>
 									<td><textarea name="content">${notice.content}</textarea></td>
 								</tr>
+								<tr>
+									<th>파일</th>
+									<td><input type="file" name="file"></td>
+								</tr>
 							</tbody>
 						</table>
 
 						<div>
 							<input type="hidden" name="id" value="${notice.id}"> <input
-								type="submit" value="저장">
-							<a href="detail?id=${notice.id}">취소</a>
+								type="submit" value="저장"> <a
+								href="detail?id=${notice.id}">취소</a>
 						</div>
 					</form>
+					<c:forEach var="file" items="${files}">
+						${file.name}
+						<br>
+					</c:forEach>
 				</section>
 			</main>
 			<!-- <div style="clear:left;">막내</div> -->
