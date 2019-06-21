@@ -1,5 +1,6 @@
 package com.jhtacybercampus.web.controller.notice;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +21,7 @@ import com.jhtacybercampus.web.entity.Notice;
 
 @WebServlet("/notice/reg")
 @MultipartConfig(
-		location="C:\\myprjfile",
+		location="C:\\temp",
 	    fileSizeThreshold = 1024*1024,
 	    maxFileSize = 1024*1024*5, //5메가
 	    maxRequestSize = 1024*1024*5*5 // 5메가 5개까지
@@ -30,16 +31,36 @@ public class RegController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-
 		Part filePart = req.getPart("file");
+		System.out.println(filePart);
+		
+		//업로드 경로를 얻기
+		String urlPath = "/upload";
+		String path = req.getServletContext().getRealPath(urlPath);
+		System.out.println(path);
+		
+		//업로드된 파일명 얻기
+		String fileName = filePart.getSubmittedFileName();
+		//경로 구분자
+		String filePath = path+File.separator+fileName; 
+		System.out.println(filePath);
+		
+		//경로가 없다는 오류문제
+		 File pathFile = new File(path);
+			if(!pathFile.exists())//존재하지 않으면
+				pathFile.mkdirs();//생성해주세요
+		
 		InputStream fis = filePart.getInputStream();
-		OutputStream fos = new FileOutputStream("C:\\jjh\\name.txt");
+		OutputStream fos = new FileOutputStream("C:\\temp\\"+fileName);
 		
 		byte[] buf = new byte[1024];
 		int size = 0;
 		
 		while((size=fis.read(buf)) != -1)
 			fos.write(buf, 0, size);
+		
+		fis.close();
+		fos.close();
 		
 		NoticeDao nd = new OracleNoticeDao();
 		
