@@ -10,11 +10,12 @@
 <link rel="shortcut icon" href="img/favicon.ico">
 <link rel="stylesheet" type="text/css"
 	href="../css/freeboard_detail.css">
-<script src="../js/list.js?ver=1"></script>
+<script src="../js/list.js?"></script>
 </head>
 
 
 <body>
+<jsp:include page="../inc/header.jsp"></jsp:include>
 	<div id="body">
 
 		<aside></aside>
@@ -22,8 +23,8 @@
 		<section>
 			<h3>자유게시판 내용</h3>
 
-
-			<!--  0618 템플릿 적용-->
+			<!-- 
+			 0618 템플릿 적용
 			<template class="freeboard-template">
 			<tr>
 				<td class="num"></td>
@@ -34,7 +35,7 @@
 				<td class="file"></td>
 			</tr>
 			</template>
-			<!--  0618 템플릿 적용-->
+			 0618 템플릿 적용 -->
 
 			<table>
 				<thead>
@@ -48,7 +49,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				
+
 					<tr>
 						<th>제목</th>
 						<td>${notice.title}</td>
@@ -105,8 +106,7 @@
 
 	</div>
 
-	<!-- --footer block------------------------------------------------------------------ -->
-
-	<footer id="footer"> </footer>
+<!-- --- footer block----------------------------------------------------------------------------------->
+	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>
