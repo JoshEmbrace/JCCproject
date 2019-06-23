@@ -53,10 +53,12 @@
                				<th>content</th>
                				<td>${notice.content}</td>
                			</tr>
-               			<tr>
-               				<th>file</th>
-               				<td>${notice.file_name}</td>
-               			</tr>
+               			<c:forEach var="f" items="${noticeFile}">
+	               			<tr>
+	               				<th>file</th>
+	               				<td><a href="../upload/${f.name}" download>${f.name}</a></td>
+	               			</tr>
+               			</c:forEach>
                			<tr>
                				<th>fix-top</th>
                				<td>O</td>

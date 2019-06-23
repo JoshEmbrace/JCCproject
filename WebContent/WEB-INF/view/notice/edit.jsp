@@ -32,7 +32,7 @@
             <main>
                <section>
                <form method="post" action="edit">
-               	<h1>공지사항 내용</h1>
+               	<h1>공지사항 내용2</h1>
                	<table>
                		<tbody>
                			<tr>
@@ -53,10 +53,13 @@
                				<th>content</th>
                				<td><textarea name="content">${notice.content}</textarea></td>
                			</tr>
+               			<c:forEach var="f" items="${file}">
                			<tr>
                				<th>file</th>
-               				<td>${notice.file_name}</td>
+               				<td><input type="file" name="file">${f.name}</td>
                			</tr>
+               		
+               			</c:forEach>
                			<tr>
                				<th>fix-top</th>
                				<td>
