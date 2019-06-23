@@ -8,9 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jhtacybercampus.web.dao.MemberDao;
 import com.jhtacybercampus.web.entity.Member;
 
-public class OracleMemberDao {
+
+public class OracleMemberDao implements MemberDao{
 	
 	
 	public Member get(int id) throws ClassNotFoundException, SQLException {
@@ -36,7 +38,8 @@ public class OracleMemberDao {
 					rs.getInt("gender"),
 					rs.getDate("birthday"),
 					rs.getString("profile_img"),
-					rs.getString("user_id")
+					rs.getString("user_id"),
+					rs.getString("user_pwd")
 					);
 		}
 		
@@ -65,7 +68,8 @@ public class OracleMemberDao {
 					rs.getInt("gender"),
 					rs.getDate("birthday"),
 					"",
-					rs.getString("user_id")
+					rs.getString("user_id"),
+					rs.getString("user_pwd")
 					);
 			student.add(member);
 		}
@@ -95,7 +99,8 @@ public class OracleMemberDao {
 					rs.getInt("gender"),
 					rs.getDate("birthday"),
 					"",
-					rs.getString("user_id")
+					rs.getString("user_id"),
+					rs.getString("user_pwd")
 					);
 			teacher.add(member);
 		}
@@ -125,12 +130,37 @@ public class OracleMemberDao {
 					rs.getInt("gender"),
 					rs.getDate("birthday"),
 					"",
-					rs.getString("user_id")
+					rs.getString("user_id"),
+					rs.getString("user_pwd")
 					);
 			Manager.add(member);
 		}
 		
 		return Manager;
+	}
+
+	@Override
+	public Member get(String id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int insert(Member member) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(Member member) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 
