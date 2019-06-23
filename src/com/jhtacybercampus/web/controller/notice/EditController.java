@@ -8,9 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import com.jhtacybercampus.web.dao.NoticeDao;
+import com.jhtacybercampus.web.dao.NoticeFileDao;
 import com.jhtacybercampus.web.dao.oracle.OracleNoticeDao;
+import com.jhtacybercampus.web.dao.oracle.OracleNoticeFileDao;
 import com.jhtacybercampus.web.entity.Notice;
 
 @WebServlet("/notice/edit")
@@ -22,10 +25,11 @@ public class EditController extends HttpServlet {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 
 		NoticeDao nd = new OracleNoticeDao();
-		
+		NoticeFileDao noticeFile = new OracleNoticeFileDao();
 		try {
 			nd.update(new Notice(id, title, content, "", "", "", 0, "ÀåÇý¸®"));
 			req.setAttribute("notice", nd.get(id));
+			req.setAttribute("file", noticeFile.getListByNoticeId(id));
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
