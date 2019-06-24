@@ -14,8 +14,9 @@ window.addEventListener("load",function(){
             //console.log(nums[i].parentNode);
             e.preventDefault();
             for(var j=0;j<nums.length;j++)
-                nums[j].style.background = "white";
-            e.target.style.background = "red";
+                nums[j].parentElement.classList.remove("current");
+            e.target.parentElement.classList.add("current");
+            
             var page = e.target.innerText;
 
             var request = new XMLHttpRequest();
@@ -38,7 +39,7 @@ window.addEventListener("load",function(){
 
                 
                 var idEl = cloneTr.querySelector(".num");
-                var nameEl = cloneTr.querySelector(".name a");
+                var nameEl = cloneTr.querySelector(".name");
                 var teacherEl = cloneTr.querySelector(".teacher");
                 var managerEl = cloneTr.querySelector(".manager");
                 var openEl = cloneTr.querySelector(".open");
@@ -48,7 +49,9 @@ window.addEventListener("load",function(){
                 
 
                 idEl.innerText = json[i].id;
-                nameEl.innerText = json[i].name;
+                //nameEl.innerText = json[i].name;
+                nameEl.innerHTML = '<a href="detail?id='+json[i].id+'">'+
+                	json[i].name+'</a>';
                 teacherEl.innerText = json[i].teacher;
                 managerEl.innerText = json[i].manager;
                 if(json[i].openDate != "null" && json[i].openDate != "")
@@ -68,61 +71,61 @@ window.addEventListener("load",function(){
 
 });
 
-window.addEventListener("load",function(){
-    var ctable = this.document.querySelector("#course_table");
-    var tbody = ctable.querySelector("tbody");
-
-    var input = this.document.querySelector("main .input");
-    var txt = input.querySelector("input[type=text]");
-    var btn = input.querySelector("input[type=button]");
-
-    var cloneTr
-
-    btn.onclick = function(){
-        var page = "1";
-        if(txt.value != null && txt.value != "")
-            page = txt.value;
-        
-        // 데이터 요청하기
-         
-        var request = new XMLHttpRequest();
-        
-        request.open("GET","list-ajax?p="+page,false);
-        request.send();
- 
-        var json = JSON.parse(request.responseText);
-        
-
-
-        var tr = tbody.firstElementChild;
-        
-        tbody.innerHTML="";
-        var cloneTr = tr.cloneNode(true);
-
-        for(var i=0;i<json.length;i++){
-            var cloneTr = tr.cloneNode(true);
-
-            var idEl = cloneTr.querySelector(".num");
-            var nameEl = cloneTr.querySelector(".name a");
-            var teacherEl = cloneTr.querySelector(".teacher");
-            var managerEl = cloneTr.querySelector(".manager");
-            var openEl = cloneTr.querySelector(".open");
-            var endEl = cloneTr.querySelector(".end");
-            var totalEl = cloneTr.querySelector(".total");
-            var writerEl = cloneTr.querySelector(".writer");
-
-
-            idEl.innerText = json[i].id;
-            nameEl.innerText = json[i].name;
-            teacherEl.innerText = json[i].teacher;
-            teacherEl.innerText = json[i].manager;
-            managerEl.innerText = json[i].name;
-            openEl.innerText = json[i].openDate;
-            endEl.innerText = json[i].endDate;
-            totalEl.innerText = json[i].total;
-            writerEl.innerText = json[i].writerId;
-
-            tbody.appendChild(cloneTr);
-        }
-    };
-});
+//window.addEventListener("load",function(){
+//    var ctable = this.document.querySelector("#course_table");
+//    var tbody = ctable.querySelector("tbody");
+//
+//    var input = this.document.querySelector("main .input");
+//    var txt = input.querySelector("input[type=text]");
+//    var btn = input.querySelector("input[type=button]");
+//
+//    var cloneTr
+//
+//    btn.onclick = function(){
+//        var page = "1";
+//        if(txt.value != null && txt.value != "")
+//            page = txt.value;
+//        
+//        // 데이터 요청하기
+//         
+//        var request = new XMLHttpRequest();
+//        
+//        request.open("GET","list-ajax?p="+page,false);
+//        request.send();
+// 
+//        var json = JSON.parse(request.responseText);
+//        
+//
+//
+//        var tr = tbody.firstElementChild;
+//        
+//        tbody.innerHTML="";
+//        var cloneTr = tr.cloneNode(true);
+//
+//        for(var i=0;i<json.length;i++){
+//            var cloneTr = tr.cloneNode(true);
+//
+//            var idEl = cloneTr.querySelector(".num");
+//            var nameEl = cloneTr.querySelector(".name a");
+//            var teacherEl = cloneTr.querySelector(".teacher");
+//            var managerEl = cloneTr.querySelector(".manager");
+//            var openEl = cloneTr.querySelector(".open");
+//            var endEl = cloneTr.querySelector(".end");
+//            var totalEl = cloneTr.querySelector(".total");
+//            var writerEl = cloneTr.querySelector(".writer");
+//
+//
+//            idEl.innerText = json[i].id;
+//            nameEl.innerText = json[i].name;
+//            teacherEl.innerText = json[i].teacher;
+//            teacherEl.innerText = json[i].manager;
+//            managerEl.innerText = json[i].name;
+//            openEl.innerText = json[i].openDate;
+//            endEl.innerText = json[i].endDate;
+//            totalEl.innerText = json[i].total;
+//            writerEl.innerText = json[i].writerId;
+//
+//            tbody.appendChild(cloneTr);
+//        }
+//    };
+//});
