@@ -107,6 +107,7 @@
 	</div>
 
 <!-- --- footer block----------------------------------------------------------------------------------->
+<<<<<<< HEAD
 	<%-- <jsp:include page="../inc/footer.jsp"></jsp:include> --%>
 <script type="javascript">
 window.onload = function(){
@@ -114,5 +115,8 @@ window.onload = function(){
 	console.log("...");
 }
 </script>
+=======
+	<jsp:include page="../inc/footer.jsp"></jsp:include>
+>>>>>>> refs/remotes/origin/master
 </body>
 </html>

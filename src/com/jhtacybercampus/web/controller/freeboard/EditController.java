@@ -35,9 +35,10 @@ public class EditController extends HttpServlet {
 
    @Override
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
       request.setCharacterEncoding("UTF-8");
       Integer id = Integer.parseInt(request.getParameter("id"));
-    
+
       String title = request.getParameter("title");
       String content = request.getParameter("content");
       Integer writer_id = Integer.parseInt(request.getParameter("writer_id"));

@@ -13,7 +13,9 @@ public interface MemberDao {
 	List<Member> getManager() throws ClassNotFoundException, SQLException;
 	int insert(Member member) throws ClassNotFoundException, SQLException;
 	int update(Member member) throws ClassNotFoundException, SQLException;
-	int delete(int id) throws ClassNotFoundException, SQLException;
+
+	int delete(String id) throws ClassNotFoundException, SQLException;
+
 	
 
 	
