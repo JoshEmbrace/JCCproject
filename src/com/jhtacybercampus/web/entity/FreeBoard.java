@@ -19,12 +19,17 @@ public class FreeBoard {
 	}
 	public FreeBoard(int id, String title, String content, Date reg_date, int hit,
 			int writer_id) {
-		//String file_path, String file_name
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.reg_date = reg_date;
+		this.hit = hit;
+		this.writer_id = writer_id;
 	}
+	
 	public FreeBoard(int id, String title, String content, Date reg_date, String file_path, String file_name, int hit,
 			int writer_id) {
-		super();
-
+	
 		this.id = id;
 		this.title = title;
 		this.content = content;
@@ -53,8 +58,7 @@ public class FreeBoard {
 		this.title = title;
 		this.content = content;
 	}
-
-
+	
 	public int getId() {
 		return id;
 	}

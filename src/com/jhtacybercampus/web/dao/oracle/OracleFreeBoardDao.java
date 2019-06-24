@@ -217,7 +217,6 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 	public int update(FreeBoard freeB) throws ClassNotFoundException, SQLException {
 		int result = 0;
 
-		//String sql = "update notice set title='" + notice.getTitle() + "' where id = " + notice.getId(); 
 		int id = freeB.getId();
 
 		String sql = "update freeboard set title = ?, content = ? where id=?" ;		
@@ -225,10 +224,6 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
-		//				
-		//		String url = "jdbc:oracle:thin:@localhost:1522/XE";
-		//		Class.forName("oracle.jdbc.driver.OracleDriver");
-		//		Connection con = DriverManager.getConnection(url, "system", "1234");
 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, freeB.getTitle());
@@ -272,7 +267,6 @@ public class OracleFreeBoardDao implements FreeBoardDao {
 
 
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
-
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
 		Statement st = con.createStatement();// Statement

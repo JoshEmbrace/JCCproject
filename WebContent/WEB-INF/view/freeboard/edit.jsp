@@ -14,13 +14,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Document</title>
-<link rel="shortcut icon" href="img/favicon.ico">
+<!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
 
 </head>
 
 <body>
 	<!-- --- header block----------------------------------------------------------------------------------->
 
+<jsp:include page="../inc/header.jsp"></jsp:include>
 
 
 
@@ -36,28 +37,36 @@
 
 			<main>
 
-			<section>
+			<section id="freeboard">
 				<h1>공지사항</h1>
 
 
 				<section>
-					<form action="edit" method="post">
+					<form action="edit" method="post" enctype="multipart/form-data">
 						<h1>자유게시판 수정</h1>
 						<table>
 							<tbody>
 								<tr>
 									<th>제목</th>
-									<td><input name="title" value="${notice.title}"></td>
+									<td><input name="title" value="${freeboard.title}"></td>
 									<%--name은 key value는 값 --%>
 								</tr>
 
 								<tr>
 									<th>내용</th>
-									<td><textarea name="content">${notice.content}</textarea></td>
+									<td><textarea name="content">${freeboard.content}</textarea>
+										<%-- <input name="title" value="${freeboard.content}"> --%></td>
 								</tr>
 								<tr>
 									<th>파일</th>
-									<td><input type="file" name="file"></td>
+									<td>
+										<input type="file" name="file">
+										 <c:forEach var="file"
+											items="${files}">
+									${file.name}
+									<br>
+										</c:forEach>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -68,11 +77,12 @@
 								href="detail?id=${notice.id}">취소</a>
 						</div>
 					</form>
-					<c:forEach var="file" items="${files}">
+					<%-- <c:forEach var="file" items="${files}">
 						${file.name}
 						<br>
-					</c:forEach>
+					</c:forEach> --%>
 				</section>
+			</section>
 			</main>
 			<!-- <div style="clear:left;">막내</div> -->
 		</div>

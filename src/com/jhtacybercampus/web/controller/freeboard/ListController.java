@@ -14,7 +14,6 @@ import com.jhtacybercampus.web.dao.oracle.OracleFreeBoardDao;
 @WebServlet("/freeboard/list")
 public class ListController extends HttpServlet{
 	
-	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FreeBoardDao fbDao  = new OracleFreeBoardDao();
