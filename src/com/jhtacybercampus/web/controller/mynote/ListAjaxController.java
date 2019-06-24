@@ -12,29 +12,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jhtacybercampus.web.dao.MynoteDao;
+import com.jhtacybercampus.web.dao.MynoteFileDao;
 import com.jhtacybercampus.web.dao.oracle.MynoteView;
 import com.jhtacybercampus.web.dao.oracle.OracleMynoteDao;
+import com.jhtacybercampus.web.dao.oracle.OracleMynoteFileDao;
 import com.jhtacybercampus.web.entity.Mynote;
+import com.jhtacybercampus.web.entity.MynoteFile;
 
 
 @WebServlet("/mynote/list-ajax")
 public class ListAjaxController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int page = 1;
+		int page = 2;
 		String p_ = req.getParameter("p");
 		if(p_!=null && !p_.equals(""))
 			page = Integer.parseInt(p_);
 		
 		MynoteDao nd = new OracleMynoteDao();
+		MynoteFileDao fd = new OracleMynoteFileDao();
 		List<MynoteView> list = null;
+		List<MynoteFile> fileList = null;
+		
 		try {
 			list=nd.getList(page);
+			
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
@@ -45,14 +52,31 @@ public class ListAjaxController extends HttpServlet{
 		StringBuilder json = new StringBuilder();
 		json.append("[");
 		for(int i=0; i<list.size(); i++) {
-			Mynote n = list.get(i);
+			MynoteView n = list.get(i);
+			try {
+				fileList = fd.getListByMynoteId(n.getId());
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			json.append("{");
 			json.append(String.format("\"id\" : %d,", n.getId()));
 			json.append(String.format("\"content\" : \"%s\",", n.getContent()));
 			json.append(String.format("\"regDate\" : \"%s\"", n.getReg_date()));
-		
 			
+			if(fileList.size()>=1)
+				json.append(",");
+			
+			
+			for(int j=0;j<fileList.size();j++) {
+				json.append(String.format("\"filename%d\" : \"%s\"", j+1,fileList.get(j).getName()));
+				if(j!=(fileList.size())-1)
+					json.append(",");
+			}
 			json.append("}");
 			
 			if(i!=(list.size())-1)

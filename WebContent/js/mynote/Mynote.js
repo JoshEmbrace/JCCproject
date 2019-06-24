@@ -1,5 +1,44 @@
 window.addEventListener("load",function(){
-	var asdf;
+	var mynote = document.querySelector("#mynote");
+	var history = document.querySelector("#history");
+	var morepage = history.querySelector("input[type=hidden]");
+	var morebtn = history.querySelector("input[type=button]");
+	
+
+	morebtn.onclick = function(){
+		var num = morepage.value;
+		alert(morepage.value);
+		var request = new XMLHttpRequest();
+		request.open("GET", "list-ajax?p="+num, false);
+		request.send();
+		console.log(num);
+		morepage.value = ++num;
+		console.log(num);
+		var mynotejson = JSON.parse(request.responseText);
+		
+		var template = document.querySelector("main .mynote-template");
+		
+		//body.innerHTML = ""; //다 지우기
+		for (var i = 0; i < mynotejson.length; i++) {
+
+			var cloneTr = document.importNode(template.content, true);
+			
+			var eidEl = cloneTr.querySelector("input[name=eid]");
+			var didEl = cloneTr.querySelector("input[name=did]");
+			var contentEl = cloneTr.querySelector(".content");
+			var dateEl = cloneTr.querySelector(".reg_date");
+
+			eidEl.innerText = mynotejson[i].id;
+			didEl.innerText = mynotejson[i].id;
+			contentEl.innerText = mynotejson[i].content;
+			dateEl.innerText = mynotejson[i].regDate;
+			//fileEl.innerText = mynote[i].file;
+			console.log(mynotejson[i].id);
+			mynote.append(cloneTr);
+
+
+		}
+	}
 });
 
 
@@ -9,6 +48,8 @@ window.addEventListener("load", function() {
 	var txt1 = textPager.querySelector("input[type=text]");
 	var btn1 = textPager.querySelector("input[type=button]");
 	var body = document.querySelector("main .body");
+
+	
 
 	btn1.onclick = function() {
 		var page = 1;

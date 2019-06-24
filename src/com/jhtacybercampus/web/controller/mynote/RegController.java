@@ -35,9 +35,12 @@ public class RegController extends HttpServlet {
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
 	   //내용,파일,아이디
-	  Integer id = Integer.parseInt(request.getParameter("id"));
+	   
+	  Integer id = Integer.parseInt(request.getParameter("writerid"));
       String content = request.getParameter("content");
       Part filePart = request.getPart("file");
+      //String fileName = request.getParameter("filename"); 
+      
       System.out.println(filePart);
       
       String urlPath = "/upload";
@@ -48,6 +51,7 @@ public class RegController extends HttpServlet {
 	  
 	  String filePath = path+File.separator+fileName; 
 	  System.out.println(filePath);
+	  
       
 	  File pathFile = new File(path);
 		if(!pathFile.exists())
@@ -71,7 +75,8 @@ public class RegController extends HttpServlet {
     		
     		Mynote mynote = new Mynote();
     		mynote.setContent(content);
-    	    mynote.setId(id);
+    	    mynote.setWriter_id(id);
+    	    
      
     	      
     	int result=0;
@@ -82,8 +87,9 @@ public class RegController extends HttpServlet {
     	     //int mynoteId = mynoteDao.getLastId();
     	      
     	      MynoteFile mynoteFile = new MynoteFile();
+    	     
     	      mynoteFile.setName(fileName);
-    	      mynoteFile.setMynoteId(mynote.getId());
+    	      mynoteFile.setMynoteId(mynoteDao.getLastId());
     	
     	      mynoteFileDao.insert(mynoteFile);
     	      

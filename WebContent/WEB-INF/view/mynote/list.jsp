@@ -1,12 +1,12 @@
+<%@page import="com.jhtacybercampus.web.entity.MynoteFile"%>
+<%@page import="com.jhtacybercampus.web.dao.oracle.MynoteView"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.*, java.text.*"%>
-<%
-	Date date = new Date();
-	SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy.MM.dd");
-	String todaydate = simpleDate.format(date);
-%>
+
 <!DOCTYPE html>
 <html lang="en" style="font-size: 10px">
 <script src="../js/mynote/Mynote.js"></script>
@@ -29,14 +29,19 @@
 			<form action="reg" method="post" enctype="multipart/form-data">
 				<!-- <form action="reg" method="post" enctype="application/x-www-form-urlencoded"> -->
 
-				<div class="reg_date"><%= todaydate %></div>
+				<div class="reg_date">
+					<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" />
+					<jsp:useBean id="toDay" class="java.util.Date" />
+					<c:out value="${today}" />
+				</div>
+				
 				<textarea class="content" name="content" cols="40" rows="8"
 					placeholder="안녕하세요 마이노트 등록 칸 입니다.&#13;&#10;기록하고 싶은 내용을 자유롭게 작성해주세요 ^0^&#13;&#10;"></textarea>
 
 				<!--첨부파일 filename filepath  -->
-				<input class="file" type="file" name="file"> <input
-					type="hidden" name="id" value="241"> <input
-					class="com_button reg_button" type="submit" value="등록">
+				<input class="file" type="file" name="file"> 
+				<input type="hidden" name="writerid" value="2">
+				<input class="com_button reg_button" type="submit" value="등록">
 			</form>
 		</section>
 	</header>
@@ -67,7 +72,7 @@
 
 
 
-		<section class="body">
+		<section id="mynote" class="body">
 		<c:forEach var="n" items="${list}">
 			<section class="list_section">
 				<div>${n.reg_date}</div>
@@ -83,7 +88,28 @@
 					<input type="hidden" name="id" value="${n.id}"> <input
 						class="com_button ed_button" type="submit" value="삭제">
 				</form>
-
+				 <tr>
+                   <th>첨부파일</th>
+                   <td>
+                   <c:set var="files" value="mynoteFile${n.id}"/>
+                   	
+           			<c:forEach var="f" items="${requestScope[files]}">
+           				${f.name}<br>
+           			</c:forEach>     
+                   <%-- <c:forEach var="m" items="mynoteFile">
+                   	${m.id}
+                   	<c:set var="files" value="${n.fileName}"/>
+                   </c:forEach> --%>
+            
+                   	
+                      <%-- <c:forEach var="MynoteFile" items="${requestScope[files]}">
+                      <c:forEach var="fff" items="${mynoteFile.filename}">
+                         <a href="/temp/${MynoteFile.filename}" download>${MynoteFile.filename}</a>
+                         </c:forEach> 
+                      </c:forEach>
+                         --%>
+			       </td>
+                </tr>
 				<%-- <button float="right"><a href="/mynote/edit?id=${n.id}">수정</a></button> --%>
 				<%-- <button float="right"><a href="/mynote/del?id=${n.id}">삭제</a></button> --%>
 			</section>
@@ -121,6 +147,10 @@
 
 				<div>다음</div>
 			</div>
+				<div id="history">
+				<input type="hidden" value="2">
+				<input type="button" value="더보기">
+				</div>	
 		</main>
 	</div>
 

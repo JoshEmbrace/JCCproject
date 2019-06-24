@@ -8,13 +8,13 @@ public class Mynote {
 	private int id;
 	private String content;
 	private Date reg_date;
-	private String writer_id;
+	private int writer_id;
 	
 	public Mynote() {
 		
 	}
 
-	public Mynote(int id, String content, Date reg_date, String writer_id) {
+	public Mynote(int id, String content, Date reg_date, int writer_id) {
 		
 		this.id = id;
 		this.content = content;
@@ -55,11 +55,11 @@ public class Mynote {
 		this.reg_date = reg_date;
 	}
 
-	public String getWriter_id() {
+	public int getWriter_id() {
 		return writer_id;
 	}
 
-	public void setWriter_id(String writer_id) {
+	public void setWriter_id(int writer_id) {
 		this.writer_id = writer_id;
 	}
 

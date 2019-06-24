@@ -1,7 +1,9 @@
 package com.jhtacybercampus.web.controller.mynote;
 
+
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jhtacybercampus.web.dao.MynoteDao;
 import com.jhtacybercampus.web.dao.MynoteFileDao;
+import com.jhtacybercampus.web.dao.oracle.MynoteView;
 import com.jhtacybercampus.web.dao.oracle.OracleMynoteDao;
 import com.jhtacybercampus.web.dao.oracle.OracleMynoteFileDao;
+import com.jhtacybercampus.web.entity.MynoteFile;
 
 
 
@@ -24,21 +28,38 @@ public class ListController extends HttpServlet{
 	      
 	    	int page = 1;
 	    	String p_ = request.getParameter("p");
+	    	//Integer id = Integer.parseInt(request.getParameter("id"));
 	    	System.out.println(p_);
 	    	
 	      if(p_!=null && !p_.equals("")) {
 	    	  page = Integer.parseInt(request.getParameter("p"));
 	      }
+	      
+	      
 	      MynoteDao mynoteDao  = new OracleMynoteDao();
-	    	try {
-			request.setAttribute("list",  mynoteDao.getList(page));
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	      MynoteFileDao mynotefileDao = new OracleMynoteFileDao();
+	      
+	      
+	      
+	      List<MynoteView> list;
+		try {
+			list = mynoteDao.getList(page);
+			for(MynoteView a : list) {
+		    	  String mynoteFile = "mynoteFile"+a.getId();
+		    	  System.out.println(mynoteFile);
+		    	  List<MynoteFile> files = mynotefileDao.getListByMynoteId(a.getId());
+		    	  request.setAttribute(mynoteFile, files);
+		      }
+		      request.setAttribute("list", list);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	      
+	      
+	      
+	      
+	    
 	       
 	       request.getRequestDispatcher("/WEB-INF/view/mynote/list.jsp").forward(request, response);
 

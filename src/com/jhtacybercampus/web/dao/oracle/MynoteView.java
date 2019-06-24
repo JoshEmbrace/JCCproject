@@ -15,7 +15,7 @@ public class MynoteView extends Mynote{
 
 	}
 
-	public MynoteView(int id, String content, Date reg_date, String writer_id) {
+	public MynoteView(int id, String content, Date reg_date, int writer_id) {
 		super(id, content, reg_date, writer_id);
 	}
 

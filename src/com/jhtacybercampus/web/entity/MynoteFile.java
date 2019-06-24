@@ -3,23 +3,23 @@ package com.jhtacybercampus.web.entity;
 public class MynoteFile {
 	 
 	private int id;
-	private String name;
+	private String filename;
 	private int mynoteId;
 	
 	public MynoteFile() {
 	}
 	
 	//for inserting
-	public MynoteFile(String name, int mynoteId) {
-		this.name = name;
+	public MynoteFile(String filename, int mynoteId) {
+		this.filename = filename;
 		this.mynoteId = mynoteId;
 	}
 	
 	
 	//for selecting
-	public MynoteFile(int id, String name, int mynoteId) {
+	public MynoteFile(int id, String filename, int mynoteId) {
 		this.id = id;
-		this.name = name;
+		this.filename = filename;
 		this.mynoteId = mynoteId;
 	}
 
@@ -30,10 +30,10 @@ public class MynoteFile {
 		this.id = id;
 	}
 	public String getName() {
-		return name;
+		return filename;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String filename) {
+		this.filename = filename;
 	}
 	public int getMynoteId() {
 		return mynoteId;
