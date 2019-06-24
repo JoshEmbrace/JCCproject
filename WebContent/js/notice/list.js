@@ -17,17 +17,17 @@ btn.onclick = function(){
     request.send();
 
     var notices = JSON.parse(request.responseText);
-
+    var template = notice.querySelector(".notice-template");
 
     //var tr = tbody.children[0];//첫번째 tr
-    var tr = tbody.firstElementChild;
+    //var tr = tbody.firstElementChild;
     //var tr = tbody.querySelector("tr:first-child");
     tbody.innerHTML ="";
     
     for(var i=0; i<notices.length; i++)
     {
-        var cloneTr = tr.cloneNode(true);
-
+        //var cloneTr = tr.cloneNode(true);
+        var cloneTr = document.importNode(template.content,true);
         var idEl = cloneTr.querySelector(".num");
         var titleEl = cloneTr.querySelector(".title a");
         var writerEl = cloneTr.querySelector(".writer");

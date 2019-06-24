@@ -1,8 +1,7 @@
-package com.jhtacybercampus.web.controller.freeboard;
+ package com.jhtacybercampus.web.controller.freeboard;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,6 @@ import com.jhtacybercampus.web.dao.oracle.OracleFreeBoardDao;
 
 @WebServlet("/freeboard/list")
 public class ListController extends HttpServlet{
-	
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

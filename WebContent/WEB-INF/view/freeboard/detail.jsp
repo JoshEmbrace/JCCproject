@@ -7,19 +7,35 @@
 <head>
 <meta charset="UTF-8">
 <title>자유게시판</title>
-<link rel="shortcut icon" href="img/favicon.ico">
+<!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
 <link rel="stylesheet" type="text/css"
 	href="../css/freeboard_detail.css">
 </head>
 
 
 <body>
+<jsp:include page="../inc/header.jsp"></jsp:include>
 	<div id="body">
 
 		<aside></aside>
 		<main>
-		<section>
+		<section id="freeboard">
 			<h3>자유게시판 내용</h3>
+
+			<!-- 
+			 0618 템플릿 적용
+			<template class="freeboard-template">
+			<tr>
+				<td class="num"></td>
+				<td class="title"><a href="detail?id="></a></td>
+				<td class="writer"></td>
+				<td class="date"></td>
+				<td class="hit"></td>
+				<td class="file"></td>
+			</tr>
+			</template>
+			 0618 템플릿 적용 -->
+
 			<table>
 				<thead>
 					<tr>
@@ -62,6 +78,7 @@
 
 				</tbody>
 			</table>
+			
 			<div>
 				<a href="edit?id=${notice.id}">수정</a> <a href="del?id=${notice.id}">삭제</a>
 			</div>
@@ -89,8 +106,17 @@
 
 	</div>
 
-	<!-- --footer block------------------------------------------------------------------ -->
+<!-- --- footer block----------------------------------------------------------------------------------->
+<<<<<<< HEAD
+	<%-- <jsp:include page="../inc/footer.jsp"></jsp:include> --%>
+<script type="javascript">
+window.onload = function(){
 
-	<footer id="footer"> </footer>
+	console.log("...");
+}
+</script>
+=======
+	<jsp:include page="../inc/footer.jsp"></jsp:include>
+>>>>>>> refs/remotes/origin/master
 </body>
 </html>

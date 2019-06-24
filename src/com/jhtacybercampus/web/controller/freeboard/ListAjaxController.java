@@ -28,11 +28,6 @@ public class ListAjaxController extends HttpServlet {
 		String p = request.getParameter("p");
 		if(p != null && !p.equals(""))
 			page = Integer.parseInt(p);
-		
-		
-//		String p_ = request.getParameter("p");
-//		if(p_ != null && !p_.equals(""))
-//			page = Integer.parseInt(p_);
 
 		FreeBoardDao fbDao = new OracleFreeBoardDao();
 		List<FreeBoard> list = null;

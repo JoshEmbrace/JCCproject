@@ -14,6 +14,30 @@ import com.jhtacybercampus.web.entity.Notice;
 
 public class OracleNoticeDao implements NoticeDao{
 
+	
+	
+	public int getLastId() throws ClassNotFoundException, SQLException {
+		int id = -1;
+			
+			String sql = "SELECT ID FROM (SELECT * FROM NOTICE ORDER BY REG_DATE DESC) WHERE ROWNUM = 1";
+			
+			String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
+			
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql); //ª¿‘,ªË¡¶
+		    
+			 if (rs.next()) {
+		         id=rs.getInt("id");
+		      }
+			
+			rs.close();
+		    st.close();
+		    con.close();
+
+		    return id;
+		}
 	@Override
 	public List<Notice> getList() throws ClassNotFoundException, SQLException {
 		return getList(1,"title","");
@@ -109,7 +133,7 @@ public class OracleNoticeDao implements NoticeDao{
 	public Notice getPrev(int id) {
 		Notice notice = null;
 		
-		String sql = "select * from notice_view where reg_date<(select regdate from notice where id="+id+") and rownum=1";
+		String sql = "select * from notice_view where reg_date<(select reg_date from notice where id="+id+") and rownum=1";
 		
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		try {
@@ -148,7 +172,7 @@ public class OracleNoticeDao implements NoticeDao{
 	public Notice getNext(int id) {
 		Notice notice = null;
 		
-		String sql = "select * from(select * from notice_view order by reg_date) where regdate > (select regdate from notice where id="+id+") and rownum =1";
+		String sql = "select * from(select * from notice_view order by reg_date) where reg_date > (select reg_date from notice where id="+id+") and rownum =1";
 		
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		

@@ -14,12 +14,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Document</title>
-<link rel="shortcut icon" href="img/favicon.ico">
-<link rel="stylesheet" type="text/css" href="/css/freeboard.css">
+<!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
 </head>
 
 <body>
    <jsp:include page="../inc/header.jsp"></jsp:include>
+   
    <!-- --- header block----------------------------------------------------------------------------------->
 
 
@@ -33,15 +33,13 @@
 
 
          <!-- aside -->
-
-
          <main>
 
-         <section>
+         <section id="freeboard">
             <h1>자유게시판 글쓰기</h1>
 
             <section>
-               <form action="reg" method="post" enctype="multipart/form-data">
+               <form action="reg" method="post">
                   <h1>내용</h1>
                   <table>
                      <tbody>
@@ -50,7 +48,6 @@
                            <th>아이디</th>
                            <td><input name="id"></td>
                         </tr>
-
  -->
                         <tr>
                            <th>제목</th>
@@ -82,6 +79,7 @@
 
                </form>
             </section>
+         </section>
          </main>
          <!-- <div style="clear:left;">막내</div> -->
       </div>
@@ -89,8 +87,8 @@
 
    <!-- --- footer block----------------------------------------------------------------------------------->
    <!-- --- footer block----------------------------------------------------------------------------------->
-   <jsp:include page="../inc/footer.jsp"></jsp:include>
-
+  
+	<jsp:include page="../inc/footer.jsp" />
 </body>
 
 </html>

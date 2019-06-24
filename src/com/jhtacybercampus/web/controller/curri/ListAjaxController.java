@@ -60,14 +60,7 @@ public class ListAjaxController extends HttpServlet {
 		StringBuilder json = new StringBuilder();
 		json.append("[");
 		
-		csv [
-		     {name,title,...},
-		     {name,title,...}
-		     ]
-		json [
-		      {key1:value1,key2:value2},
-		      {key1:value1,key2:value2}
-		      ]
+
 		
 		for (int i = 0; i < list.size(); i++) {
 			Curri n = list.get(i);
