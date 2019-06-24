@@ -33,8 +33,6 @@ public class LoginController extends HttpServlet{
 	
 		String user_pwd = req.getParameter("user_pwd");
 		String user_id = req.getParameter("user_id");
-		System.out.println(user_id);
-		System.out.println(user_pwd);
 		
 		Member member= null;
 		//인증이라는 것을 해야한다 -> 회원테이블에 넘겨받은 정보가 있다면 인증에 성공
@@ -63,14 +61,14 @@ public class LoginController extends HttpServlet{
 			resp.sendRedirect("login?error=1");
 		else {
 			HttpSession session = req.getSession();
-			session.setAttribute("user_id", user_id);
+			session.setAttribute("user", member);
 			
 			String returnURL = req.getParameter("return-url");
 			
 			if(returnURL != null) 
 				resp.sendRedirect(returnURL);
 			else
-				resp.sendRedirect("index");
+				resp.sendRedirect("../notice/list");
 		
 		
 		}

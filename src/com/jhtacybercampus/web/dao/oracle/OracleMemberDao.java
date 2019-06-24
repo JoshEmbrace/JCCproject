@@ -142,17 +142,18 @@ public class OracleMemberDao implements MemberDao{
 
 	@Override
 
-	public Member get(String User_id) throws ClassNotFoundException, SQLException {
+	public Member get(String user_id) throws ClassNotFoundException, SQLException {
 		Member member = null;
 		
-		String sql = "select * from member where id="+User_id;
+		String sql = "select * from member where user_id=?";
 		
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(sql);
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, user_id);
+		ResultSet rs = st.executeQuery();
 		
 		if(rs.next()) {
 			member = new Member(
@@ -164,7 +165,7 @@ public class OracleMemberDao implements MemberDao{
 					rs.getString("account"),
 					rs.getInt("gender"),
 					rs.getString("birthday"),
-					rs.getString("profilr_img"),
+					"",
 					rs.getString("user_id"),
 					rs.getString("user_pwd")
 					);
