@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="shortcut icon" type="image/png" href="../../../images/inc/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="../../../layout/images/favicon.png" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../css/course_list.css">
 	<script src="../js/course/list.js"></script>
@@ -22,7 +22,7 @@
         <!-------------------------------- header -------------------------------->
         <header class="header">
             <div class="header-container">
-                <div class="logo"><img src="../../../images/inc/logo.png" alt=""></div>
+                <div class="logo"><img src="../../../layout/images/logo.png" alt=""></div>
                 <div class="usermenu">
                     <ul class="usermenu-container">
                         <li class="user-name">Yijin So</li>

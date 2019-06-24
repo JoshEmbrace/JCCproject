@@ -180,8 +180,8 @@ public class OracleMemberDao implements MemberDao{
 	public int insert(Member member) throws ClassNotFoundException, SQLException {
 		int result = 0;
 		
-		String sql = "insert into member(id,name,grade,user_id,user_pwd)"+
-					"values(member_seq.nextval,?,1,?,?)";
+		String sql = "insert into member(id,name,grade,user_id,user_pwd,email,hp,birthday,gender)"+
+					"values(member_seq.nextval,?,1,?,?,?,?,?,?)";
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		
 		Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -192,6 +192,10 @@ public class OracleMemberDao implements MemberDao{
 		st.setString(1, member.getName());
 		st.setString(2, member.getUser_id());
 		st.setString(3, member.getUser_pwd());
+		st.setString(4,member.getEmail());
+		st.setString(5,member.getHp());
+		st.setString(6,member.getBirthday());
+		st.setInt(7, member.getGender());
 		result = st.executeUpdate();
 		
 		st.close();
@@ -244,6 +248,23 @@ public class OracleMemberDao implements MemberDao{
 		return result;
 
 	}
+	
+	public int exist(String userid) throws ClassNotFoundException, SQLException{
+		int result=0;
+		String sql = "select count(*) count from member where user_id = ?";
+		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
+
+		Class.forName("oracle.jdbc.OracleDriver");
+		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, userid);
+		ResultSet rs = st.executeQuery();
+		if(rs.next())
+			result = rs.getInt("count");
+		
+		return result;
+	}
+	
 
 
 }

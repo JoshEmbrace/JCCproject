@@ -15,7 +15,7 @@
 	rel="stylesheet">
 
 <!--  <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
-<script src="../js/notice/list.js"></script>
+<script src="../js/member/join.js"></script>
 </head>
 
 
@@ -75,18 +75,22 @@
 							<tr>
 								<td id="title">아이디</td>
 								<td><input type="text" name="id" maxlength="20"> <input
-									type="button" value="중복확인"></td>
+									type="button" name="check-id" value="중복확인">
+									<span class="check-id" value="not"></span>
+								</td>
 							</tr>
 
 							<tr>
 								<td id="title">비밀번호</td>
 								<td><input type="password" name="password" maxlength="15">
+									<span class="check-pwd" value="not"></span>
 								</td>
 							</tr>
 
 							<tr>
 								<td id="title">비밀번호 확인</td>
-								<td><input type="password" name="password" maxlength="15">
+								<td><input type="password" name="password1" maxlength="15">
+								<span class="check-pwd1" value="not"></span>
 								</td>
 							</tr>
 
@@ -104,6 +108,10 @@
 
 							<tr>
 								<td id="title">생일</td>
+								<td>
+									<input type="date" name="birthday">
+								</td>
+								<!-- <td id="title">생일</td>
 								<td><input type="text" name="birth_yy" maxlength="4"
 									placeholder="년(4자)" size="6"> <select name="birth_mm">
 										<option value="">월</option>
@@ -120,17 +128,17 @@
 										<option value="11">11</option>
 										<option value="12">12</option>
 								</select> <input type="text" name="birth_dd" maxlength="2"
-									placeholder="일" size="4"></td>
+									placeholder="일" size="4"></td> -->
 							</tr>
 
 							<tr>
 								<td id="title">이메일</td>
 								<td><input type="text" name="email_1" maxlength="30">@
 									<select name="email_2">
-										<option>naver.com</option>
-										<option>daum.net</option>
-										<option>gmail.com</option>
-										<option>nate.com</option>
+										<option value="naver.com">naver.com</option>
+										<option value="daum.net">daum.net</option>
+										<option value="gmail.com">gmail.com</option>
+										<option value="nate.com">nate.com</option>
 								</select></td>
 							</tr>
 
