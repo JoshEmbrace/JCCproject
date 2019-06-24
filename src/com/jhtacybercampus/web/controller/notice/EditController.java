@@ -25,11 +25,12 @@ public class EditController extends HttpServlet {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 
 		NoticeDao nd = new OracleNoticeDao();
-		NoticeFileDao noticeFile = new OracleNoticeFileDao();
+//		NoticeFileDao ndf = new OracleNoticeFileDao();
 		try {
 			nd.update(new Notice(id, title, content, "", "", "", 0, "ÀåÇý¸®"));
 			req.setAttribute("notice", nd.get(id));
-			req.setAttribute("file", noticeFile.getListByNoticeId(id));
+//			req.setAttribute("noticeFile", ndf.getListByNoticeId(id));
+//			System.out.println(ndf.getListByNoticeId(id));
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,7 +51,20 @@ public class EditController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		NoticeDao nd = new OracleNoticeDao();
+		NoticeFileDao ndf = new OracleNoticeFileDao();
 		req.setAttribute("notice", nd.get(Integer.parseInt(req.getParameter("id"))));
+		try {
+			req.setAttribute("noticeFile", ndf.getListByNoticeId(Integer.parseInt(req.getParameter("id"))));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		req.getRequestDispatcher("/WEB-INF/view/notice/edit.jsp").forward(req, resp);
 	}
 }

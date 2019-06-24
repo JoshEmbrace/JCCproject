@@ -11,14 +11,17 @@ public class Member {
 	private String hp;
 	private String account;
 	private int gender;
-	private Date birthday;
+	private String birthday;
 	private String profile_img;
 	private String user_id;
 	private String user_pwd;
 	
+	public Member() {
+		
+	}
 
 
-	public Member(int id, String name, int grade, String email, String hp, String account, int gender, Date birthday,
+	public Member(int id, String name, int grade, String email, String hp, String account, int gender, String birthday,
 			String profile_img, String user_id, String user_pwd) {
 		this.id = id;
 		this.name = name;
@@ -104,12 +107,12 @@ public class Member {
 	}
 
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 

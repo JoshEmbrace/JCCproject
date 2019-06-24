@@ -70,7 +70,7 @@
 							chevron_right </i><span>회원가입</span></li>
 				</ol>
 				<section id="join">
-					<form>
+					<form method="post" action="join">
 						<table>
 							<tr>
 								<td id="title">아이디</td>
@@ -98,8 +98,8 @@
 
 							<tr>
 								<td id="title">성별</td>
-								<td><input type="radio" name="gender" value="남" checked>남
-									<input type="radio" name="gender" value="여" checked>여</td>
+								<td><input type="radio" name="gender" value="1" checked>남
+									<input type="radio" name="gender" value="2" checked>여</td>
 							</tr>
 
 							<tr>
@@ -143,8 +143,8 @@
 								<td><input type="text" size="50" name="address" /></td>
 							</tr>
 						</table>
-						<br> <input type="submit" value="가입" /> <input type="button"
-							value="취소">
+						<br> <input type="submit" value="가입" /> 
+							<a href=""><input type="button" value="취소"></a>
 					</form>
 
 				</section>

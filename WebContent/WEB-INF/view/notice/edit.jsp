@@ -31,7 +31,7 @@
             </aside>
             <main>
                <section>
-               <form method="post" action="edit">
+               <form method="post" action="edit" enctype="multipart/form-data">
                	<h1>공지사항 내용2</h1>
                	<table>
                		<tbody>
@@ -53,7 +53,7 @@
                				<th>content</th>
                				<td><textarea name="content">${notice.content}</textarea></td>
                			</tr>
-               			<c:forEach var="f" items="${file}">
+               			<c:forEach var="f" items="${noticeFile}">
                			<tr>
                				<th>file</th>
                				<td><input type="file" name="file">${f.name}</td>

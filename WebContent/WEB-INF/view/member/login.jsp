@@ -1,185 +1,104 @@
-<%@page import="java.util.Scanner"%>
-<%@page import="java.io.FileInputStream"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
 <!DOCTYPE html>
 <html lang="en" style="font-size: 10px">
 
 <head>
-<link rel="shortcut icon" href="">
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
+<link rel="stylesheet" href="../layout/layout.css">
+<link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
-<link href="../css/style.css" type="text/css" rel="stylesheet">
-
+<!--  <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+<script src="../js/notice/list.js"></script>
 </head>
 
+
 <body>
-	<jsp:include page="../inc/header.jsp"></jsp:include>
+	<div id="container">
+		<!-- --header block------------------------------------------------------------------ -->
+		<jsp:include page="../inc/header.jsp" />
 
-   <!-- visual block -->
-   <div id="visual">
-      <div class="content-box" style="position: relative">
-         <!-- <div class="test">
 
-            </div>
-            static 자동 relative static에서 얼마더 absolute 수동 fixed 고정 sticky
-            <span >사진</span>
-            <img style="left:100px;top:100px;position: absolute;"
-                src="https://image.fmkorea.com/files/attach/new/20180417/486616/41170129/1021006724/554449902566a4417eee09a4fdb7bd79.jpg">
-            <span>사진사진</span>
-            <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHPHV0j5HE7nNGbRAmkdPqwLC8tVaQ5rp48ZgIQDa5yH6Qhm8"> -->
-      </div>
-   </div>
 
-   <!-- main block -->
-   <div id="body">
-      <!-- clear-fix 이제 안씀.-->
-      <div class="content-box">
-         <aside>
+		<!-- --body block------------------------------------------------------------------ -->
 
-            <h1 id="aside-title">고객센터</h1>
 
-            <nav id="customer-menu">
-               <h1>고객센터메뉴</h1>
-               <ul>
-                  <li><a herf="">공지사항</a></li>
-                  <li><a herf="">자주하는 질문</a></li>
-                  <li><a herf="">수강문의</a></li>
-                  <li><a herf="">이벤트</a></li>
-               </ul>
-            </nav>
+		<div class="body-container">
+			<nav class="nav">
+				<ul class="nav-container">
+					<li><a href="#Mynote"><i class="material-icons md-36">description</i><span>My
+								note</span></a></li>
+					<li><a href="#Curriculum"><i class="material-icons md-36">date_range</i><span>Curriculum</span></a>
+					</li>
+					<li><a href="#Homework"><i class="material-icons md-36">dvr</i><span>Homework</span></a>
+					</li>
+					<li class="dropdown-menu"><a href="../notice/list"><i
+							class="material-icons md-36">apps</i><span>Notice</span><i
+							class="material-icons md-36">expand_more</i></a>
+						<ul class="dropdown-container">
+							<li><a href="">Notice</a></li>
+							<li><a href="">Freeboard</a></li>
+						</ul></li>
+				</ul>
+			</nav>
+			<script>
+                var dropdown = document.getElementsByClassName(".dropdown-menu");
 
-            <nav id="coworker">
-               <h1>협력업체</h1>
-               <ul>
-                  <li><a href="">노트펍스</a></li>
-                  <li><a href="">나무랩연구소</a></li>
-                  <li><a href="">한빛미디어</a></li>
-               </ul>
-            </nav>
-         </aside>
+                for (var i = 0; i < dropdown.length; i++) {
+                    dropdown[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var dropdownContent = this.nextElementSibling;
+                        if (dropdownContent.style.display === "block") {
+                            dropdownContent.style.display = "none";
+                        } else {
+                            dropdownContent.style.display = "block";
+                        }
+                    });
+                }
+            </script>
+			<main>
+			<div class="main-container">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-home"><i class="material-icons md-18">home</i></li>
+					<li class="b-path"><i class="material-icons">
+							chevron_right </i><span>로그인</span></li>
+				</ol>
+				<section id="login">
+					<h1>로그인 폼</h1>
+					<c:if test="${param.error==1}">
+						<div style="color: red">아이디 또는 비밀번호가 유효하지 않습니다.</div>
+					</c:if>
+					<form name="loginInfo" method="post" action="login">
 
-         <main>
-         <section>
-            <h1>로그인</h1>
+						<table>
+							<tr>
+								<td bgcolor="skyblue">아이디</td>
+								<td><input type="text" name="user_id" maxlength="50"></td>
+							</tr>
+							<tr>
+								<td bgcolor="skyblue">비밀번호</td>
+								<td><input type="password" name="user_pwd" maxlength="50"></td>
+							</tr>
+						</table>
+						<br> <input type="submit" value="로그인" /> <input type="button"
+							value="회원가입"/>
+					</form>
 
-            <section id="breadcrumb">
-               <h3 class="d-none">경로</h3>
-               <ol>
-                  <li>home</li>
-                  <li>member</li>
-                  <li>login</li>
-               </ol>
-            </section>
-            <section>
-               <h1>로그인 폼</h1>
-               <c:if test ="${param.error==1}">
-               <div style="color:red;">아이디 또는 비밀번호가 유효하지 않습니다.</div>
-               </c:if>
-               <form method="post">
-                  <table>
-                     <tbody>
-                        <tr>
-                           <th>아이디</th>
-                           <td><input type="text" name="id"></td>
-                        </tr>
-                        <tr>
-                           <th>비밀번호</th>
-                           <td><input type="password" name="pwd"></td>
-                        </tr>
-                        <tr>
+				</section>
+			</div>
+			</main>
+		</div>
 
-                           <td colspan="2"><input type="submit" value="로그인"></td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </form>
-               <div>
-                  <a href="edit?id=${notice.id}">수정</a> <a
-                     href="del?id=${notice.id}">삭제</a>
-               </div>
-            </section>
+		<!-- --footer block------------------------------------------------------------------ -->
 
-            <section>
-               <h1></h1>
-               <ul>
-                  <li><a href="detail?id=${prev.id}"><span>이전글</span>${prev.title}</a></li>
-                  <li><a href="detail?id=${next.id}"><span>다음글</span>${next.title}</a></li>
-               </ul>
-            </section>
-         </main>
-
-         <!-- <div style="clear:left;">막내</div> .clear-fix사용-->
-      </div>
-   </div>
-
-   <footer id="footer">
-      <div>
-         <!-- <h2>회사정보</h2>
-
-    <div>
-    <h3>소유권자 정보</h3>
-    <dl>
-        <dt>
-            주소:
-        </dt>
-        <dd>
-            서울특별시 마포구 토정로35길 11, 인우빌딩 5층 266호
-        </dd>
-        <dt>
-            관리자메일:
-        </dt>
-        <dd>
-            admin@newlecture.com
-        </dd>
-        <dt>
-            사업자 등록번호:
-        </dt>
-        <dd>
-            132-18-46763
-        </dd>
-        <dt>
-            통신 판매업:
-        </dt>
-        <dd>
-            신고제 2013-서울강동-0969 호
-        </dd>
-        <dt>
-            상호:
-        </dt>
-        <dd>
-            뉴렉처
-        </dd>
-        <dt>
-            대표:
-        </dt>
-        <dd>
-            박용우
-        </dd>
-        <dt>
-            전화번호:
-        </dt>
-        <dd>
-            070-4206-4084
-        </dd>
-    </dl>
-</div>
-
-<div>
-    <h3>저작권정보</h3>
-    <div>
-        Copyright ⓒ newlecture.com 2012-2014 All Right Reserved. Contact admin@newlecture.com for more information
-    </div>
-</div> -->
-      </div>
-   </footer>
+		<jsp:include page="../inc/footer.jsp" />
+	</div>
 </body>
 
 </html>
