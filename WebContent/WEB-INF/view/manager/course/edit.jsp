@@ -76,7 +76,7 @@
 							</i><span>수정</span></li>
 					</ol>
 					<div class="main-content-box">
-						<h2>Curriculum 수정</h2>
+						<h2>Course 수정</h2>
 						<form method="post" action="edit">
 							<div class="content1">
 								<table>

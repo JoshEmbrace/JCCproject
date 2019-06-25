@@ -32,7 +32,7 @@ public class EditController extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/view/curri/edit.jsp").forward(request, response);
+		request.getRequestDispatcher("../../WEB-INF/view/teacher/curri/edit.jsp").forward(request, response);
 		
 	}
 	
@@ -54,7 +54,7 @@ public class EditController extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/view/curri/list.jsp").forward(request, response);
+		request.getRequestDispatcher("../../WEB-INF/view/teacher/curri/list.jsp").forward(request, response);
 		
 	}
 	

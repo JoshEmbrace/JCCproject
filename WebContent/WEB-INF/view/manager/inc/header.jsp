@@ -15,15 +15,15 @@
                     	</c:otherwise>
                     </c:choose>
 
-                        <li class="user-image"><a href="../../member/mypage"><i class="material-icons md-36">account_circle</i></a></li>
+                        <li class="user-image"><a href="/semi-JCC/member/mypage"><i class="material-icons md-36">account_circle</i></a></li>
                         <li class="user-course"><a href=""><i class="material-icons md-36">class</i></a></li>
                         <li class="user-alert"><a href=""><i class="material-icons md-36">notifications</i></a></li>
                     <c:choose>
                     	<c:when test="${not empty sessionScope.user['name']}">
-                    		<li class="user-log"><a href="../../member/logout">logout</a></li>
+                    		<li class="user-log"><a href="/semi-JCC/member/logout">logout</a></li>
                     	</c:when>
                     	<c:otherwise>
-                    		<li class="user-log"><a href="../../member/login">login</a></li>
+                    		<li class="user-log"><a href="/semi-JCC/member/login">login</a></li>
                     	</c:otherwise>
                     </c:choose>
                         

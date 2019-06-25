@@ -29,13 +29,13 @@ public class indexController extends HttpServlet{
 	  
 	  switch(user.getGrade()) {
 	  case 1:
-		  resp.sendRedirect("../notice/list");
+		  resp.sendRedirect("../student/index");
 		  break;
 	  case 2:
-		  resp.sendRedirect("../mynote/list");
+		  resp.sendRedirect("../teacher/index");
 		  break;
 	  case 3:
-		  resp.sendRedirect("../freeboard/list");
+		  resp.sendRedirect("../manager/index");
 		  break;
 	  default:
 		  resp.sendRedirect("error");

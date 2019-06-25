@@ -30,7 +30,7 @@ public class DelController extends HttpServlet{
 		e.printStackTrace();
 	}
     
-    response.sendRedirect("../mynote/list");
+    response.sendRedirect("list");
    
  }
 }

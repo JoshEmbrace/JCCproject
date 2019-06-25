@@ -34,7 +34,7 @@ public class ListController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/view/curri/list.jsp").forward(request, response);
+		request.getRequestDispatcher("../../WEB-INF/view/student/curri/list.jsp").forward(request, response);
 		
 	}
 	

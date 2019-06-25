@@ -1,0 +1,10 @@
+#login-form{
+    width:40%;
+    height:40%;
+    margin: 30%;
+}
+
+.user_id, .user_pwd, .button{
+    display:flex;
+}
+

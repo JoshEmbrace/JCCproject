@@ -65,6 +65,6 @@ public class EditController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		req.getRequestDispatcher("/WEB-INF/view/notice/edit.jsp").forward(req, resp);
+		req.getRequestDispatcher("../../WEB-INF/view/manager/notice/edit.jsp").forward(req, resp);
 	}
 }

@@ -3,16 +3,19 @@
 <nav class="nav">
 				<ul class="nav-container">
 					<li>
-						<a href="#Mynote"><i class="material-icons md-36">description</i><span>My note</span></a>
+						<a href="/semi-JCC/teacher/mynote/list"><i class="material-icons md-36">description</i><span>My note</span></a>
 					</li>
 					<li>
-						<a href="#Curriculum"><i class="material-icons md-36">date_range</i><span>Curriculum</span></a>
+						<a href="/semi-JCC/teacher/curri/list"><i class="material-icons md-36">date_range</i><span>Curriculum</span></a>
 					</li>
 					<li>
-						<a href="#Homework"><i class="material-icons md-36">dvr</i><span>Homework</span></a>
+						<a href="/semi-JCC/teacher/homework/list"><i class="material-icons md-36">dvr</i><span>Homework</span></a>
 					</li>					
 					<li>
-						<a href="#Homework"><i class="material-icons md-36">dvr</i><span>saf</span></a>
+						<a href="/semi-JCC/teacher/freeboard/list"><i class="material-icons md-36">dvr</i><span>Freeboard</span></a>
+					</li>
+					<li>
+						<a href="/semi-JCC/teacher/notice/list"><i class="material-icons md-36">dvr</i><span>Notice</span></a>
 					</li>
 					
 					<li class="dropdown-menu">

@@ -17,7 +17,9 @@ import javax.servlet.http.HttpSession;
 
 import com.jhtacybercampus.web.entity.Member;
 
-@WebFilter(filterName = "LoginCheckFilter")
+@WebFilter(
+	filterName = "LoginCheckFilter"
+)
 public class LoginCheckFilter implements Filter {
 
 	@Override
@@ -29,70 +31,62 @@ public class LoginCheckFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		// ÀÚ½Ä°´Ã¼·Î Çüº¯È¯ ÇÑ´ÙÀ½
-
-		System.out.println("·Î±×ÀÎÇÊÅÍ");
-
+		System.out.println("ë¡œê·¸ì¸ì²´í¬í•„í„°");
 	
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		String uri = httpRequest.getRequestURI();
-
-		// ¼¼¼Ç °´Ã¼¸¦ ¾ò¾î¿Â´Ù.
+		Member user = null;
+		int grade = 0;
 
 		HttpSession session = httpRequest.getSession();
 
-		// ·Î±×ÀÎ Çß´ÂÁö ¾Æ´ÑÁö¿¡ ´ëÇÑ ¿©ºÎ
-		boolean isLogin = false; // ·Î±×ÀÎx
+		boolean isLogin = false; 
 
 		if (session != null) {
 
-			// ¼¼¼Ç¿¡¼­ id ¶ó´Â Å°°ªÀ» ÀĞ¾î¿Í º»´Ù.
-			Member user = (Member) session.getAttribute("user");
+			user = (Member) session.getAttribute("user");
 
-			// ¸¸ÀÏ id °ªÀÌ null ÀÌ ¾Æ´Ï¶ó¸é ·Î±×ÀÎÇÑ »óÅÂÀÌ´Ù.
 			if (user != null)
 				isLogin = true;
 			
-//			switch(user.getGrade()) {
-//			case 1:{
-//				if(uri.contains("/teacher")||uri.contains("/manager"))
-//					System.out.println("Àß¸øµÈ Á¢±Ù");
-//				break;
-//			}
-//			case 2:
-//				if(uri.contains("/student")||uri.contains("/manager"))
-//					System.out.println("Àß¸øµÈ Á¢±Ù");
-//				break;
-//			case 3:
-//				if(uri.contains("/student")||uri.contains("/teacher"))
-//					System.out.println("Àß¸øµÈ Á¢±Ù");
-//				break;
-//			default:
-//				break;
-//			}
-
+			
 		}
 
 		if (isLogin) {
-			// ·Î±×ÀÎ µÈ °æ¿ì¿¡´Â ¿äÃ»µÈ ÀÛ¾÷À» °è¼ÓÇÑ´Ù.
+			
+			grade = user.getGrade();
+			
+			switch(grade) {
+			case 1:
+				if(uri.contains("/manager") || uri.contains("/teacher"))
+					httpResponse.sendRedirect("/semi-JCC/student/index");
+				break;
+			case 2:
+				if(uri.contains("/student") || uri.contains("/manager"))
+					httpResponse.sendRedirect("/semi-JCC/teacher/index");
+				break;
+			case 3:
+				if(uri.contains("/student") || uri.contains("/teacher"))
+					httpResponse.sendRedirect("/semi-JCC/manager/index");
+				break;
+			default:
+				httpResponse.sendRedirect("/semi-JCC/index");
+					
+			}
+			
 			chain.doFilter(request, response);
 
 		} else {
 
-			// ·Î±×ÀÎ ÇÏÁö ¾ÊÀº °æ¿ì
 
-			// ServletResponse °´Ã¼¸¦ ÀÚ½Ä °´Ã¼·Î Çüº¯È¯ ÇÑ´ÙÀ½
-
-			HttpServletResponse httpResponse = (HttpServletResponse) response;
-
-			// ¾È³»ÆäÀÌÁö È¤Àº login ÆäÀÌÁö·Î °­Á¦ ÀÌµ¿½ÃÅ²´Ù.
 			
 //			Set<String> urls = new HashSet<>();
 //			urls.add("/member");
 			
 			
 			
-			if(uri.contains("/member"))
+			if(uri.contains("/member") && !uri.contains("mypage"))
 				chain.doFilter(request, response);
 			else
 				httpResponse.sendRedirect("/semi-JCC/member/login");
