@@ -36,7 +36,7 @@ public class RegController extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		req.getRequestDispatcher("../WEB-INF/view/course/reg.jsp").forward(req, resp);
+		req.getRequestDispatcher("../../WEB-INF/view/manager/course/reg.jsp").forward(req, resp);
 		//resp.sendRedirect("../WEB-INF/view/course/reg.jsp");
 	}
 	

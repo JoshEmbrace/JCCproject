@@ -6,34 +6,21 @@
 <!DOCTYPE html>
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
-	<link rel="shortcut icon" type="image/png" href="../../../images/inc/favicon.png" />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="../css/course_list.css">
-	<script src="../js/course/list.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="shortcut icon" type="image/png" href="../../images/inc/favicon.png" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/manager/course/list.css">
+	<script src="../../js/manager/course/list.js"></script>
 </head>
 
 
 <body>
     <div id="container">
         <!-------------------------------- header -------------------------------->
-        <header class="header">
-            <div class="header-container">
-                <div class="logo"><img src="images/logo.png" alt=""></div>
-                <div class="usermenu">
-                    <ul class="usermenu-container">
-                        <li class="user-name">Yijin So</li>
-                        <li class="user-image"><a href=""><i class="material-icons md-36">account_circle</i></a></li>
-                        <li class="user-course"><a href=""><i class="material-icons md-36">class</i></a></li>
-                        <li class="user-alert"><a href=""><i class="material-icons md-36">notifications</i></a></li>
-                        <li class="user-log"><a href="">logout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </header>
+        <jsp:include page="../inc/header.jsp" />
         <!-------------------------------- header -------------------------------->
         <!-------------------------------- body -------------------------------->
         <!-------------------------------- body -nav------------------------------->
@@ -83,13 +70,13 @@
                         <li class="breadcrumb-home"><i class="material-icons md-18">home</i></li>
                         <li class="b-path"><i class="material-icons">
                                 chevron_right
-							</i><span>Curriculum</span></li>
+							</i><span>Course</span></li>
 						<li class="b-path"><i class="material-icons">
                                 chevron_right
                             </i><span>상세</span></li>
 					</ol>
 					<div class="main-content-box">
-						<h2>Curriculum 상세</h2>
+						<h2>Course 상세</h2>
 						<div class="content1">
 							<table>
 								<tr>
@@ -150,11 +137,7 @@
         </div>
         <!-------------------------------- body -------------------------------->
         <!-------------------------------- footer -------------------------------->
-        <footer class="footer">
-            <div class="footer-container">
-                <span>© Copyright JOSBC</span>
-            </div>
-        </footer>
+        <jsp:include page="../inc/footer.jsp" />
         <!-------------------------------- footer -------------------------------->
     </div>
 

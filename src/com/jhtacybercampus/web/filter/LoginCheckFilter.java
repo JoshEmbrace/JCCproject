@@ -1,6 +1,8 @@
 package com.jhtacybercampus.web.filter;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -29,7 +31,7 @@ public class LoginCheckFilter implements Filter {
 
 		// 자식객체로 형변환 한다음
 
-		System.out.println("수정한 로그인필터");
+		System.out.println("로그인필터");
 
 	
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -50,6 +52,24 @@ public class LoginCheckFilter implements Filter {
 			// 만일 id 값이 null 이 아니라면 로그인한 상태이다.
 			if (user != null)
 				isLogin = true;
+			
+//			switch(user.getGrade()) {
+//			case 1:{
+//				if(uri.contains("/teacher")||uri.contains("/manager"))
+//					System.out.println("잘못된 접근");
+//				break;
+//			}
+//			case 2:
+//				if(uri.contains("/student")||uri.contains("/manager"))
+//					System.out.println("잘못된 접근");
+//				break;
+//			case 3:
+//				if(uri.contains("/student")||uri.contains("/teacher"))
+//					System.out.println("잘못된 접근");
+//				break;
+//			default:
+//				break;
+//			}
 
 		}
 
@@ -66,15 +86,16 @@ public class LoginCheckFilter implements Filter {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 
 			// 안내페이지 혹은 login 페이지로 강제 이동시킨다.
-
-			// httpRequest.getRequestDispatcher("../WEB-INF/view/member/login.jsp").forward(request,
-			// response);
 			
-			//httpResponse.sendRedirect("../member/login");
-			if(uri.equals("/semi-JCC/member/login"))
+//			Set<String> urls = new HashSet<>();
+//			urls.add("/member");
+			
+			
+			
+			if(uri.contains("/member"))
 				chain.doFilter(request, response);
 			else
-				httpResponse.sendRedirect("../member/login");
+				httpResponse.sendRedirect("/semi-JCC/member/login");
 
 		}
 	}

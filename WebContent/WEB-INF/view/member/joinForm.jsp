@@ -22,7 +22,7 @@
 <body>
 	<div id="container">
 		<!-- --header block------------------------------------------------------------------ -->
-		<jsp:include page="../inc/header.jsp" />
+		
 
 
 
@@ -162,7 +162,7 @@
 
 		<!-- --footer block------------------------------------------------------------------ -->
 
-		<jsp:include page="../inc/footer.jsp" />
+		
 	</div>
 </body>
 

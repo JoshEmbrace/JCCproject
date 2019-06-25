@@ -39,7 +39,6 @@ public class MypageController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(result);
 		
 		if(result != 1)
 			resp.sendRedirect("error");

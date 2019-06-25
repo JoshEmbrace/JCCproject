@@ -6,74 +6,27 @@
 <!DOCTYPE html>
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
-	<link rel="shortcut icon" type="image/png" href="../../../images/inc/favicon.png" />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="../css/course_list.css">
-	<script src="../js/course/list.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="shortcut icon" type="image/png" href="../../images/inc/favicon.png" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/manager/course/list.css">
+	<script src="../../js/manager/course/list.js"></script>
 </head>
 
 
 <body>
 	<div id="container">
 		<!-------------------------------- header -------------------------------->
-		<header class="header">
-			<div class="header-container">
-				<div class="logo"><img src="images/logo.png" alt=""></div>
-				<div class="usermenu">
-					<ul class="usermenu-container">
-						<li class="user-name">Yijin So</li>
-						<li class="user-image"><a href=""><i class="material-icons md-36">account_circle</i></a></li>
-						<li class="user-course"><a href=""><i class="material-icons md-36">class</i></a></li>
-						<li class="user-alert"><a href=""><i class="material-icons md-36">notifications</i></a></li>
-						<li class="user-log"><a href="">logout</a></li>
-					</ul>
-				</div>
-			</div>
-		</header>
+		<jsp:include page="../inc/header.jsp" />
 		<!-------------------------------- header -------------------------------->
 		<!-------------------------------- body -------------------------------->
 		<!-------------------------------- body -nav------------------------------->
 		<div class="body-container">
-			<nav class="nav">
-				<ul class="nav-container">
-					<li>
-						<a href="#Mynote"><i class="material-icons md-36">description</i><span>My note</span></a>
-					</li>
-					<li>
-						<a href="#Curriculum"><i class="material-icons md-36">date_range</i><span>Curriculum</span></a>
-					</li>
-					<li>
-						<a href="#Homework"><i class="material-icons md-36">dvr</i><span>Homework</span></a>
-					</li>
-					<li class="dropdown-menu">
-						<a href="#Notice"><i class="material-icons md-36">apps</i><span>Notice</span><i
-								class="material-icons md-36">expand_more</i></a>
-						<ul class="dropdown-container">
-							<li><a href="">Notice</a></li>
-							<li><a href="">Freeboard</a></li>
-						</ul>
-					</li>
-				</ul>
-			</nav>
-			<script>
-				var dropdown = document.getElementsByClassName(".dropdown-menu");
-
-				for (var i = 0; i < dropdown.length; i++) {
-					dropdown[i].addEventListener("click", function () {
-						this.classList.toggle("active");
-						var dropdownContent = this.nextElementSibling;
-						if (dropdownContent.style.display === "block") {
-							dropdownContent.style.display = "none";
-						} else {
-							dropdownContent.style.display = "block";
-						}
-					});
-				}
-			</script>
+			
+			<jsp:include page="../inc/aside.jsp" />
 
 			<main class="main">
 				<div class="main-container">
@@ -83,13 +36,13 @@
 						<li class="breadcrumb-home"><i class="material-icons md-18">home</i></li>
 						<li class="b-path"><i class="material-icons">
 								chevron_right
-							</i><span>Curriculum</span></li>
+							</i><span>Course</span></li>
 						<li class="b-path"><i class="material-icons">
 								chevron_right
 							</i><span>등록</span></li>
 					</ol>
 					<div class="main-content-box">
-						<h2>Curriculum 등록</h2>
+						<h2>Course 등록</h2>
 						<form method="post" action="reg">
 							<div class="content1">
 								<table>
