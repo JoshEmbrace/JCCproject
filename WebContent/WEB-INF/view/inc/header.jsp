@@ -15,7 +15,7 @@
                     	</c:otherwise>
                     </c:choose>
 
-                        <li class="user-image"><a href=""><i class="material-icons md-36">account_circle</i></a></li>
+                        <li class="user-image"><a href="../member/mypage"><i class="material-icons md-36">account_circle</i></a></li>
                         <li class="user-course"><a href=""><i class="material-icons md-36">class</i></a></li>
                         <li class="user-alert"><a href=""><i class="material-icons md-36">notifications</i></a></li>
                     <c:choose>

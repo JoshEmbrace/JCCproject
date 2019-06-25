@@ -209,22 +209,26 @@ public class OracleMemberDao implements MemberDao{
 	public int update(Member member) throws ClassNotFoundException, SQLException {
 		int result = 0;
 		
-		String user_id = member.getUser_id();
+		//String user_id = member.getUser_id();
 		
-		String sql = "update member set email=?, hp=?, account=?, profile_img=?, user_pwd=? where id="+user_id;
+		//String sql = "update member set email=?, hp=?, account=?, profile_img=?, user_pwd=? where id="+user_id;
+		//String sql = "update member set user_pwd=? where user_id=?";
+		String sql = "update member set user_pwd='"+member.getUser_pwd()+"' where user_id='"+member.getUser_id()+"'";
 		
 		String url = "jdbc:oracle:thin:@222.111.247.47:1521/xepdb1";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");		
+		Connection con = DriverManager.getConnection(url, "\"JCC\"", "1234");
+		Statement st = con.createStatement();
+		result = st.executeUpdate(sql);
 		
-		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, member.getEmail());
-		st.setString(2, member.getHp());
-		st.setString(3, member.getAccount());
-		st.setString(4, member.getProfile_img());
-		st.setString(5, member.getUser_pwd());
-		
-		result = st.executeUpdate();
+//		PreparedStatement st = con.prepareStatement(sql);
+//		st.setString(1, member.getUser_id());
+//		st.setString(2, member.getUser_pwd());
+//		st.setString(1, member.getEmail());
+//		st.setString(2, member.getHp());
+//		st.setString(3, member.getAccount());
+//		st.setString(4, member.getProfile_img());
+//		st.setString(5, member.getUser_pwd());
 		
 		return result;
 	}

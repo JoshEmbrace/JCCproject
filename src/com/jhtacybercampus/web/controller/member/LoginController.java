@@ -62,13 +62,14 @@ public class LoginController extends HttpServlet{
 		else {
 			HttpSession session = req.getSession();
 			session.setAttribute("user", member);
+			//session.setAttribute("user", member);
 			
 			String returnURL = req.getParameter("return-url");
 			
 			if(returnURL != null) 
 				resp.sendRedirect(returnURL);
 			else
-				resp.sendRedirect("../notice/list");
+				resp.sendRedirect("index");
 		
 		
 		}
