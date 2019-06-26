@@ -27,8 +27,6 @@
 
     <!-- --body block------------------------------------------------------------------ -->
 
-
-
     <div class="body-container">
             <jsp:include page="../inc/aside.jsp" />
             <main>
