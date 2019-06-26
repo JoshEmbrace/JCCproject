@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
    <!--  <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
-   <script src="../js/notice/list.js"></script>
+   <script src="../../js/student/notice/list.js"></script>
 </head>
 
 
@@ -72,13 +72,6 @@
                		</tbody>
                	</table>
                </section>
-               
-               <div>
-               	<form>
-               		<button><a href="reg">new</a></button>
-				   </form>
-			   </div>
-			   
 			   <div id="test-paper">
 					<input type="text">
 					<input type="button" value="요청">

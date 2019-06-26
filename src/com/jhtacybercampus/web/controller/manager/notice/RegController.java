@@ -25,7 +25,7 @@ import com.jhtacybercampus.web.entity.NoticeFile;
 
 @WebServlet("/manager/notice/reg")
 @MultipartConfig(
-location = "C:\\Users\\git\\JCCproject\\WebContent\\upload",
+location = "C:\\Users\\Á¤ÁöÇý\\git\\JCCproject\\WebContent\\upload",
 fileSizeThreshold = 1024 * 1024,
 maxFileSize = 1024 * 1024 * 5, 
 		maxRequestSize = 1024 * 1024 * 5 * 5 
@@ -54,7 +54,7 @@ public class RegController extends HttpServlet {
 			pathFile.mkdirs();
 
 		InputStream fis = filePart.getInputStream();
-		OutputStream fos = new FileOutputStream("C:\\Users\\git\\JCCproject\\WebContent\\upload" + fileName);
+		OutputStream fos = new FileOutputStream("C:\\Users\\Á¤ÁöÇý\\git\\JCCproject\\WebContent\\upload" + fileName);
 
 		byte[] buf = new byte[1024];
 		int size = 0;

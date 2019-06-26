@@ -31,7 +31,7 @@ import com.jhtacybercampus.web.entity.MynoteFile;
 	)
 public class EditController extends HttpServlet {
 
-	// ���� �� ������ ���� �����ϱ�
+	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -72,7 +72,7 @@ public class EditController extends HttpServlet {
 		
 		
 		//System.out.println("id:" + sid + ",content:" + content);
-	//������ Ǯ��
+
 		MynoteDao mynoteDao = new OracleMynoteDao();
 		MynoteFileDao mynoteFileDao = new OracleMynoteFileDao();
 		MynoteFile mynoteFile = new MynoteFile();
@@ -80,7 +80,6 @@ public class EditController extends HttpServlet {
 		
 		mynoteFile.setMynoteId(id);
 		mynoteFile.setName(fileName);
-		
 		
 		
 		Mynote mynote = new Mynote();
@@ -100,7 +99,7 @@ public class EditController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("��" + result);
+		System.out.println("editresult" + result);
 
 //request.getRequestDispatcher("../WEB-INF/view/mynote/list.jsp").forward(request, response);
 
@@ -108,10 +107,8 @@ public class EditController extends HttpServlet {
 			response.sendRedirect("error");
 		else
 			response.sendRedirect("list");
-
 	}
 
-	// ���� �������� �Ѿ �� ������ �ۼ��ƴ� �� ��������
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -134,6 +131,7 @@ public class EditController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 
 		request.getRequestDispatcher("../../WEB-INF/view/teacher/mynote/edit.jsp").forward(request, response);
 

@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
    <!--  <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
-   <script src="../js/notice/list.js"></script>
+   <script src="../../js/manager/notice/list.js"></script>
 </head>
 
 

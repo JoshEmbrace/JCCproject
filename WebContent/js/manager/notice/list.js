@@ -13,7 +13,7 @@ btn.onclick = function(){
 
     //데이터 요청하기
     var request = new XMLHttpRequest();
-    request.open("GET","/semi-JCC/notice/list-ajax?p="+page,false);
+    request.open("GET","/semi-JCC/manager/notice/list-ajax?p="+page,false);
     request.send();
 
     var notices = JSON.parse(request.responseText);

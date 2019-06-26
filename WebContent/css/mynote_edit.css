@@ -26,7 +26,7 @@ body {
     background-color: #f0f3f4;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjus: 100%;
-    /* iphone font size 蹂�寃� 諛⑹� */
+
 }
 /* ---------------------------------------- */
 
@@ -47,24 +47,7 @@ body {
     border-bottom: 1px solid #d6d6d6;
     z-index: 1000;
 }
-.content1{
-	
-}
-.content1 textarea{
-	border: 1px solid #ccc;
-	resize: vertical; min-height:150px; width: 100%;
-}
-.file{
-	width: 100%
-}
-.regbutton-form{
-	position: absolute;
-	right: 60px;
-}
-.regbutton input{
-	padding: 5px 5px;
-	margin: -5px 0;
-}
+
 .header-container{
     display: flex;
 }
@@ -100,20 +83,20 @@ body {
         line-height: 2.2;
     }
     .material-icons.md-36 { font-size: 36px; }
+    
+ 	.content1 textarea{
+	border: 1px solid #ccc;
+	resize: vertical; min-height:300px; width: 100%;
+}
+	.file{
+	width: 100%
+}    
+    
 /* -------------------header------------------- */
 
 /* -------------------body------------------- */
 .body-container{
     display: flex;
-}
-.list_section{
-	margin-bottom:50px;
-}
-
-.list_section textarea{
-	resize: vertical; min-height:150px; width: 100%;
-	border: 1px solid #ccc;
-	
 }
 .button-box {
 	border: none;
@@ -130,10 +113,8 @@ body {
 
 .button-box input{
 	padding: 5px 5px;
-	margin: 5px;
+	margin: -5px 5px;
 } 
-
-
 
 /* -------------------body-nav------------------ */
 .nav{
@@ -216,13 +197,13 @@ body {
     border: 1px solid #ddd;
     height: inherit;
 }
-
 /* -------------------body------------------- */
 
 /* -------------------footer------------------- */
 .footer{
     min-height: 75px;
-    background-color: #fff;  
+    background-color: #fff;
+    width: 100%  
 }
 .footer-container{
     display: flex;
@@ -232,40 +213,5 @@ body {
     margin-top: 30px;
     color: #999;
     font-size: 12px;
-}
-.page-index-js{
-	text-align: center;
-	margin-top: 10px;
-}
-.page-index-js button{
-	padding: 5px 5px;
-}
-.paging{
-	text-align: center;
-	margin-top: 20px;
-
-}
-.paging-number{
-	display: flex;
-	width: 15px;
-	justify-content: center;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 10px;
-}
-.paging-number a{
-	padding: 3px;
-	
-}
-.more{
-	text-align: center;
-	margin-top: 10px;
-	
-}
-.more input{
-	padding: 5px 5px;
-}
-.text-pager input {
-	padding: 5px 5px;
 }
 /* -------------------footer------------------- */
