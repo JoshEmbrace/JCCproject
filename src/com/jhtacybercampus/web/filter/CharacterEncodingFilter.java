@@ -19,10 +19,12 @@ import com.jhtacybercampus.web.entity.Member;
 // /*
 
 
+
 @WebFilter(
 	urlPatterns="/*",
 	filterName="CharacterEncodingFilter"
 )
+
 public class CharacterEncodingFilter implements Filter{
 
 	private String encoding = "UTF-8";

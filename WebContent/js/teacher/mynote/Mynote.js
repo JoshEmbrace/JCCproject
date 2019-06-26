@@ -1,8 +1,9 @@
+//more : 더보기
 window.addEventListener("load",function(){
 	var mynote = document.querySelector("#mynote");
-	var history = document.querySelector("#history");
-	var morepage = history.querySelector("input[type=hidden]");
-	var morebtn = history.querySelector("input[type=button]");
+	var more = document.querySelector("#more");
+	var morepage = more.querySelector("input[type=hidden]");
+	var morebtn = more.querySelector("input[type=button]");
 	
 
 	morebtn.onclick = function(){
@@ -42,6 +43,7 @@ window.addEventListener("load",function(){
 });
 
 
+//page-index-js : 페이지 요청
 window.addEventListener("load", function() {
 
 	var textPager = document.querySelector("#text-pager");
@@ -58,7 +60,7 @@ window.addEventListener("load", function() {
 
 		//데이터 요청하기
 		var request = new XMLHttpRequest();
-		request.open("GET", "/semi-JCC/mynote/list-ajax?p=" + page, false);
+		request.open("GET", "/semi-JCC/teacher/mynote/list-ajax?p=" + page, false);
 		request.send();
 		alert(page);
 		
@@ -82,7 +84,6 @@ window.addEventListener("load", function() {
 			didEl.innerText = mynotejson[i].id;
 			contentEl.innerText = mynotejson[i].content;
 			dateEl.innerText = mynotejson[i].regDate;
-			//fileEl.innerText = mynote[i].file;
 			console.log(mynotejson[i].id);
 			body.append(cloneTr);
 
