@@ -3,7 +3,7 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <header class="header">
             <div class="header-container">
-                <div class="logo"><img src="../../layout/images/logo.png" alt=""></div>
+                <div class="logo"><a href="/semi-JCC/teacher/index"><img src="/semi-JCC/images/teacher/inc/logo.png" alt=""></a></div>
                 <div class="usermenu">
                     <ul class="usermenu-container">        
                     <c:choose>
@@ -15,15 +15,15 @@
                     	</c:otherwise>
                     </c:choose>
 
-                        <li class="user-image"><a href="../member/mypage"><i class="material-icons md-36">account_circle</i></a></li>
+                        <li class="user-image"><a href="/semi-JCC/member/mypage"><i class="material-icons md-36">account_circle</i></a></li>
                         <li class="user-course"><a href=""><i class="material-icons md-36">class</i></a></li>
                         <li class="user-alert"><a href=""><i class="material-icons md-36">notifications</i></a></li>
                     <c:choose>
                     	<c:when test="${not empty sessionScope.user['name']}">
-                    		<li class="user-log"><a href="../member/logout">logout</a></li>
+                    		<li class="user-log"><a href="/semi-JCC/member/logout">logout</a></li>
                     	</c:when>
                     	<c:otherwise>
-                    		<li class="user-log"><a href="../member/login">login</a></li>
+                    		<li class="user-log"><a href="/semi-JCC/member/login">login</a></li>
                     	</c:otherwise>
                     </c:choose>
                         

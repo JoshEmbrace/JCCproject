@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-      <link rel="stylesheet" href="../../layout/layout.css">
-    <link rel="shortcut icon" type="image/png" href="../../images/favicon.png" />
+     <link rel="stylesheet" href="../../css/teacher/notice/list.css">
+    <link rel="shortcut icon" type="image/png" href="../../images/teacher/inc/favicon.png" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
    <!--  <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
@@ -28,7 +28,11 @@
     <!-- --body block------------------------------------------------------------------ -->
 
 
+<<<<<<< HEAD
    <div class="body-container">
+=======
+    <div class="body-container">
+>>>>>>> refs/remotes/origin/master
             <jsp:include page="../inc/aside.jsp" />
             <main>
             	<div class="main-container">

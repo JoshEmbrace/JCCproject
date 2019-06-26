@@ -8,7 +8,7 @@
 <%@ page import="java.util.*, java.text.*"%>
 
 <!DOCTYPE html>
-<html lang="en" style="font-size: 10px">
+<html>
 <script src="../js/mynote/Mynote.js"></script>
 <head>
 <meta charset="UTF-8">

@@ -30,7 +30,7 @@ public class ListController extends HttpServlet{
 		}
 
 
-		request.getRequestDispatcher("/WEB-INF/view/freeboard/list.jsp").forward(request, response);
+		request.getRequestDispatcher("../../WEB-INF/view/manager/freeboard/list.jsp").forward(request, response);
 	}
 
 

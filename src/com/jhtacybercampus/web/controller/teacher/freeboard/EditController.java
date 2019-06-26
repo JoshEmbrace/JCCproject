@@ -87,7 +87,7 @@ public class EditController extends HttpServlet {
          // TODO Auto-generated catch block
          e.printStackTrace();
       }
-      request.getRequestDispatcher("/WEB-INF/view/freeboard/detail.jsp").forward(request, response);
+      request.getRequestDispatcher("../../WEB-INF/view/teacher/freeboard/detail.jsp").forward(request, response);
    }
 
 
@@ -109,7 +109,7 @@ public class EditController extends HttpServlet {
          // TODO Auto-generated catch block
          e.printStackTrace();
       }
-      request.getRequestDispatcher("/WEB-INF/view/freeboard/edit.jsp").forward(request, response);
+      request.getRequestDispatcher("../../WEB-INF/view/teacher/freeboard/edit.jsp").forward(request, response);
    }
 }
 

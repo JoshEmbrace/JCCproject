@@ -16,8 +16,8 @@ import com.jhtacybercampus.web.entity.Member;
 public class joinController extends HttpServlet{
 @Override
 protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	// getParameter()¸¦ ÀÌ¿ëÇØ ³Ñ°ÜÁø ÆÄ¶ó¹ÌÅÍ °ªÀ» ¾ò¾î¿Ã ¼ö ÀÖ´Ù.
-    // ÆÄ¶ó¹ÌÅÍ °ªÀ» ¾òÀ»¶§ name= ¿¡ ÁöÁ¤ÇØµÐ °ª°ú µ¿ÀÏÇÑ °ªÀ» ÀÎÀÚ·Î ÁöÁ¤ÇØ¾ß µÈ´Ù.
+	// getParameter()ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½.
+    // ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ name= ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½È´ï¿½.
 	
 	String id = req.getParameter("id");
     String password = req.getParameter("password");
@@ -43,9 +43,9 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
     member.setGender(gender);
     member.setBirthday(birthday);
     
-   //Á¨´õºÎºÐ °°ÀÌ ÇØ°áÇØ¾ßµÊ
+   //ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø°ï¿½ï¿½Ø¾ßµï¿½
     // member.setGender(gender);
-    //»ýÀÏ ºÎºÐµµ ¸ð¸£°ÚÀ½¤Ð¤Ð¤Ð ³â,¿ù,ÀÏÀÌ ¾î¶»°Ô ÀúÀåµÇ´Â°ÍÀÏ±î?
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ÎºÐµï¿½ ï¿½ð¸£°ï¿½ï¿½ï¿½ï¿½Ð¤Ð¤ï¿½ ï¿½ï¿½,ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½î¶»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´Â°ï¿½ï¿½Ï±ï¿½?
 //    member.setBirthday(birthyy);
     
     int result = 0;
@@ -63,7 +63,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
     if (result != 1)
 		resp.sendRedirect("error");
 	else
-		resp.sendRedirect("login");//È¸¿ø°¡ÀÔ ¼º°øÇÏ¸é ¾î´ÀÆäÀÌÁö·Î °¥Áö ¾ÆÁ÷ ¾ÈÁ¤ÇÔ.
+		resp.sendRedirect("login");//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 }
 
 @Override

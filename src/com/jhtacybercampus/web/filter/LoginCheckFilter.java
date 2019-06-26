@@ -29,70 +29,62 @@ public class LoginCheckFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		// 자식객체로 형변환 한다음
-
-		System.out.println("로그인필터");
-
+		System.out.println("login check");
 	
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		String uri = httpRequest.getRequestURI();
-
-		// 세션 객체를 얻어온다.
+		Member user = null;
+		int grade = 0;
 
 		HttpSession session = httpRequest.getSession();
 
-		// 로그인 했는지 아닌지에 대한 여부
-		boolean isLogin = false; // 로그인x
+		boolean isLogin = false; 
 
 		if (session != null) {
 
-			// 세션에서 id 라는 키값을 읽어와 본다.
-			Member user = (Member) session.getAttribute("user");
+			user = (Member) session.getAttribute("user");
 
-			// 만일 id 값이 null 이 아니라면 로그인한 상태이다.
 			if (user != null)
 				isLogin = true;
 			
-//			switch(user.getGrade()) {
-//			case 1:{
-//				if(uri.contains("/teacher")||uri.contains("/manager"))
-//					System.out.println("잘못된 접근");
-//				break;
-//			}
-//			case 2:
-//				if(uri.contains("/student")||uri.contains("/manager"))
-//					System.out.println("잘못된 접근");
-//				break;
-//			case 3:
-//				if(uri.contains("/student")||uri.contains("/teacher"))
-//					System.out.println("잘못된 접근");
-//				break;
-//			default:
-//				break;
-//			}
-
+			
 		}
 
 		if (isLogin) {
-			// 로그인 된 경우에는 요청된 작업을 계속한다.
+			
+			grade = user.getGrade();
+			
+			switch(grade) {
+			case 1:
+				if(uri.contains("/manager") || uri.contains("/teacher"))
+					httpResponse.sendRedirect("/semi-JCC/student/index");
+				break;
+			case 2:
+				if(uri.contains("/student") || uri.contains("/manager"))
+					httpResponse.sendRedirect("/semi-JCC/teacher/index");
+				break;
+			case 3:
+				if(uri.contains("/student") || uri.contains("/teacher"))
+					httpResponse.sendRedirect("/semi-JCC/manager/index");
+				break;
+			default:
+				httpResponse.sendRedirect("/semi-JCC/index");
+					
+			}
+			
 			chain.doFilter(request, response);
 
 		} else {
 
-			// 로그인 하지 않은 경우
 
-			// ServletResponse 객체를 자식 객체로 형변환 한다음
-
-			HttpServletResponse httpResponse = (HttpServletResponse) response;
-
-			// 안내페이지 혹은 login 페이지로 강제 이동시킨다.
 			
 //			Set<String> urls = new HashSet<>();
 //			urls.add("/member");
 			
 			
 			
-			if(uri.contains("/member"))
+			if(uri.contains("/member") && !uri.contains("mypage"))
 				chain.doFilter(request, response);
 			else
 				httpResponse.sendRedirect("/semi-JCC/member/login");
