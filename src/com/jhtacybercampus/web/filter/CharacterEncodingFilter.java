@@ -20,14 +20,10 @@ import com.jhtacybercampus.web.entity.Member;
 
 
 @WebFilter(
-<<<<<<< HEAD
-		   urlPatterns="/*",
-		   filterName="CharacterEncodingFilter")
-=======
 	urlPatterns="/*",
 	filterName="CharacterEncodingFilter"
 )
->>>>>>> refs/remotes/origin/master
+
 public class CharacterEncodingFilter implements Filter{
 
 	private String encoding = "UTF-8";
