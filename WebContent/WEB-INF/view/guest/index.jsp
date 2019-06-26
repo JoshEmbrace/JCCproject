@@ -11,7 +11,7 @@
 </head>
 <body>
     <div id="login-form">
-    <form action="member/login" method="POST">
+    <form action="login" method="POST">
         <div>
             <div class="user_id">
                 <span>아이디 : </span>
