@@ -17,6 +17,7 @@
 	<script src="../../js/manager/course/list.js"></script>
 </head>
 
+
 <body>
     <div id="container">
         <!-------------------------------- header -------------------------------->
@@ -39,6 +40,7 @@
 					</ol>
 					
                     <div class="main-content-box">
+						<h2>Course 조회</h2>
                         <template class="main-template">
 							<tr>
 								<td class="num"></td>
@@ -51,103 +53,107 @@
 								<td class="writer"></td>
 							</tr>
 						</template>
-						<table id="course_table">
-							<colgroup>
-								<col width="5%">
-								<col width="*">
-								<col width="10%">
-								<col width="10%">
-								<col width="15%">
-								<col width="15%">
-								<col width="5%">
-								<col width="10%">
-							</colgroup>
-							<thead>
-								<tr>
-									<th>no.</th>
-									<th>course</th>
-									<th>teacher</th>
-									<th>manager</th>
-									<th>opendate</th>
-									<th>enddate</th>
-									<th>total</th>
-									<th>writer</th>
-								</tr>
-							</thead>
-					
-							<tbody>
-								<c:forEach var="n" items="${list}" varStatus="vs">
-									<c:if test="${vs.count%2==0}">
-										<tr class="even">
-									</c:if>
-									<c:if test="${vs.count%2!=0}">
-										<tr>
-									</c:if>
-									<td class="num">${n.id}</td>
-									<td class="name"><a href="detail?id=${n.id}">${n.name}</a></td>
-									<td class="teacher">${n.teacher}</td>
-									<td class="manager">${n.manager}</td>
-									<td class="open">
-										<fmt:parseDate var="open" value="${n.openDate}" pattern="yyyy-MM-dd" />
-										<fmt:formatDate value="${open}" pattern="yyyy-MM-dd" />
-									</td>
-									<td class="end">
-										<fmt:parseDate var="end" value="${n.endDate}" pattern="yyyy-MM-dd" />
-										<fmt:formatDate value="${end}" pattern="yyyy-MM-dd" />
-									</td>
-									<td class="total">${n.total}</td>
-									<td class="writer">${n.writerId}</td>
+						<div class="content1">
+							<table id="course_table">
+								<colgroup>
+									<col width="5%">
+									<col width="*">
+									<col width="10%">
+									<col width="10%">
+									<col width="15%">
+									<col width="15%">
+									<col width="5%">
+									<col width="10%">
+								</colgroup>
+								<thead>
+									<tr>
+										<th>no.</th>
+										<th>course</th>
+										<th>teacher</th>
+										<th>manager</th>
+										<th>opendate</th>
+										<th>enddate</th>
+										<th>total</th>
+										<th>writer</th>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					
-						<div class="input">
-							<input type="text" value="1">
-							<input type="button" value="요청">
-						</div>
-					
-						<div class="right">
-							<a href="reg?id=${n.id}"><img src="../../images/manager/course/add-btn.png" width="30px" height="30px"></a>
-						</div>
-					
-						<section id="pager">
-							<h1 class="d-none">페이지</h1>
-							
-							<div class="box">
-								<c:set var="page" value="${empty param.p? 1:param.p}" />
-								<div>
-									<a href="list?p=${(page<6)?page:page-5}">
-										<img src="../../images/manager/course/left-btn.png" width="15px" height="15px">
-									</a>
-								</div>
-								<ul>
-									<c:set var="start" value="${page-(page-1)%5}" />
-									<c:set var="last" value="" />
-					
-									<c:forEach begin="${start}" end="${start+4}" var="x">
-										<c:choose>
-											<c:when test="${empty param.p and x==1}">
-												<li class="current">
-											</c:when>
-											<c:when test="${param.p == x}">
-												<li class="current">
-											</c:when>
-											<c:otherwise>
-												<li>
-											</c:otherwise>
-										</c:choose>
-										
-										<a href="list?p=${x}">${x}</a></li>
+								</thead>
+						
+								<tbody>
+									<c:forEach var="n" items="${list}" varStatus="vs">
+										<c:if test="${vs.count%2==0}">
+											<tr class="even">
+										</c:if>
+										<c:if test="${vs.count%2!=0}">
+											<tr>
+										</c:if>
+										<td class="num">${n.id}</td>
+										<td class="name"><a href="detail?id=${n.id}">${n.name}</a></td>
+										<td class="teacher">${n.teacher}</td>
+										<td class="manager">${n.manager}</td>
+										<td class="open">
+											<fmt:parseDate var="open" value="${n.openDate}" pattern="yyyy-MM-dd" />
+											<fmt:formatDate value="${open}" pattern="yyyy-MM-dd" />
+										</td>
+										<td class="end">
+											<fmt:parseDate var="end" value="${n.endDate}" pattern="yyyy-MM-dd" />
+											<fmt:formatDate value="${end}" pattern="yyyy-MM-dd" />
+										</td>
+										<td class="total">${n.total}</td>
+										<td class="writer">${n.writerId}</td>
+										</tr>
 									</c:forEach>
-								</ul>
-								<div>
-									<a href="list?p=${page+5}">
-										<img src="../../images/manager/course/right-btn.png" width="15px" height="15px">
-									</a>
+								</tbody>
+							</table>
+						</div>
+						<div class="content1">
+			
+							<section id="pager">
+								<h1 class="d-none">페이지</h1>
+								
+								<div class="box">
+									<c:set var="page" value="${empty param.p? 1:param.p}" />
+									<div>
+										<a href="list?p=${(page<6)?page:page-5}">
+											<img src="../../images/manager/course/left-btn.png" width="15px" height="15px">
+										</a>
+									</div>
+									<ul>
+										<c:set var="start" value="${page-(page-1)%5}" />
+										<c:set var="last" value="" />
+						
+										<c:forEach begin="${start}" end="${start+4}" var="x">
+											<c:choose>
+												<c:when test="${empty param.p and x==1}">
+													<li class="current">
+												</c:when>
+												<c:when test="${param.p == x}">
+													<li class="current">
+												</c:when>
+												<c:otherwise>
+													<li>
+												</c:otherwise>
+											</c:choose>
+											
+											<a href="list?p=${x}">${x}</a></li>
+										</c:forEach>
+									</ul>
+									<div>
+										<a href="list?p=${page+5}">
+											<img src="../../images/manager/course/right-btn.png" width="15px" height="15px">
+										</a>
+									</div>
 								</div>
+							</section>
+
+							<div class="input">
+								<input type="text" value="1">
+								<input type="button" value="요청">
 							</div>
-						</section>
+
+							<div class="reg-btn">
+									<a href="reg?id=${n.id}"><img src="../../images/manager/course/add-btn.png" width="30px" height="30px"></a>
+							</div>
+						</div>
                     </div>
                     <!------------------- 여기까지 --------------------->
                 </div>

@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -12,8 +13,8 @@
     <title>Document</title>
     <link rel="shortcut icon" type="image/png" href="../../images/inc/favicon.png" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="../../css/manager/course/list.css">
-	<script src="../../js/manager/course/list.js"></script>
+	<link rel="stylesheet" href="../../css/manager/course/reg.css?ver=1">
+	<script src="../../js/manager/course/reg.js?ver=1"></script>
 </head>
 
 
@@ -45,7 +46,13 @@
 						<h2>Course 등록</h2>
 						<form method="post" action="reg">
 							<div class="content1">
-								<table>
+								<table id="course_table">
+									<colgroup>
+										<col width="15%">
+										<col width="25%">
+										<col width="15%">
+										<col width="25%">
+									</colgroup>
 									<tr>
 										<th>Course</th>
 										<td><input type="text" name="name"></td>
