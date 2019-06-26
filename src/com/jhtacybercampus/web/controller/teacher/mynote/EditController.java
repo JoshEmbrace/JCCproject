@@ -132,7 +132,8 @@ public class EditController extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		request.getRequestDispatcher("/WEB-INF/view/teacher/mynote/edit.jsp").forward(request, response);
+
+		request.getRequestDispatcher("../../WEB-INF/view/teacher/mynote/edit.jsp").forward(request, response);
 
 	}
 

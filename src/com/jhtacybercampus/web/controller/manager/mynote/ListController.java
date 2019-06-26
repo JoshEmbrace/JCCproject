@@ -62,7 +62,11 @@ public class ListController extends HttpServlet{
 	      
 	    
 	       
+<<<<<<< HEAD
 	       request.getRequestDispatcher("/WEB-INF/view/manager/mynote/list.jsp").forward(request, response);
+=======
+	       request.getRequestDispatcher("../..//WEB-INF/view/manager/mynote/list.jsp").forward(request, response);
+>>>>>>> refs/remotes/origin/master
 
 	   }
 	

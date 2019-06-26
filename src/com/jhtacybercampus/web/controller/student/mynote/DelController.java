@@ -30,7 +30,11 @@ public class DelController extends HttpServlet{
 		e.printStackTrace();
 	}
     
+<<<<<<< HEAD
     response.sendRedirect("/semi-JCC/student/mynote/list");
+=======
+    response.sendRedirect("list");
+>>>>>>> refs/remotes/origin/master
    
  }
 }

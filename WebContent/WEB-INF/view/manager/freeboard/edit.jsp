@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html lang="en" style="font-size: 10px">
+<html>
 <!-- web-inf 디렉토리에 넣으면 사용자가 view를 바로 호출할 수 없다 -->
 <head>
 <meta charset="UTF-8">

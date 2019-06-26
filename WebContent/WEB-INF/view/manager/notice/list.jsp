@@ -9,12 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-     <link rel="stylesheet" href="../layout/layout.css">
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+     <link rel="stylesheet" href="../../css/manager/notice/list.css">
+    <link rel="shortcut icon" type="image/png" href="../../images/manager/inc/favicon.png" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
    <!--  <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
-   <script src="../js/notice/list.js"></script>
+   <script src="../../js/manager/notice/list.js"></script>
 </head>
 
 
@@ -29,42 +29,7 @@
 
 
     <div class="body-container">
-            <nav class="nav">
-                <ul class="nav-container">
-                    <li>
-                        <a href="#Mynote"><i class="material-icons md-36">description</i><span>My note</span></a>
-                    </li>
-                    <li>
-                        <a href="#Curriculum"><i class="material-icons md-36">date_range</i><span>Curriculum</span></a>
-                    </li>
-                    <li>
-                        <a href="#Homework"><i class="material-icons md-36">dvr</i><span>Homework</span></a>
-                    </li>
-                    <li class="dropdown-menu">
-                        <a href="../notice/list"><i class="material-icons md-36">apps</i><span>Notice</span><i
-                                class="material-icons md-36">expand_more</i></a>
-                        <ul class="dropdown-container">
-                            <li><a href="">Notice</a></li>
-                            <li><a href="">Freeboard</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <script>
-                var dropdown = document.getElementsByClassName(".dropdown-menu");
-
-                for (var i = 0; i < dropdown.length; i++) {
-                    dropdown[i].addEventListener("click", function () {
-                        this.classList.toggle("active");
-                        var dropdownContent = this.nextElementSibling;
-                        if (dropdownContent.style.display === "block") {
-                            dropdownContent.style.display = "none";
-                        } else {
-                            dropdownContent.style.display = "block";
-                        }
-                    });
-                }
-            </script>
+            <jsp:include page="../inc/aside.jsp" />
             <main>
             	<div class="main-container">
             	<ol class="breadcrumb">

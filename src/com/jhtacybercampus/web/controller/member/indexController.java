@@ -23,22 +23,27 @@ public class indexController extends HttpServlet{
 	  
 	  HttpSession session = httpRequest.getSession();
 	  
+	  if(session == null)
+		  resp.sendRedirect("../index");
+	  
 	  Member user = (Member)session.getAttribute("user");
 	  
-	  System.out.println(user.getGrade());
+	  
+	  
+	  //System.out.println(user.getGrade());
 	  
 	  switch(user.getGrade()) {
 	  case 1:
-		  resp.sendRedirect("../notice/list");
+		  resp.sendRedirect("../student/index");
 		  break;
 	  case 2:
-		  resp.sendRedirect("../mynote/list");
+		  resp.sendRedirect("../teacher/index");
 		  break;
 	  case 3:
-		  resp.sendRedirect("../freeboard/list");
+		  resp.sendRedirect("../manager/index");
 		  break;
 	  default:
-		  resp.sendRedirect("error");
+		  resp.sendRedirect("../index");
 	  
 	  }
 

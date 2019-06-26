@@ -29,7 +29,8 @@ public class DelController extends HttpServlet{
 		e.printStackTrace();
 	}
     
-    response.sendRedirect("/semi-JCC/teacher/mynote/list");
-   
+
+    response.sendRedirect("list");
+
  }
 }

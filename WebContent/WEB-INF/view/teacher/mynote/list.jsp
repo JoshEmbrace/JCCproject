@@ -8,8 +8,13 @@
 <%@ page import="java.util.*, java.text.*"%>
 
 <!DOCTYPE html>
+<<<<<<< HEAD
 <!-- <html lang="en" style="font-size: 10px"> -->
 <script src="../../js/teacher/mynote/Mynote.js"></script>
+=======
+<html>
+<script src="../js/mynote/Mynote.js"></script>
+>>>>>>> refs/remotes/origin/master
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

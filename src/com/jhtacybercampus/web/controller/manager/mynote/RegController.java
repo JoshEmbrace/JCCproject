@@ -110,7 +110,11 @@ public class RegController extends HttpServlet {
 
    @Override
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
       request.getRequestDispatcher("/WEB-INF/view/manager/mynote/list.jsp").forward(request, response);
+=======
+      request.getRequestDispatcher("../../WEB-INF/view/manager/mynote/list.jsp").forward(request, response);
+>>>>>>> refs/remotes/origin/master
    }
    
 }

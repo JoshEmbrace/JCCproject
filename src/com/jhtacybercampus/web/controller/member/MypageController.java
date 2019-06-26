@@ -16,7 +16,7 @@ import com.jhtacybercampus.web.entity.Member;
 public class MypageController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/view/member/mypage.jsp").forward(req, resp);
+		req.getRequestDispatcher("../WEB-INF/view/member/mypage/mypage.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,6 +43,6 @@ public class MypageController extends HttpServlet {
 		if(result != 1)
 			resp.sendRedirect("error");
 		else
-			resp.sendRedirect("../notice/list");
+			resp.sendRedirect("index");
 	}
 }
