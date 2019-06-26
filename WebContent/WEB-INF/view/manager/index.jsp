@@ -67,10 +67,11 @@
                         <h2>&lt;마이노트&gt;</h2>
 						<div class="content1">
                                 <c:forEach var="n" begin="1" end="3" items="${mynote}">
-                                    <section class="list_section">
+                                   <!--  <section class="list_section"> -->
                                         <div>${n.reg_date}</div>
-                                        <textarea name="content">${n.content}</textarea>
-                                    </section>
+                                    
+                                        <textarea name="content" readonly="readonly">${n.content}</textarea>
+                                   <!--  </section> -->
                                 </c:forEach>
 						</div>
 					</div>

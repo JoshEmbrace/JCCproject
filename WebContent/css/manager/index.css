@@ -10,6 +10,19 @@ ol, ul {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+	width: 100% 
+	
+	
+}
+
+
+tr, tbody{
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+	
+}
+td{
+	padding: 10px;
 }
 
 * {
@@ -172,15 +185,23 @@ body {
     width: 100%;
     margin-top: 5px;
     margin-bottom: 35px;
-    padding: 30px 25px;
-    background: #fff;
-    border: 1px solid #ccc;
+    padding: 50px 25px;
+    --background: #fff;
+    --border: 1px solid #ccc;
     height: inherit;
 }
-.list_section{
+/* .list_section{
     border: 1px solid orangered;
     margin: 10px;
     padding: 10px;
+    width: 100%
+} */
+.content1 textarea{
+	width: 100%
+	overflow-x, overflow-y :hidden;
+	resize: none;
+	overflow: auto;
+	
 }
 /* -------------------body------------------- */
 /*---------------------------------------------*/
