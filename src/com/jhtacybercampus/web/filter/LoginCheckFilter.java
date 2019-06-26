@@ -17,9 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import com.jhtacybercampus.web.entity.Member;
 
-@WebFilter(
-	filterName = "LoginCheckFilter"
-)
+@WebFilter(filterName = "LoginCheckFilter")
 public class LoginCheckFilter implements Filter {
 
 	@Override
@@ -31,7 +29,7 @@ public class LoginCheckFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		System.out.println("로그인체크필터");
+		System.out.println("login check");
 	
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;

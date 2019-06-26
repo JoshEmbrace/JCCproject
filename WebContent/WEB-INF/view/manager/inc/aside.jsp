@@ -3,6 +3,9 @@
 <nav class="nav">
 				<ul class="nav-container">
 					<li>
+						<a href="/semi-JCC/manager/course/list"><i class="material-icons md-36">description</i><span>Course</span></a>
+					</li>
+					<li>
 						<a href="/semi-JCC/manager/mynote/list"><i class="material-icons md-36">description</i><span>My note</span></a>
 					</li>
 					<li>

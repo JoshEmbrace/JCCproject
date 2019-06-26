@@ -17,15 +17,6 @@
 					<li>
 						<a href="/semi-JCC/teacher/notice/list"><i class="material-icons md-36">dvr</i><span>Notice</span></a>
 					</li>
-					
-					<li class="dropdown-menu">
-						<a href="#Notice"><i class="material-icons md-36">apps</i><span>Notice</span><i
-								class="material-icons md-36">expand_more</i></a>
-						<ul class="dropdown-container">
-							<li><a href="">Notice</a></li>
-							<li><a href="">Freeboard</a></li>
-						</ul>
-					</li>
 				</ul>
 			</nav>
 			<script>

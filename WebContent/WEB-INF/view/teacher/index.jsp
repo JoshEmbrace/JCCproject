@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="shortcut icon" type="image/png" href="../images/inc/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="/semi-JCC/images/teacher/inc/favicon.png" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../css/manager/index.css">
 	<script src="../js/manager/index.js"></script>

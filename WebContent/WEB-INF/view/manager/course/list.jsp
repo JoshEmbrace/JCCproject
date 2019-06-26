@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="shortcut icon" type="image/png" href="../../images/inc/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="../../images/manager/inc/favicon.png" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../../css/manager/course/list.css">
 	<script src="../../js/manager/course/list.js"></script>

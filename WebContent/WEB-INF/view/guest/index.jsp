@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="/css/guest/index.css" rel="stylesheet" type="text/css">
-<script src="/js/guest/index.js"></script>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="shortcut icon" type="image/png" href="/semi-JCC/images/guest/favicon.png" />
+	<link href="/semi-JCC/css/guest/index.css?ver=1" rel="stylesheet" type="text/css">
+	<script src="/js/guest/index.js?ver=1"></script>
 </head>
 <body>
     <div id="login-form">
