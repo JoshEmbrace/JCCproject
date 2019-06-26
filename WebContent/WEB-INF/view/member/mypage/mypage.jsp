@@ -30,8 +30,8 @@
 
 
 		<div class="body-container">
-			
-			<main>
+			<jsp:include page="../inc/aside.jsp" />
+			<main class="main">
 			<div class="main-container">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-home"><i class="material-icons md-18">home</i></li>
