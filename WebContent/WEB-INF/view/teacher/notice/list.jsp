@@ -28,11 +28,8 @@
     <!-- --body block------------------------------------------------------------------ -->
 
 
-<<<<<<< HEAD
-   <div class="body-container">
-=======
+
     <div class="body-container">
->>>>>>> refs/remotes/origin/master
             <jsp:include page="../inc/aside.jsp" />
             <main>
             	<div class="main-container">
