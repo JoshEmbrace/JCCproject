@@ -35,7 +35,7 @@ public class DetailController extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		req.getRequestDispatcher("/WEB-INF/view/notice/detail.jsp").forward(req, resp);
+		req.getRequestDispatcher("../../WEB-INF/view/student/notice/detail.jsp").forward(req, resp);
 	}
 
 }
