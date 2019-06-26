@@ -1,4 +1,4 @@
-package com.jhtacybercampus.web.dao.oracle;
+package com.jhtacybercampus.web.entity;
 
 
 import java.util.Date;

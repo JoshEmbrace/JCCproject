@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//WebContent/css/mynote_edit.css=UTF-8
+encoding//WebContent/css/mynote_list.css=UTF-8
 encoding//src/com/jhtacybercampus/web/controller/manager/freeboard/RegController.java=UTF-8
 encoding//src/com/jhtacybercampus/web/controller/student/freeboard/RegController.java=UTF-8
 encoding//src/com/jhtacybercampus/web/controller/teacher/curri/EditController.java=UTF-8

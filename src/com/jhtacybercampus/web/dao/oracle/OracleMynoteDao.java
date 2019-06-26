@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.jhtacybercampus.web.dao.MynoteDao;
 import com.jhtacybercampus.web.entity.Mynote;
+import com.jhtacybercampus.web.entity.MynoteView;
 import com.jhtacybercampus.web.entity.Notice;
 
 public class OracleMynoteDao implements MynoteDao {

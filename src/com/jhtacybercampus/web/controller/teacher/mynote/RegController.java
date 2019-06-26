@@ -34,8 +34,7 @@ public class RegController extends HttpServlet {
    @Override
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
-	   //����,����,���̵�
-	   
+
 	  Integer id = Integer.parseInt(request.getParameter("writerid"));
       String content = request.getParameter("content");
       Part filePart = request.getPart("file");
@@ -111,7 +110,7 @@ public class RegController extends HttpServlet {
 
    @Override
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      request.getRequestDispatcher("/WEB-INF/view/mynote/list.jsp").forward(request, response);
+      request.getRequestDispatcher("/WEB-INF/view/teacher/mynote/list.jsp").forward(request, response);
    }
    
 }

@@ -14,7 +14,7 @@ import com.jhtacybercampus.web.dao.MynoteDao;
 import com.jhtacybercampus.web.dao.oracle.OracleMynoteDao;
 
 
-//�޼ҵ尡������ 405?
+
 @WebServlet("/student/mynote/del")
 public class DelController extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class DelController extends HttpServlet{
 		e.printStackTrace();
 	}
     
-    response.sendRedirect("../mynote/list");
+    response.sendRedirect("/semi-JCC/student/mynote/list");
    
  }
 }

@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jhtacybercampus.web.dao.MynoteDao;
 import com.jhtacybercampus.web.dao.MynoteFileDao;
-import com.jhtacybercampus.web.dao.oracle.MynoteView;
+
 import com.jhtacybercampus.web.dao.oracle.OracleMynoteDao;
 import com.jhtacybercampus.web.dao.oracle.OracleMynoteFileDao;
 import com.jhtacybercampus.web.entity.MynoteFile;
+import com.jhtacybercampus.web.entity.MynoteView;
 
 
 
@@ -61,7 +62,7 @@ public class ListController extends HttpServlet{
 	      
 	    
 	       
-	       request.getRequestDispatcher("/WEB-INF/view/mynote/list.jsp").forward(request, response);
+	       request.getRequestDispatcher("/WEB-INF/view/teacher/mynote/list.jsp").forward(request, response);
 
 	   }
 	
