@@ -21,61 +21,12 @@
 </head>
 <body>
 	<!-- --header block------------------------------------------------------------------ -->
-	<header class="header">
-		<div class="header-container">
-			<div class="logo">
-				<img src="images/logo.png" alt="">
-			</div>
-			<div class="usermenu">
-				<ul class="usermenu-container">
-					<li class="user-name">Yijin So</li>
-					<li class="user-image"><a href=""><i
-							class="material-icons md-36">account_circle</i></a></li>
-					<li class="user-course"><a href=""><i
-							class="material-icons md-36">class</i></a></li>
-					<li class="user-alert"><a href=""><i
-							class="material-icons md-36">notifications</i></a></li>
-					<li class="user-log"><a href="">logout</a></li>
-				</ul>
-			</div>
-		</div>
-	</header>
+	<jsp:include page="../inc/header.jsp" />
 
 
 	<!-- --body block------------------------------------------------------------------ -->
 	<div class="body-container">
-		<nav class="nav">
-			<ul class="nav-container">
-				<li><a href="#Mynote"><i class="material-icons md-36">description</i><span>My
-							note</span></a></li>
-				<li><a href="#Curriculum"><i class="material-icons md-36">date_range</i><span>Curriculum</span></a>
-				</li>
-				<li><a href="#Homework"><i class="material-icons md-36">dvr</i><span>Homework</span></a>
-				</li>
-				<li class="dropdown-menu"><a href="#Notice"><i
-						class="material-icons md-36">apps</i><span>Notice</span><i
-						class="material-icons md-36">expand_more</i></a>
-					<ul class="dropdown-container">
-						<li><a href="">Notice</a></li>
-						<li><a href="">Freeboard</a></li>
-					</ul></li>
-			</ul>
-		</nav>
-		<script>
-			var dropdown = document.getElementsByClassName(".dropdown-menu");
-
-			for (var i = 0; i < dropdown.length; i++) {
-				dropdown[i].addEventListener("click", function() {
-					this.classList.toggle("active");
-					var dropdownContent = this.nextElementSibling;
-					if (dropdownContent.style.display === "block") {
-						dropdownContent.style.display = "none";
-					} else {
-						dropdownContent.style.display = "block";
-					}
-				});
-			}
-		</script>
+		<jsp:include page="../inc/aside.jsp" />
 
 		<main class="main">
 		<div class="main-container">
@@ -95,7 +46,6 @@
 
 								<input type="hidden" name="id" value="${mynote.id}">
 								<textarea name="content" cols="40">${mynote.content}</textarea>
-							</form>
 							<h4>첨부파일</h4>
 							<c:forEach var="file" items="${files}">
 							${file.name}<br>
@@ -105,6 +55,7 @@
 							<div class="button-box">
 							<input type="submit" value="저장">
 							</div>
+							</form>
 						</section>
 
 					</header>

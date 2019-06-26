@@ -38,12 +38,40 @@
 							</i><span>Index</span></li>						
 					</ol>
 					<div class="main-content-box">
-						<h2>Teacher Index 페이지</h2>
+						<h1>Teacher Index 페이지</h1>
+                        <h2>&lt;공지사항&gt;</h2>
 						<div class="content1">
-							
+							<table>
+                                <thead>
+                                    <tr>
+                                        <td class="num">no.</td>
+                                        <td class="title">title</td>
+                                        <td class="writer">writer</td>
+                                        <td class="date">date</td>
+                                        <td class="hit">hit</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="n" begin="1" end="5" items="${notice}" varStatus="c">
+                                    <tr>
+                                        <td class="num">${c.count}</td>
+                                        <td class="title"><a href="detail?id=${n.id}">${n.title}</a></td>
+                                        <td class="writer">${n.writerId}</td>
+                                        <td class="date">${n.regDate}</td>
+                                        <td class="hit">${n.hit}</td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
 						</div>
+                        <h2>&lt;마이노트&gt;</h2>
 						<div class="content1">
-							
+                                <c:forEach var="n" begin="1" end="3" items="${mynote}">
+                                    <section class="list_section">
+                                        <div>${n.reg_date}</div>
+                                        <textarea name="content">${n.content}</textarea>
+                                    </section>
+                                </c:forEach>
 						</div>
 					</div>
                     
