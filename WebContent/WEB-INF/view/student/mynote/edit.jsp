@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 
-<link rel="stylesheet" type="text/css" href="../css/mynote_list.css">
+<link rel="stylesheet" type="text/css" href="../../css/student/mynote/edit.css">
 </head>
 
 

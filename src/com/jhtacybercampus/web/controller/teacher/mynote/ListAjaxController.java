@@ -13,11 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jhtacybercampus.web.dao.MynoteDao;
 import com.jhtacybercampus.web.dao.MynoteFileDao;
-import com.jhtacybercampus.web.dao.oracle.MynoteView;
+
 import com.jhtacybercampus.web.dao.oracle.OracleMynoteDao;
 import com.jhtacybercampus.web.dao.oracle.OracleMynoteFileDao;
 import com.jhtacybercampus.web.entity.Mynote;
 import com.jhtacybercampus.web.entity.MynoteFile;
+import com.jhtacybercampus.web.entity.MynoteView;
 
 
 @WebServlet("/teacher/mynote/list-ajax")

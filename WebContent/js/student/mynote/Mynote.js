@@ -58,7 +58,7 @@ window.addEventListener("load", function() {
 
 		//데이터 요청하기
 		var request = new XMLHttpRequest();
-		request.open("GET", "/semi-JCC/mynote/list-ajax?p=" + page, false);
+		request.open("GET", "/semi-JCC/student/mynote/list-ajax?p=" + page, false);
 		request.send();
 		alert(page);
 		
