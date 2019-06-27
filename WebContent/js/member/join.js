@@ -23,12 +23,14 @@ window.addEventListener("load",function(){
     }
     pwd2.oninput = function(){
         if(pwd.value == pwd2.value){
-            pwdcheck.innerText = "일치합니다."
-            pwdcheck.style.color = "green";
+            //pwdcheck.innerText = "일치합니다."
+            //pwdcheck.style.color = "green";
+            pwd2.style.border = "2px solid green";
             pwdcheck.value="ok";
         }else{
-            pwdcheck.innerText = "불일치합니다."
-            pwdcheck.style.color = "red";
+            //pwdcheck.innerText = "불일치합니다."
+            //pwdcheck.style.color = "red";
+            pwd2.style.border = "2px solid orangered";
             pwdcheck.value="not";
         }
     };
@@ -63,7 +65,7 @@ window.addEventListener("load",function(){
 
     var exist = section.querySelector(".check-id");
 
-    checkid.onclick = function(){
+    checkid.onchange = function(){
         var userid = id.value;
         
 
@@ -74,14 +76,16 @@ window.addEventListener("load",function(){
 
         if(json["exist"] != 0){
             alert(userid+"는(은) 사용할 수 없습니다.");
-            exist.innerText = "사용할 수 없습니다.";
-            exist.style.color = "red";
+            // exist.innerText = "사용할 수 없습니다.";
+            // exist.style.color = "red";
+            id.style.border = "2px solid orangered";
             exist.value="not";
             return;
         }else{
             alert(userid+"는(은) 사용 가능 합니다.");
-            exist.innerText = "사용 가능 합니다.";
-            exist.style.color = "green";
+            //exist.innerText = "사용 가능 합니다.";
+            //exist.style.color = "green";
+            id.style.border = "2px solid green";
             exist.value="ok";
         }
         

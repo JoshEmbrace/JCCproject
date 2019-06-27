@@ -31,7 +31,7 @@
                         </div>
                         <div class="line"></div>
                         <div class="btn-list">
-                            <a href="#"><div class="signup-btn">회원가입</div></a>
+                            <a href="../member/join"><div class="signup-btn">회원가입</div></a>
                             <div class="f-id-pwd">
                                 <a href="#"><div class="f-id-btn">아이디찾기</div></a>
                                 <a href="#"><div class="f-pwd-btn">비밀번호찾기</div></a>
