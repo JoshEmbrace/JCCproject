@@ -16,8 +16,8 @@ import com.jhtacybercampus.web.entity.Member;
 public class joinController extends HttpServlet{
 @Override
 protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	// getParameter()�� �̿��� �Ѱ��� �Ķ���� ���� ���� �� �ִ�.
-    // �Ķ���� ���� ������ name= �� �����ص� ���� ������ ���� ���ڷ� �����ؾ� �ȴ�.
+	// getParameter()占쏙옙 占싱울옙占쏙옙 占싼곤옙占쏙옙 占식띰옙占쏙옙占� 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占쌍댐옙.
+    // 占식띰옙占쏙옙占� 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 name= 占쏙옙 占쏙옙占쏙옙占쌔듸옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쌘뤄옙 占쏙옙占쏙옙占쌔억옙 占싫댐옙.
 	
 	String id = req.getParameter("id");
     String password = req.getParameter("password");
@@ -26,10 +26,10 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 
     String birthday = req.getParameter("birthday");
     String email1 = req.getParameter("email_1");
-    String email2 = req.getParameter("email_2");
+    //String email2 = req.getParameter("email_2");
     
     
-    String phone = req.getParameter("phone");
+    //String phone = req.getParameter("phone");
     //String address = req.getParameter("address");
 
     OracleMemberDao memberDao = new OracleMemberDao();
@@ -38,14 +38,14 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
     member.setUser_id(id);
     member.setUser_pwd(password);
     member.setName(name);
-    member.setEmail(email1+email2);
-    member.setHp(phone);
+    member.setEmail(email1);
+    //member.setHp(phone);
     member.setGender(gender);
     member.setBirthday(birthday);
     
-   //�����κ� ���� �ذ��ؾߵ�
+   //占쏙옙占쏙옙占싸븝옙 占쏙옙占쏙옙 占쌔곤옙占쌔야듸옙
     // member.setGender(gender);
-    //���� �κе� �𸣰����ФФ� ��,��,���� ��� ����Ǵ°��ϱ�?
+    //占쏙옙占쏙옙 占싸분듸옙 占쏜르곤옙占쏙옙占싻ㅠㅿ옙 占쏙옙,占쏙옙,占쏙옙占쏙옙 占쏘떻占쏙옙 占쏙옙占쏙옙풔째占쏙옙歐占�?
 //    member.setBirthday(birthyy);
     
     int result = 0;
@@ -63,7 +63,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
     if (result != 1)
 		resp.sendRedirect("error");
 	else
-		resp.sendRedirect("login");//ȸ������ �����ϸ� ����������� ���� ���� ������.
+		resp.sendRedirect("login");//회占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占싹몌옙 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占� 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙.
 }
 
 @Override

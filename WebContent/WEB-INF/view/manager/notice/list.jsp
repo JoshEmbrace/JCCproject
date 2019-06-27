@@ -39,7 +39,7 @@
                             </i><span>공지사항</span></li>
                    </ol>
                <section id="notice">
-				   <h3>공지사항 목록</h3>
+				   <h3 class="d-none">공지사항 목록</h3>
 				   <template class="notice-template">
 					<tr>
 						<td class="num"></td>
@@ -49,7 +49,7 @@
 						<td class="hit"></td>
 					</tr>
 				   </template>
-               	<table>
+               	<table class="notice-table">
                		<thead>
                			<tr>
                				<td class="num">no.</td>
@@ -90,14 +90,14 @@
 			
 			 <section id="pager">
 				<h1 class="d-none">페이지</h1>
-				<div>
-					<div><a href="list?p=${(page<6)?1:(start-1)}">이전</a></div>
+				<div class="big-div">
+					<div><a href="list?p=${(page<6)?1:(start-1)}"><img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/caret-left-128.png" style="width: 30px; max-width: 22px;"/></a></div>
 					<ul>
 						<c:forEach begin="${ start}" end="${ start+4}" varStatus="s" var="n">
 							<li><a href="list?p=${n}">${n}</a></li>
 						</c:forEach>
 					</ul>
-					<div><a href="list?p=${start+5}">다음</a></div>
+					<div><a href="list?p=${start+5}"><img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/caret-right-128.png" style="width: 30px; max-width: 22px;"/></a></div>
 				</div> 
                <section>
                	<h3>공지사항 검색</h3>
