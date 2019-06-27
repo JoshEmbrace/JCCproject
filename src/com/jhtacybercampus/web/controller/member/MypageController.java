@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jhtacybercampus.web.dao.oracle.OracleMemberDao;
 import com.jhtacybercampus.web.entity.Member;
@@ -21,7 +22,11 @@ public class MypageController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int result=0;
-		String user_id = req.getParameter("id");
+		
+		HttpServletRequest httpRequest = (HttpServletRequest) req;
+		HttpSession session = httpRequest.getSession();
+		Member user = (Member)session.getAttribute("user");
+		String user_id = user.getUser_id();
 		String user_pwd = req.getParameter("password");
 		
 		System.out.println(user_id);

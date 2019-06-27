@@ -22,6 +22,7 @@ public class ListController extends HttpServlet{
 			page = Integer.parseInt(request.getParameter("p"));
 		
 		
+		
 		try {
 			request.setAttribute("list", fbDao.getList(page));
 		} catch (ClassNotFoundException | SQLException e) {
@@ -36,3 +37,4 @@ public class ListController extends HttpServlet{
 
 
 }
+

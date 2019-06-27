@@ -13,15 +13,21 @@
 <!-- web-inf 디렉토리에 넣으면 사용자가 view를 바로 호출할 수 없다 -->
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
-<!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
+<title>자유게시판</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../../layout/layout.css">
+<link rel="shortcut icon" type="image/png" href="../../layout/images/favicon.png" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+   rel="stylesheet">
 
 </head>
 
 <body>
 	<!-- --- header block----------------------------------------------------------------------------------->
 
-<jsp:include page="../inc/header.jsp"></jsp:include>
+ <jsp:include page="../inc/header.jsp"></jsp:include>
 
 
 
@@ -29,11 +35,11 @@
 	<div id="visual"></div>
 	<!-- --- body block----------------------------------------------------------------------------------->
 	<div id="body">
+			<!-- aside -->
+			<jsp:include page="../inc/aside.jsp"></jsp:include>
+
+			<!-- aside -->
 		<div class="content-box">
-
-			<!-- aside -->
-
-			<!-- aside -->
 
 			<main>
 
@@ -72,9 +78,9 @@
 						</table>
 
 						<div>
-							<input type="hidden" name="id" value="${notice.id}"> <input
+							<input type="hidden" name="id" value="${freeboard.id}"> <input
 								type="submit" value="저장"> <a
-								href="detail?id=${notice.id}">취소</a>
+								href="detail?id=${freeboard.id}">취소</a>
 						</div>
 					</form>
 					<%-- <c:forEach var="file" items="${files}">
@@ -89,7 +95,7 @@
 	</div>
 
 	<!-- --- footer block----------------------------------------------------------------------------------->
-	<jsp:include page="../inc/footer.jsp"></jsp:include>
+	<jsp:include page="../inc/footer.jsp"></jsp:include> 
 
 </body>
 

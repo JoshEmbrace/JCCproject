@@ -14,7 +14,7 @@ ol, ul {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-    width: 150%;
+    width: 100%;
 }
 tr, tbody{
     text-align: center;
@@ -25,11 +25,15 @@ tr, tbody{
  }
 .big-div{
     display: flex;
-    margin-left: 200px;
+    --margin-left: 200px;
+    justify-content: center;
+}
+.big-div ul{
+    display: flex;
+    align-items: center;
 }
 .big-div ul li{
     list-style-type: none;
-     float: left;
 }
 
 * {
@@ -167,7 +171,7 @@ body {
     display: flex;
     margin-right: auto;
     padding-bottom: 30px;
-    width: 150%;
+    width: 100%;
     border-bottom: 1px solid #ccc;
 }
     .breadcrumb li{
@@ -183,13 +187,70 @@ body {
     flex-direction: column;
 }
 .main-content-box .content1{
-    width: 100%;
+    width:1000px;
+    --width: 100%;
     margin-top: 25px;
     padding: 30px 25px;
     background: #fff;
     border: 1px solid #ddd;
     height: inherit;
 }
+
+#notice{
+    margin-bottom: 15px;
+}
+
+.paging-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.reg-btn button{
+    
+    border: 1px solid #ccc;
+    padding: 6px 6px;
+    line-height: 1;
+}
+.reg-btn button a{
+    text-decoration: none;
+    color: #262626;
+}
+#test-paper input:first-child{
+    border: 1px solid #ccc;
+    padding: 5px 20px;
+}
+#test-paper input:nth-child(2){
+    border: 1px solid #ccc;
+    padding: 6px 6px;
+    line-height: 1;
+}
+
+.search-notice h4{
+    margin-bottom: 10px;
+}
+.search-notice form select{
+    border: 1px solid #ccc;
+    padding: 5px 20px;
+}
+.search-notice .search-ele{
+    display: flex;
+}
+.search-btn input:first-child{
+    border: 1px solid #ccc;
+    padding: 5px 20px;
+}
+.search-btn input:nth-child(2){
+    border: 1px solid #ccc;
+    padding: 6px 6px;
+    line-height: 1;
+}
+/* .main-content-box .content1 table{
+    width:100%;
+
+} */
 /* -------------------table------------------- */
 
 /* -------------------body------------------- */

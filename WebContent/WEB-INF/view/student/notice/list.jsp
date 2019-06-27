@@ -30,14 +30,16 @@
 
     <div class="body-container">
             <jsp:include page="../inc/aside.jsp" />
-            <main>
+            <main class="main">
             	<div class="main-container">
             	<ol class="breadcrumb">
                         <li class="breadcrumb-home"><i class="material-icons md-18">home</i></li>
                         <li class="b-path"><i class="material-icons">
                                 chevron_right
                             </i><span>공지사항</span></li>
-                   </ol>
+				   </ol>
+				   <div class="main-content-box">
+				   <div class="content1">
                <section id="notice">
 				   <h3 class="d-none">공지사항 목록</h3>
 				   <template class="notice-template">
@@ -71,7 +73,8 @@
                		</c:forEach>
                		</tbody>
                	</table>
-               </section>
+			   </section>
+			
 			   <div id="test-paper">
 					<input type="text">
 					<input type="button" value="요청">
@@ -105,7 +108,9 @@
                	</form>
                </section>
                </section>
-               </div>
+			   </div>
+			</div>
+			</div>
             </main>
     </div>
 

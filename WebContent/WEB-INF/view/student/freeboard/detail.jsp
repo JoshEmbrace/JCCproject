@@ -7,9 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>자유게시판</title>
-<!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
-<link rel="stylesheet" type="text/css"
-	href="../css/freeboard_detail.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../../layout/layout.css">
+<link rel="shortcut icon" type="image/png" href="../../layout/images/favicon.png" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+   rel="stylesheet">
 </head>
 
 
@@ -17,7 +21,10 @@
 <jsp:include page="../inc/header.jsp"></jsp:include>
 	<div id="body">
 
-		<aside></aside>
+		<!-- aside -->
+			<jsp:include page="../inc/aside.jsp"></jsp:include>
+
+			<!-- aside -->
 		<main>
 		<section id="freeboard">
 			<h3>자유게시판 내용</h3>
@@ -107,16 +114,14 @@
 	</div>
 
 <!-- --- footer block----------------------------------------------------------------------------------->
-<<<<<<< HEAD
-	<%-- <jsp:include page="../inc/footer.jsp"></jsp:include> --%>
 <script type="javascript">
 window.onload = function(){
 
 	console.log("...");
 }
 </script>
-=======
+
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
->>>>>>> refs/remotes/origin/master
+
 </body>
 </html>

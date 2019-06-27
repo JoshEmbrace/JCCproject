@@ -24,8 +24,9 @@ import com.jhtacybercampus.web.entity.FreeboardFile;
 
 @WebServlet("/student/freeboard/reg")
 
-@MultipartConfig(location = "C:\\workspace\\JCCproject\\WebContent\\upload", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, // 5?占쏙옙?占쏙옙怨ㅼ삕
-maxRequestSize = 1024 * 1024 * 5 * 5 // 5?占쏙옙?占쏙옙怨ㅼ삕 5?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙
+@MultipartConfig(location = "C:\\Users\\YIJIN\\git\\JCCproject\\WebContent\\upload",
+fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, // 
+maxRequestSize = 1024 * 1024 * 5 * 5 
 		)
 
 public class RegController extends HttpServlet{
@@ -48,23 +49,19 @@ public class RegController extends HttpServlet{
 		//D:\html5-1902
 		Part filePart = request.getPart("file");
 
-		//1.?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙 ?占쏙옙?占쏙옙?占쏙옙營먨뜝占�? ?占쏙옙?占쏙옙?占쏙옙?占쏙옙占�?
 		String urlPath = "/upload";
 		String path = request.getServletContext().getRealPath(urlPath);
 
-		//2. ?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙占�? ?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙紐뚯삕 ?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙
 		String fileName = filePart.getSubmittedFileName();
-
-		//3. ?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙占�?
 		String filePath = path+File.separator+fileName; //File.separator-> "\\"
-
-		//4. ?占쏙옙?占쏙옙?占쏙옙野у뜝占�? ?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙 ?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙 ?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙
+		System.out.println(filePath);
+	
 		File pathFile = new File(path);
-		if(!pathFile.exists())//?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙 ?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙
-			pathFile.mkdirs();//?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙
+		if(!pathFile.exists())
+			pathFile.mkdirs();
 
 		InputStream fis = filePart.getInputStream();
-		FileOutputStream fos = new FileOutputStream("D:\\temp\\"+fileName);
+		FileOutputStream fos = new FileOutputStream("C:\\Users\\YIJIN\\git\\JCCproject\\WebContent\\upload"+fileName);
 
 		byte[] buf = new byte[1024];
 		int size=0;

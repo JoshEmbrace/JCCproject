@@ -8,115 +8,132 @@
 <meta charset="UTF-8">
 <title>자유게시판</title>
 <!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
-<link rel="stylesheet" type="text/css"
-	href="../css/freeboard_detail.css">
+<!-- <link rel="stylesheet" type="text/css"
+	href="../css/freeboard_detail.css"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../../layout/layout.css">
+<link rel="stylesheet" href="../../css/manager/freeboard/detail.css">
+<link rel="shortcut icon" type="image/png"
+	href="../../layout/images/favicon.png" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 </head>
 
 
 <body>
-<jsp:include page="../inc/header.jsp"></jsp:include>
-	<div id="body">
+	<jsp:include page="../inc/header.jsp"></jsp:include>
+	<div class="body-container">
 
-		<aside></aside>
+
+		<jsp:include page="../inc/aside.jsp"></jsp:include>
+
+		<!-- aside -->
 		<main>
-		<section id="freeboard">
-			<h3>자유게시판 내용</h3>
+		<div class="main-container">
+			<!------------------- 이안에다가 내용넣으면됨 --------------------->
+			<!------------------- 경로 --------------------->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-home"><i class="material-icons md-18">home</i></li>
+				<li class="b-path"><i class="material-icons"> chevron_right
+				</i><span>자유게시판</span></li>
+			</ol>
 
-			<!-- 
-			 0618 템플릿 적용
-			<template class="freeboard-template">
-			<tr>
-				<td class="num"></td>
-				<td class="title"><a href="detail?id="></a></td>
-				<td class="writer"></td>
-				<td class="date"></td>
-				<td class="hit"></td>
-				<td class="file"></td>
-			</tr>
-			</template>
-			 0618 템플릿 적용 -->
+			<div class="main-content-box">
+				<div class="content1">
+				<h3>자유게시판 내용</h3>
 
-			<table>
-				<thead>
-					<tr>
-						<td>no.</td>
-						<td>title</td>
-						<td>content</td>
-						<td>reg date</td>
-						<td>hit</td>
-						<td>file</td>
-					</tr>
-				</thead>
-				<tbody>
+				<table class="notice-table">
+						<tr>
+							<th>제목</th>
+							<td>${notice.title}</td>
+						</tr>
 
-					<tr>
-						<th>제목</th>
-						<td>${notice.title}</td>
-					</tr>
+						<tr>
+							<th>내용</th>
+							<td>${notice.content}</td>
+						</tr>
 
-					<tr>
-						<th>내용</th>
-						<td>${notice.content}</td>
-					</tr>
+						<tr>
+							<th>작성일</th>
+							<td>${notice.reg_date}</td>
+						</tr>
 
-					<tr>
-						<th>작성일</th>
-						<td>${notice.reg_date}</td>
-					</tr>
+						<tr>
+							<th>조회수</th>
+							<td>${notice.hit}</td>
+						</tr>
+						<tr>
+							<th>첨부파일</th>
+							<td><c:forEach var="file"
+									items="${FreeboardFile}">
+									<a href="/upload/${file.name}" download>${file.name}</a>
+									<br>
+								</c:forEach></td>
+						</tr>
+				</table>
+				<div class="detail-btn-box">
+					<form>
+						<div>
+							<button>
+								<a href="list">list</a>
+							</button>
+						</div>
+						<div>
+							<button>
+								<a href="edit?id=${notice.id}">edit</a>
+							</button>
+							<button>
+								<a href="del?id=${notice.id}">delete</a>
+							</button>
+						</div>
+					</form>
+				</div>
 
-					<tr>
-						<th>조회수</th>
-						<td>${notice.hit}</td>
-					</tr>
-					<tr>
-						<th>첨부파일</th>
-						<td><c:forEach var="file" items="${FreeboardFile}">
-								<a href="/upload/${file.name}" download>${file.name}</a>
-								<br>
-							</c:forEach></td>
-					</tr>
-
-				</tbody>
-			</table>
-			
-			<div>
-				<a href="edit?id=${notice.id}">수정</a> <a href="del?id=${notice.id}">삭제</a>
 			</div>
-		</section>
 
-		<section>
-			<h1></h1>
-			<ul>
-				<li><span>이전글</span><a href="detail?id=${prev.id}">${prev.title}</a></li>
-				<li><span>다음글</span><a href="detail?id=${next.id}">${next.title}</a></li>
-			</ul>
-		</section>
+			<section>
+				<h1></h1>
+				<ul>
+					<li><span>이전글</span><a href="detail?id=${prev.id}">${prev.title}</a></li>
+					<li><span>다음글</span><a href="detail?id=${next.id}">${next.title}</a></li>
+				</ul>
+			</section>
 
-		<section>
-			<h3>공지사항 검색</h3>
-			<form>
-				<select>
-					<option>title</option>
-					<option>content</option>
-					<option>writer</option>
-				</select> <input type="text"> <input type="submit" value="search">
-			</form>
-		</section>
+			<section class="search-notice">
+					<h4>공지사항 검색</h4>
+					<form>
+						<div class="search-ele">
+							<div>
+								<select>
+									<option>title</option>
+									<option>content</option>
+									<option>writer</option>
+								</select>
+							</div>
+							<div class="search-btn">
+								<input type="text">
+								<input type="submit" value="search">
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+		</div>
 		</main>
 
 	</div>
 
-<!-- --- footer block----------------------------------------------------------------------------------->
-<<<<<<< HEAD
-	<%-- <jsp:include page="../inc/footer.jsp"></jsp:include> --%>
-<script type="javascript">
+	<!-- --- footer block----------------------------------------------------------------------------------->
+
+	<script type="javascript">
 window.onload = function(){
 
 	console.log("...");
 }
 </script>
-=======
+
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
->>>>>>> refs/remotes/origin/master
+
 </body>
 </html>

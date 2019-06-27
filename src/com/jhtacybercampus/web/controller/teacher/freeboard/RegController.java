@@ -24,7 +24,8 @@ import com.jhtacybercampus.web.entity.FreeboardFile;
 
 @WebServlet("/teacher/freeboard/reg")
 
-@MultipartConfig(location = "C:\\workspace\\JCCproject\\WebContent\\upload", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, // 5?占쏙옙?占쏙옙怨ㅼ삕
+@MultipartConfig(location = "C:\\Users\\YIJIN\\git\\JCCproject\\WebContent\\upload", 
+fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, // 5?占쏙옙?占쏙옙怨ㅼ삕
 maxRequestSize = 1024 * 1024 * 5 * 5 // 5?占쏙옙?占쏙옙怨ㅼ삕 5?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙
 		)
 
@@ -64,7 +65,7 @@ public class RegController extends HttpServlet{
 			pathFile.mkdirs();//?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙?占쏙옙
 
 		InputStream fis = filePart.getInputStream();
-		FileOutputStream fos = new FileOutputStream("D:\\temp\\"+fileName);
+		FileOutputStream fos = new FileOutputStream("C:\\Users\\YIJIN\\git\\JCCproject\\WebContent\\upload"+fileName);
 
 		byte[] buf = new byte[1024];
 		int size=0;

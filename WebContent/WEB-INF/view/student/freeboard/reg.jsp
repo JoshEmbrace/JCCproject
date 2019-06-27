@@ -1,94 +1,102 @@
 
 <%@page import="java.util.Scanner"%>
 <%@page import="java.io.FileInputStream"%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
+
 <html>
+
 <!-- web-inf 디렉토리에 넣으면 사용자가 view를 바로 호출할 수 없다 -->
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
-<!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
+<title>자유게시판</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../../layout/layout.css"> 
+<link rel="shortcut icon" type="image/png"
+	href="../../layout/images/favicon.png" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+<!-- 훔쳐온거 link들 -->
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+
+<link rel="stylesheet" type="text/css" href="../../css/member/register/style.css">
+<link rel="stylesheet" type="text/css" href="../../css/member/register/layout.css">
 </head>
 
 <body>
-   <jsp:include page="../inc/header.jsp"></jsp:include>
-   
-   <!-- --- header block----------------------------------------------------------------------------------->
+	<jsp:include page="../inc/header.jsp" />
+	<!-------------------------------- header -------------------------------->
+	<!-------------------------------- body -------------------------------->
+	<!-------------------------------- body -nav------------------------------->
+	<div class="body-container">
+		<jsp:include page="../inc/aside.jsp"></jsp:include>
 
 
-   <!-- --- visual block----------------------------------------------------------------------------------->
-   <div id="visual"></div>
-   <!-- --- body block----------------------------------------------------------------------------------->
-   <div id="body">
-      <div class="content-box">
+		<main class="main">
+		<div class="main-container">
+			<section id="freeboard">
+				<div class="sub-cont-wrap">
+					<p class="sub-title">자유 게시판</p>
+					<form action="reg" method="post" enctype="multipart/form-data">
+						<div class="subCon">
+							<div class="bbs-write-wrap">
+								<dl class="write-subject">
+									<dt>제목</dt>
 
-         <!-- aside -->
+									<dd>
+										<input type="text" name="title" class="bbs-subject" />
+									</dd>
+								</dl>
+								<dl class="write-subject">
+									<dt>작성자 아이디</dt>
+									<dd>
+										<input type="text" name="writer_id" class="bbs-subject" />
+									</dd>
+								</dl>
+								<dl class="write-cont">
+									<dt>내용</dt>
+									<dd>
+										<textarea name="content" id="" placeholder="내용을 작성해주세요."
+											class="editor"></textarea>
+										<!-- 수정 19.06.25 -->
+									</dd>
+								</dl>
 
+								<dl>
+									<dt>첨부파일</dt>
+									<dd>
+										<input type="file" name="file" class="bbs-attach" value="첨부파일" ></input>
 
-         <!-- aside -->
-         <main>
+									</dd>
+								</dl>
 
-         <section id="freeboard">
-            <h1>자유게시판 글쓰기</h1>
-
-            <section>
-               <form action="reg" method="post">
-                  <h1>내용</h1>
-                  <table>
-                     <tbody>
-<!-- 
-                        <tr>
-                           <th>아이디</th>
-                           <td><input name="id"></td>
-                        </tr>
- -->
-                        <tr>
-                           <th>제목</th>
-                           <td><input name="title"></td>
-                        </tr>
-
-                        <tr>
-                           <th>내용</th>
-                           <td><textarea name="content"></textarea></td>
-                        </tr>
-
-                        <tr>
-                           <th>작성자 아이디</th>
-                           <td><input name="writer_id"></input></td>
-                        </tr>
-                        
-                        <tr>
-                           <th>첨부파일</th>
-                           <td><input type="file" name="file"></td>
-                        </tr>
-
-                     </tbody>
-                  </table>
-
-                  <div>
-                     <input type="submit" value="저장"> <a href="list">취소</a>
-                  </div>
+							</div>
+							<div>
+							<input type="submit" value="저장"> <a href="list">취소</a>
+						</div>
+						</div>
+					</form>
+				</div>
+			</section>
 
 
-               </form>
-            </section>
-         </section>
-         </main>
-         <!-- <div style="clear:left;">막내</div> -->
-      </div>
-   </div>
+			<!------------------- 여기까지 --------------------->
+		</div>
+		</main>
+	</div>
 
-   <!-- --- footer block----------------------------------------------------------------------------------->
-   <!-- --- footer block----------------------------------------------------------------------------------->
-  
-	<jsp:include page="../inc/footer.jsp" />
+	<!-- --- footer block----------------------------------------------------------------------------------->
+	<jsp:include page="../inc/footer.jsp"></jsp:include>
+
+
 </body>
 
 </html>

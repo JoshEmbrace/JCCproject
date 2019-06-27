@@ -33,83 +33,84 @@ import com.jhtacybercampus.web.entity.FreeboardFile;
       )
 public class EditController extends HttpServlet {
 
-   @Override
-   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	   @Override
+	   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-      request.setCharacterEncoding("UTF-8");
-      Integer id = Integer.parseInt(request.getParameter("id"));
+	      request.setCharacterEncoding("UTF-8");
+	      Integer id = Integer.parseInt(request.getParameter("id"));
 
-      String title = request.getParameter("title");
-      String content = request.getParameter("content");
-      Integer writer_id = Integer.parseInt(request.getParameter("writer_id"));
-      Part filePart = request.getPart("file");
-     
-      String urlPath = "/upload";
-      String path = request.getServletContext().getRealPath(urlPath);
-      String fileName = filePart.getSubmittedFileName();
-      String filePath = path+File.separator+fileName; 
-     
+	      String title = request.getParameter("title");
+	      String content = request.getParameter("content");
+	      //Integer writer_id = Integer.parseInt(request.getParameter("writer_id"));
+	      Part filePart = request.getPart("file");
+	     
+	      String urlPath = "/upload";
+	      String path = request.getServletContext().getRealPath(urlPath);
+	      String fileName = filePart.getSubmittedFileName();
+	      String filePath = path+File.separator+fileName; 
+	     
 
-        File pathFile = new File(path);
-         if(!pathFile.exists())
-            pathFile.mkdirs();
+	        File pathFile = new File(path);
+	         if(!pathFile.exists())
+	            pathFile.mkdirs();
 
-         InputStream fis = filePart.getInputStream();
-         OutputStream fos = new FileOutputStream("C:\\temp\\"+fileName);
+	         InputStream fis = filePart.getInputStream();
+	         OutputStream fos = new FileOutputStream("C:\\workspace\\JCCproject\\WebContent\\upload"+fileName);
 
-         byte[] buf = new byte[1024];
-         int size=0;
-         while((size=fis.read(buf))!=-1) {
-            fos.write(buf, 0, size);
-         }
+	         byte[] buf = new byte[1024];
+	         int size=0;
+	         while((size=fis.read(buf))!=-1) {
+	            fos.write(buf, 0, size);
+	         }
 
-         fis.close();
-         fos.close();
-         
-      
-      FreeBoardDao fbDao = new OracleFreeBoardDao();
-      FreeboardFileDao fbFileDao = new OracleFreeboardFileDao();
-      FreeboardFile fbFile = new FreeboardFile();
-      
-      fbFile.setFreeboardId(id);
-      fbFile.setName(fileName);
+	         fis.close();
+	         fos.close();
+	         
+	      
+	      FreeBoardDao fbDao = new OracleFreeBoardDao();
+	      FreeboardFileDao fbFileDao = new OracleFreeboardFileDao();
+	      FreeboardFile fbFile = new FreeboardFile();
+	      
+	      fbFile.setFreeboardId(id);
+	      fbFile.setName(fileName);
 
-      
-      try {
-         fbDao.update(new FreeBoard(id, title, content,null, 0, writer_id));
+	      
+	      try {
+	         fbDao.update(new FreeBoard(id, title, content,null, 0, 0));
 
-         request.setAttribute("freeboard",fbDao.get(id));
-         fbFileDao.update(fbFile);
-      } catch (ClassNotFoundException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      } catch (SQLException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      }
-      request.getRequestDispatcher("../../WEB-INF/view/student/freeboard/detail.jsp").forward(request, response);
-   }
+	         request.setAttribute("freeboard",fbDao.get(id));
+	         fbFileDao.update(fbFile);
+	      } catch (ClassNotFoundException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      request.getRequestDispatcher("../../WEB-INF/view/student/freeboard/detail.jsp").forward(request, response);
+	   }
+
+	   @Override
+	   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	      FreeBoardDao fbDao = new OracleFreeBoardDao();
+	      FreeboardFileDao fbFileDao = new OracleFreeboardFileDao();
+	      Integer id = Integer.parseInt(request.getParameter("id"));
+	      try {
+	         request.setAttribute("freeboard",fbDao.get(Integer.parseInt(request.getParameter("id"))));
+	         request.setAttribute("files", fbFileDao.getListByFreeboardId(id));
+	      } catch (NumberFormatException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } catch (ClassNotFoundException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      request.getRequestDispatcher("../../WEB-INF/view/student/freeboard/edit.jsp").forward(request, response);
+	   }
+	}
 
 
-   @Override
-   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      FreeBoardDao fbDao = new OracleFreeBoardDao();
-      FreeboardFileDao fbFileDao = new OracleFreeboardFileDao();
-      Integer id = Integer.parseInt(request.getParameter("id"));
-      try {
-         request.setAttribute("freeboard",fbDao.get(Integer.parseInt(request.getParameter("id"))));
-         request.setAttribute("files", fbFileDao.getListByFreeboardId(id));
-      } catch (NumberFormatException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      } catch (ClassNotFoundException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      } catch (SQLException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      }
-      request.getRequestDispatcher("../../WEB-INF/view/student/freeboard/edit.jsp").forward(request, response);
-   }
-}
 

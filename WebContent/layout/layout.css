@@ -26,7 +26,7 @@ body {
     background-color: #f0f3f4;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjus: 100%;
-    /* iphone font size 변경 방지 */
+    /* iphone font size 蹂�寃� 諛⑹� */
 }
 /* ---------------------------------------- */
 
@@ -46,6 +46,11 @@ body {
     background-color: #fff;
     border-bottom: 1px solid #d6d6d6;
     z-index: 1000;
+}
+
+.bbs-attach{
+	widht:50px;
+	height: 30px;
 }
 
 .header-container{
@@ -135,9 +140,46 @@ body {
     min-height: 90vh;
 }
 
+.bbs-attach{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.bbs-attach:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+.bbs-attach:before,.bbs-attach:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.bbs-attach:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.bbs-attach:hover:before,.bbs-attach:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
 .main-container{
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     flex-direction: column;
     padding: 90px 30px 30px 30px;
     width: 100%;

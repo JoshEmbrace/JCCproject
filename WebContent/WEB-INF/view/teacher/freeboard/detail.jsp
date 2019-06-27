@@ -10,14 +10,24 @@
 <!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
 <link rel="stylesheet" type="text/css"
 	href="../css/freeboard_detail.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../../layout/layout.css">
+<link rel="shortcut icon" type="image/png"
+	href="../../layout/images/favicon.png" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 </head>
 
 
 <body>
-<jsp:include page="../inc/header.jsp"></jsp:include>
-	<div id="body">
+	<jsp:include page="../inc/header.jsp"></jsp:include>
+	<div class="body-container">
 
-		<aside></aside>
+
+		<jsp:include page="../inc/aside.jsp"></jsp:include>
+
+		<!-- aside -->
 		<main>
 		<section id="freeboard">
 			<h3>자유게시판 내용</h3>
@@ -78,7 +88,7 @@
 
 				</tbody>
 			</table>
-			
+
 			<div>
 				<a href="edit?id=${notice.id}">수정</a> <a href="del?id=${notice.id}">삭제</a>
 			</div>
@@ -106,17 +116,16 @@
 
 	</div>
 
-<!-- --- footer block----------------------------------------------------------------------------------->
-<<<<<<< HEAD
-	<%-- <jsp:include page="../inc/footer.jsp"></jsp:include> --%>
-<script type="javascript">
+	<!-- --- footer block----------------------------------------------------------------------------------->
+
+	<script type="javascript">
 window.onload = function(){
 
 	console.log("...");
 }
 </script>
-=======
+
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
->>>>>>> refs/remotes/origin/master
+
 </body>
 </html>

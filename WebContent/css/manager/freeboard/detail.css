@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR|Roboto&display=swap');
 
 /* reset CSS */
+.d-none{
+    display: none;
+}
 a{
     text-decoration: none;
     padding: 5px;
@@ -9,26 +12,24 @@ ol, ul {
 	list-style: none;
 }
 table {
-   border-collapse: collapse;
-   border-spacing: 0;
-   width: 100%    
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
 }
-
 tr, tbody{
-   text-align: center;
-   border-bottom: 1px solid #ccc;   
-}
-
-td{
-   padding: 10px;
-}
-ul li{
-	list-style-type: none;
-    float: left;
-}
-
+    text-align: center;
+    border-bottom: 1px solid #ccc;   
+ }
+ td{
+    padding: 10px;
+ }
 .big-div{
-	display: flex; 
+    display: flex;
+    margin-left: 200px;
+}
+.big-div ul li{
+    list-style-type: none;
+     float: left;
 }
 
 * {
@@ -40,8 +41,7 @@ ul li{
 }
 
 body {
-    /* font-family: 'Roboto', 'Noto Sans KR', sans-serif; */
-    font-family: AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, '돋움', sans-serif;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
     color: #58666e;
     background-color: #f0f3f4;
     -webkit-font-smoothing: antialiased;
@@ -56,10 +56,6 @@ body {
     flex-direction: column;
 }
 
-#pager{
-	margin-top: 20px;
-}
-
 /* ------------------------------------------*/
 /* -------------------header------------------- */
 .header{
@@ -71,50 +67,6 @@ body {
     border-bottom: 1px solid #d6d6d6;
     z-index: 1000;
 }
-
-.reg{
-	margin-top: 30px;
-	float: right;
-}
-
-.reg_button{
-	
-  background:black;
-  color:#fff;
-  border:none;
-  position:relative;
-  height:60px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-}
-.reg_button:hover{
-  background:#fff;
-  color:#808080;
-}
-.reg_button:before,.reg_button:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #c0c0c0;
-  transition:400ms ease all;
-}
-.reg_button:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-.reg_button:hover:before,button:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}
-
 
 .header-container{
     display: flex;
@@ -215,7 +167,7 @@ body {
     display: flex;
     margin-right: auto;
     padding-bottom: 30px;
-    width: 100%;
+    width: 150%;
     border-bottom: 1px solid #ccc;
 }
     .breadcrumb li{
@@ -231,13 +183,68 @@ body {
     flex-direction: column;
 }
 .main-content-box .content1{
-    width: 100%;
+    width:1000px;
+    --width: 100%;
     margin-top: 25px;
     padding: 30px 25px;
     background: #fff;
     border: 1px solid #ddd;
     height: inherit;
 }
+
+.main-content-box .content1 .time{
+    text-align: right;
+}
+
+.main-content-box .content1 table{
+    width:100%;
+    margin-bottom: 20px;
+}
+
+.content1 h3{
+    margin-bottom: 20px;
+}
+
+.notice-table tr th{
+    width: 20%;
+}
+.notice-table tr td{
+    width: 80%;
+    text-align: left;
+}
+.detail-btn-box button{
+    border: 1px solid #ccc;
+    padding: 6px 6px;
+    line-height: 1;
+}
+.detail-btn-box form{
+    display: flex;
+}
+.detail-btn-box form div:nth-child(2){
+    margin-left: auto;
+}
+
+.search-notice h4{
+    display: none;
+}
+.search-notice form select{
+    border: 1px solid #ccc;
+    padding: 5px 20px;
+}
+.search-notice .search-ele{
+    display: flex;
+}
+.search-btn input:first-child{
+    border: 1px solid #ccc;
+    padding: 5px 20px;
+}
+.search-btn input:nth-child(2){
+    border: 1px solid #ccc;
+    padding: 6px 6px;
+    line-height: 1;
+}
+/* -------------------table------------------- */
+
 /* -------------------body------------------- */
 
 /* -------------------footer------------------- */

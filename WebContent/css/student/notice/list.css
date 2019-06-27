@@ -14,7 +14,7 @@ ol, ul {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-    width: 150%;
+    width: 100%;
 }
 tr, tbody{
     text-align: center;
@@ -25,7 +25,8 @@ tr, tbody{
  }
 .big-div{
     display: flex;
-    margin-left: 200px;
+    --margin-left: 200px;
+    justify-content: center;
 }
 .big-div ul li{
     list-style-type: none;
@@ -183,7 +184,7 @@ body {
     flex-direction: column;
 }
 .main-content-box .content1{
-    width: 100%;
+    width: 1000px;
     margin-top: 25px;
     padding: 30px 25px;
     background: #fff;

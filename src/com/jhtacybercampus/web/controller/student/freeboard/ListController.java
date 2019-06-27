@@ -17,7 +17,7 @@ public class ListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FreeBoardDao fbDao  = new OracleFreeBoardDao();
-		int page = 1;                                                                     
+		int page = 1;                                                                   
 		if (request.getParameter("p") != null && !request.getParameter("p").equals(""))
 			page = Integer.parseInt(request.getParameter("p"));
 		

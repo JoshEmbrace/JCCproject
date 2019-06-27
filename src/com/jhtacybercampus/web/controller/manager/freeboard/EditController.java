@@ -41,7 +41,7 @@ public class EditController extends HttpServlet {
 
       String title = request.getParameter("title");
       String content = request.getParameter("content");
-      Integer writer_id = Integer.parseInt(request.getParameter("writer_id"));
+      //Integer writer_id = Integer.parseInt(request.getParameter("writer_id"));
       Part filePart = request.getPart("file");
      
       String urlPath = "/upload";
@@ -55,7 +55,7 @@ public class EditController extends HttpServlet {
             pathFile.mkdirs();
 
          InputStream fis = filePart.getInputStream();
-         OutputStream fos = new FileOutputStream("C:\\temp\\"+fileName);
+         OutputStream fos = new FileOutputStream("C:\\workspace\\JCCproject\\WebContent\\upload"+fileName);
 
          byte[] buf = new byte[1024];
          int size=0;
@@ -76,7 +76,7 @@ public class EditController extends HttpServlet {
 
       
       try {
-         fbDao.update(new FreeBoard(id, title, content,null, 0, writer_id));
+         fbDao.update(new FreeBoard(id, title, content,null, 0, 0));
 
          request.setAttribute("freeboard",fbDao.get(id));
          fbFileDao.update(fbFile);
@@ -87,7 +87,9 @@ public class EditController extends HttpServlet {
          // TODO Auto-generated catch block
          e.printStackTrace();
       }
-      request.getRequestDispatcher("../..//WEB-INF/view/freeboard/detail.jsp").forward(request, response);
+
+      request.getRequestDispatcher("../../WEB-INF/view/manager/freeboard/detail.jsp").forward(request, response);
+
    }
 
 
@@ -109,7 +111,9 @@ public class EditController extends HttpServlet {
          // TODO Auto-generated catch block
          e.printStackTrace();
       }
-      request.getRequestDispatcher("../..//WEB-INF/view/freeboard/edit.jsp").forward(request, response);
+
+      request.getRequestDispatcher("../../WEB-INF/view/manager/freeboard/edit.jsp").forward(request, response);
+
    }
 }
 
