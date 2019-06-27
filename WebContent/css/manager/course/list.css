@@ -3,6 +3,7 @@
 /* reset CSS */
 a{
     text-decoration: none;
+    color:black;
 }
 ol, ul {
 	list-style: none;
@@ -170,14 +171,19 @@ body {
     border: 1px solid #ddd;
     height: inherit;
 }
+
 /* -------------------body------------------- */
 /*---------------------------------------------*/
+.content1 .input{
+    text-align: center;
+}
+
 #pager{
-	justify-content: center;
-	text-align: center;
+    
 }
 #pager .box{
-	display:flex;
+    display:flex;
+    justify-content: center;
 }
 #pager ul{
 	display:flex;
@@ -194,8 +200,7 @@ body {
 }
 
 
-.right{
-	display:inline-block;
+.reg-btn{
 	text-align: right;
 }
 
@@ -205,15 +210,15 @@ body {
 
 #course_table {
 	width: 800px;
-	margin-left : auto;
-	margin-right: auto;
+	margin:auto;
 	text-align: center;
 	line-height: 1.5;
 	background-color: white;
 }
 
 #course_table>thead {
-	background-color: #ff8040;
+    background-color: #58666e;
+    color:white;
 }
 
 #course_table .even {

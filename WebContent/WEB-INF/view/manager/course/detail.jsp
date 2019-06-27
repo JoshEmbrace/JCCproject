@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -12,8 +13,8 @@
     <title>Document</title>
     <link rel="shortcut icon" type="image/png" href="../../images/inc/favicon.png" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="../../css/manager/course/list.css">
-	<script src="../../js/manager/course/list.js"></script>
+	<link rel="stylesheet" href="../../css/manager/course/detail.css">
+	<script src="../../js/manager/course/detail.js"></script>
 </head>
 
 
@@ -25,42 +26,7 @@
         <!-------------------------------- body -------------------------------->
         <!-------------------------------- body -nav------------------------------->
         <div class="body-container">
-            <nav class="nav">
-                <ul class="nav-container">
-                    <li>
-                        <a href="#Mynote"><i class="material-icons md-36">description</i><span>My note</span></a>
-                    </li>
-                    <li>
-                        <a href="#Curriculum"><i class="material-icons md-36">date_range</i><span>Curriculum</span></a>
-                    </li>
-                    <li>
-                        <a href="#Homework"><i class="material-icons md-36">dvr</i><span>Homework</span></a>
-                    </li>
-                    <li class="dropdown-menu">
-                        <a href="#Notice"><i class="material-icons md-36">apps</i><span>Notice</span><i
-                                class="material-icons md-36">expand_more</i></a>
-                        <ul class="dropdown-container">
-                            <li><a href="">Notice</a></li>
-                            <li><a href="">Freeboard</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <script>
-                var dropdown = document.getElementsByClassName(".dropdown-menu");
-
-                for (var i = 0; i < dropdown.length; i++) {
-                    dropdown[i].addEventListener("click", function () {
-                        this.classList.toggle("active");
-                        var dropdownContent = this.nextElementSibling;
-                        if (dropdownContent.style.display === "block") {
-                            dropdownContent.style.display = "none";
-                        } else {
-                            dropdownContent.style.display = "block";
-                        }
-                    });
-                }
-            </script>
+            <jsp:include page="../inc/aside.jsp" />
 
             <main class="main">
                 <div class="main-container">
@@ -78,7 +44,13 @@
 					<div class="main-content-box">
 						<h2>Course 상세</h2>
 						<div class="content1">
-							<table>
+							<table id="course_table">
+								<colgroup>
+									<col width="15%">
+									<col width="25%">
+									<col width="15%">
+									<col width="25%">
+								</colgroup>
 								<tr>
 									<th>Course</th>
 									<td>${course.name}</td>
