@@ -10,16 +10,12 @@ ol, ul {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-	width: 100% 
-	
-	
+	width: 100% 	
 }
-
 
 tr, tbody{
 	text-align: center;
-	border-bottom: 1px solid #ccc;
-	
+	border-bottom: 1px solid #ccc;	
 }
 td{
 	padding: 10px;
@@ -39,9 +35,8 @@ body {
     background-color: #f0f3f4;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjus: 100%;
-    /* iphone font size 蹂�寃� 諛⑹� */
 }
-/* ---------------------------------------- */
+/* --------------------------------------------- */
 
 #container {
     height: 100%;
@@ -49,7 +44,7 @@ body {
     flex-direction: column;
 }
 
-/* ------------------------------------------*/
+/* -------------------------------------------- */
 /* -------------------header------------------- */
 .header{
     position: fixed;
@@ -98,7 +93,7 @@ body {
     .material-icons.md-36 { font-size: 36px; }
 /* -------------------header------------------- */
 
-/* -------------------body------------------- */
+/* -------------------body--------------------- */
 .body-container{
     display: flex;
 }
@@ -163,45 +158,123 @@ body {
     width: 100%;
     border-bottom: 1px solid #ccc;
 }
-    .breadcrumb li{
-        display: flex;
-        align-items: center;
-    }
+.breadcrumb li{
+    display: flex;
+    align-items: center;
+}
 
 .main-content-box{
     width: 98%;
     min-height: 700px;
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
 }
 
 .main-content-box h1{
-    margin-bottom:30px;
+    margin-bottom: 50px;
 }
 
 .main-content-box .content1{
     display:flex;
     width: 100%;
-    margin-top: 5px;
     margin-bottom: 35px;
     padding: 50px 25px;
     --background: #fff;
     --border: 1px solid #ccc;
     height: inherit;
 }
+
 /* .list_section{
     border: 1px solid orangered;
     margin: 10px;
     padding: 10px;
     width: 100%
 } */
+.list_section{
+	padding: 20px;
+}
 .content1 textarea{
-	width: 100%
+	resize: none; min-height:150px; width: 100%;
 	overflow-x, overflow-y :hidden;
-	resize: none;
 	overflow: auto;
+	background-color:#fe6;
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#fe6), to(#f6ef97), color-stop(.6,#f5da41));
+	background:-moz-linear-gradient(top, #fe6, #f5da41, #f6ef97);
+	text-shadow:0 1px 0 #F6EF97;
+	box-shadow:0 0 5px rgba(0,0,0,.2);
+	-webkit-box-shadow:0 0 5px rgba(0,0,0,.2);
+	-moz-box-shadow:0 0 5px rgba(0,0,0,.2);
+}
+.mynote-tables{
+	--display: flex;
+	height:400px;
+	width: 100%;
+	margin-left: 130px;
+}
+ h2{
+	margin-bottom: 30px;
+}
+.mynote-table1{
+	display: flex;
+	width: 100%;
+} 
+.mynote-table2{
+	display: flex;
+	width: 100%;
+}
+
+.mynote-tables table{
+	table-layout:fixed;
+	height:400px;
+	width: 300px;
+	margin-right: 20px; 
+	--margin: auto;
+	background-color:#fe6;
+	background:-webkit-gradient(linear, 0% 0%, 0% 180%, from(#fe6), to(#f6ef97), color-stop(.6,#f5da41));
+	background:-moz-linear-gradient(top, #fe6, #f5da41, #f6ef97);
+	text-shadow:0 1px 0 #F6EF97;
+	box-shadow:0 0 8px rgba(0,0,0,.2);
+	-webkit-box-shadow:0 0 5px rgba(0,0,0,.2);
+	-moz-box-shadow:0 0 5px rgba(0,0,0,.2);
+	--border: 1px solid red;
+	--flex-basis: 450px;
+	--flex-grow: 2;
+	--flex-shrink: 1;
 	
+}
+
+.mynote-tables tr{
+	--border: 1px solid black;
+	padding-left: 30px;
+	margin: 300px;
+}
+
+.mynote-tables tbody td{
+	white-space: nowrap;
+	--text-overflow: ellipsis;
+	height: 100%;
+	width: 100%
+	font-size: 15px;
+	justify-content: center;
+	padding-top: 10px;
+	padding-left: 43px;
+}
+.mynote-tables tbody td .mynote-content{
+	text-overflow:ellipsis;
+	overflow: hidden;
+	height: 100%;
+}
+.plus-button{
+	text-align: right;
+	cursor:pointer;
+}
+.mynote-Id{
+	display: none;
+}
+.mynote-date{
+    font-size: 19px;
+    font-weight: 500;
+	text-align: left;
 }
 /* -------------------body------------------- */
 /*---------------------------------------------*/
